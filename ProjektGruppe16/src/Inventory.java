@@ -17,7 +17,7 @@ public class Inventory {
         return this.inventory.size() < this.capacity;
     }
     
-    //Adds an item to the inventory
+    //Adds an item to the inventory list
     public void add(Item item){
         this.inventory.add(item);
     }
