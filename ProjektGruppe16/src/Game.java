@@ -83,8 +83,8 @@ public class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
+        System.out.println("Welcome to Stranded!");
+        System.out.println("Stranded is in development by project group 16");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
@@ -110,36 +110,54 @@ public class Game
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
         }
-        else if (commandWord == CommandWord.ATTACK) {
-            
+        else if (commandWord == CommandWord.ATTACK) { // The following 6 commands are our new commands for the game
+            Attack();
         }
         else if (commandWord == CommandWord.DROP){
-            
+            Drop();
         }
         else if (commandWord == CommandWord.INVENTORY){
-            
+            Inventory();
         }
         else if (commandWord == CommandWord.TALK){
-            
+            Talk();
         }
         else if (commandWord == CommandWord.PICKUP){
-            
+            Pickup();
         }
         else if (commandWord == CommandWord.USE){
-            
+            Use();
         }
         return wantToQuit;
     }
-
+    private void Attack(){
+        
+    }
+    private void Drop(){
+        
+    } 
+    private void Talk (){
+        
+    }
+    
+    private void Pickup(){
+        
+    }
+    private void Use (){
+        
+    }
+    private void Inventory (){
+        System.out.println("");
+    }
     private void printHelp() 
     {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
-        System.out.println();
+        System.out.println("You wake up on a beach");
+        System.out.println("You see the rests of a plane scattered around the beach");
+        System.out.println("Use commands to perform actions");
         System.out.println("Your command words are:");
         parser.showCommands();
     }
-   // private void eat
+    
     private void goRoom(Command command)
     {
         if(!command.hasSecondWord()) {
@@ -152,13 +170,14 @@ public class Game
         Room nextRoom = currentRoom.getExit(direction);
 
         if (nextRoom == null) {
-            System.out.println("There is no door!");
+            System.out.println("Your path is blocked in this direction");
         }
         else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }
     }
+    
 
     private boolean quit(Command command) 
     {
