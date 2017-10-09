@@ -26,4 +26,10 @@ public class Inventory {
     public void remove(Item item){
         this.inventory.remove(item);
     }
+    
+    //Returns the inventory list
+    public ArrayList inventoryList(){
+        ArrayList<Item> list = new ArrayList<>(this.inventory);
+        return list;
+    }
 }
