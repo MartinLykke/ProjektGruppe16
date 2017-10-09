@@ -8,6 +8,8 @@
  *
  * @author marti
  */
-public class Food {
-    
+public class Food extends Item{
+    public Food(){
+        
+    }
 }
