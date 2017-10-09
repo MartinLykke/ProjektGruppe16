@@ -110,6 +110,24 @@ public class Game
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
         }
+        else if (commandWord == CommandWord.ATTACK) {
+            
+        }
+        else if (commandWord == CommandWord.DROP){
+            
+        }
+        else if (commandWord == CommandWord.INVENTORY){
+            
+        }
+        else if (commandWord == CommandWord.TALK){
+            
+        }
+        else if (commandWord == CommandWord.PICKUP){
+            
+        }
+        else if (commandWord == CommandWord.USE){
+            
+        }
         return wantToQuit;
     }
 
@@ -121,8 +139,8 @@ public class Game
         System.out.println("Your command words are:");
         parser.showCommands();
     }
-
-    private void goRoom(Command command) 
+   // private void eat
+    private void goRoom(Command command)
     {
         if(!command.hasSecondWord()) {
             System.out.println("Go where?");
