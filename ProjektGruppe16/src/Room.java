@@ -3,8 +3,6 @@ import java.util.Set;
 import java.util.HashMap;
 import java.util.Iterator;
 
-
-//hejsa
 /**
  * @author  Michael Kolling and David J. Barnes
  * @version 2006.03.30
