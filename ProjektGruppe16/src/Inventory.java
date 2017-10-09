@@ -21,4 +21,9 @@ public class Inventory {
     public void add(Item item){
         this.inventory.add(item);
     }
+    
+    //Removes an item from the inventory list
+    public void remove(Item item){
+        this.inventory.remove(item);
+    }
 }
