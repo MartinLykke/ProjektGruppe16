@@ -9,7 +9,12 @@
  * @author marti
  */
 public class Food extends Item{
-    public Food(){
+    int weight;
+        int restorevalue;
+    public Food(String name, int weight, int restorevalue){
+        this.weight = weight;
+        this.restorevalue = restorevalue;
+        
         
     }
 }
