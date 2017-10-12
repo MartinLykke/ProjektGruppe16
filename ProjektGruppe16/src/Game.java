@@ -18,21 +18,21 @@ public class Game
     {
         Room beach1, beach2, beach3, jungle1, jungle2, jungle3, jungle4, jungle5, jungle6, cave;
       
-        beach1 = new Room("on the Western part of the beach!!!"); //Kasper test
-        beach2 = new Room("on the central part of the beach");
-        beach3 = new Room("on the Eastern part of the beach");
-        jungle1 = new Room("in the jungle, the mighty jungle, where lions sleep tonight");
-        jungle2 = new Room("in the jungle, the mighty jungle, where lions sleep tonight");
-        jungle3 = new Room("in the jungle, the mighty jungle, where lions sleep tonight");
-        jungle4 = new Room("in the jungle, the mighty jungle, where lions sleep tonight");
-        jungle5 = new Room("in the jungle, the mighty jungle, where lions sleep tonight");
-        jungle6 = new Room("in the jungle, the mighty jungle, where lions sleep tonight");
-        cave = new Room("in a dimly lit cave");
+        beach1 = new Room("You are on the Western part of the beach."); //Kasper test
+        beach2 = new Room("You are on the central part of the beach.");
+        beach3 = new Room("You are on the Eastern part of the beach.");
+        jungle1 = new Room("You are in the jungle, the mighty jungle, where lions sleep tonight!");
+        jungle2 = new Room("You are in the jungle, the mighty jungle, where lions sleep tonight!");
+        jungle3 = new Room("You are in the jungle, the mighty jungle, where lions sleep tonight!");
+        jungle4 = new Room("You are in the jungle, the mighty jungle, where lions sleep tonight!");
+        jungle5 = new Room("You are in the jungle, the mighty jungle, where lions sleep tonight!");
+        jungle6 = new Room("You are in the jungle, the mighty jungle, where lions sleep tonight!");
+        cave = new Room("You are in a dimly lit cave.");
         
-        beach1.setExit("north", jungle1);
+        //beach1.setExit("north", jungle1);
         beach1.setExit("east", beach2);
 
-        beach2.setExit("north", jungle2);
+        //beach2.setExit("north", jungle2);
         beach2.setExit("east", beach3);
         beach2.setExit("west", beach1);
 
@@ -40,15 +40,15 @@ public class Game
         beach3.setExit("west", beach2);
 
         jungle1.setExit("north", jungle4);
-        jungle1.setExit("east", jungle2);
-        jungle1.setExit("south", beach1);
+        //jungle1.setExit("east", jungle2);
+        //jungle1.setExit("south", beach1);
 
         jungle2.setExit("north", jungle5);
         jungle2.setExit("east", jungle3);
-        jungle2.setExit("south", beach2);
-        jungle2.setExit("west", jungle1);
+        //jungle2.setExit("south", beach2);
+        //jungle2.setExit("west", jungle1);
         
-        jungle3.setExit("north", jungle6);
+        //jungle3.setExit("north", jungle6);
         jungle3.setExit("south", beach3);
         jungle3.setExit("west", jungle2);
 
@@ -60,7 +60,7 @@ public class Game
         jungle5.setExit("west", jungle4);
         
         jungle6.setExit("north", cave);
-        jungle6.setExit("south", jungle3);
+        //jungle6.setExit("south", jungle3);
         jungle6.setExit("west", jungle5);
         
         cave.setExit("south", jungle6);
