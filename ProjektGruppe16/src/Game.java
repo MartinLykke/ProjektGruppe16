@@ -18,7 +18,7 @@ public class Game
     {
         Room beach1, beach2, beach3, jungle1, jungle2, jungle3, jungle4, jungle5, jungle6, cave;
       
-        beach1 = new Room("on the Western part of the beach");
+        beach1 = new Room("on the Western part of the beach!!!"); //Kasper test
         beach2 = new Room("on the central part of the beach");
         beach3 = new Room("on the Eastern part of the beach");
         jungle1 = new Room("in the jungle, the mighty jungle, where lions sleep tonight");
