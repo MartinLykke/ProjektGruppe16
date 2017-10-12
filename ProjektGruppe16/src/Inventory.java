@@ -7,9 +7,9 @@ public class Inventory {
     private ArrayList<Item> inventory; //List of the items in inventory
     private int capacity; //Amount of items a player can carry
     
-    public Inventory(){
-        inventory = new ArrayList<>();
-        capacity = 4;
+    public Inventory(int capacity){
+        this.inventory = new ArrayList<>();
+        this.capacity = capacity;
     }
     
     //Checks if inventory is full
@@ -27,7 +27,7 @@ public class Inventory {
         this.inventory.remove(item);
     }
     
-    //Returns the inventory list
+    //Returns a copy of the inventory list
     public ArrayList inventoryList(){
         ArrayList<Item> list = new ArrayList<>(this.inventory);
         return list;
