@@ -8,7 +8,7 @@ public class Inventory {
     private int capacity; //Amount of items a player can carry
     
     public Inventory(int capacity){
-        this.inventory = new ArrayList<>();
+        inventory = new ArrayList<>();
         this.capacity = capacity;
     }
     
