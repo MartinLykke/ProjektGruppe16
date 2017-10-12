@@ -4,10 +4,12 @@ public class Enemy {
     private int health;
     private String name;
     private int damage;
-    private int range;   
+  
     
-    public Enemy(){
-        
+    public Enemy(String name){
+       health = 20;  
+       damage = 10;
+       name = "Kanibal";
     }
     
     public void Attack(){

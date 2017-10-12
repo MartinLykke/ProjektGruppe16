@@ -9,7 +9,7 @@ public class Command
     private CommandWord commandWord;
     private String secondWord;
     
-    //Jeg har det godt med mig selv
+    
 
     public Command(CommandWord commandWord, String secondWord)
     {

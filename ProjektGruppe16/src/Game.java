@@ -7,6 +7,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
+    private Inventory inventory;
         
     public Game() 
     {
@@ -70,6 +71,7 @@ public class Game
 
     public void play() 
     {            
+        inventory = new Inventory(4);
         printWelcome();
 
         boolean finished = false;
@@ -111,40 +113,62 @@ public class Game
             wantToQuit = quit(command);
         }
         else if (commandWord == CommandWord.ATTACK) { // The following 6 commands are our new commands for the game
-            Attack();
+            Attack(command);
         }
         else if (commandWord == CommandWord.DROP){
-            Drop();
+            Drop(command);
         }
         else if (commandWord == CommandWord.INVENTORY){
             Inventory();
         }
         else if (commandWord == CommandWord.TALK){
-            Talk();
+            Talk(command);
         }
         else if (commandWord == CommandWord.PICKUP){
-            Pickup();
+            Pickup(command);
         }
         else if (commandWord == CommandWord.USE){
-            Use();
+            Use(command);
         }
         return wantToQuit;
     }
-    private void Attack(){
-        
+    private void Attack(Command command){ // The following 6 methods are our new methods which the comamands activate
+        if(!command.hasSecondWord()) {
+            System.out.println("Attack what?");
+            return;
+        }
     }
-    private void Drop(){
-        
+    private void Drop(Command command){ 
+        if(!command.hasSecondWord()) {
+            System.out.println("Drop what?");
+            return;
+        }
     } 
-    private void Talk (){
-        
+    private void Talk (Command command){
+        if(!command.hasSecondWord()) {
+            System.out.println("Talk to who?");
+            return;
+        }
     }
     
-    private void Pickup(){
-        
+    private void Pickup(Command command){
+        if(!command.hasSecondWord()) {
+            System.out.println("Pickup what?");
+            return;
+            
+        }
+        if(!inventory.inventoryFull()){
+           // inventory.add(); - Tilføj pickup funktion her
+        }
+        else {
+            System.out.println("You are carrying too much. Use the drop command.");
+        }
     }
-    private void Use (){
-        
+    private void Use (Command command){
+        if(!command.hasSecondWord()) {
+            System.out.println("Use what?");
+            return;
+        }
     }
     private void Inventory (){
         System.out.println("");
