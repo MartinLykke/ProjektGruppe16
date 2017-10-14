@@ -7,7 +7,7 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-    private Inventory inventory;
+    private Player player;
         
     public Game() 
     {
@@ -19,7 +19,7 @@ public class Game
     {
         Room beach1, beach2, beach3, jungle1, jungle2, jungle3, jungle4, jungle5, jungle6, cave;
       
-        beach1 = new Room("You are on the Western part of the beach."); //Kasper test
+        beach1 = new Room("You are on the Western part of the beach.");
         beach2 = new Room("You are on the central part of the beach.");
         beach3 = new Room("You are on the Eastern part of the beach.");
         jungle1 = new Room("You are in the jungle, the mighty jungle, where lions sleep tonight!");
@@ -32,6 +32,7 @@ public class Game
         
         //beach1.setExit("north", jungle1);
         beach1.setExit("east", beach2);
+        beach1.putItem(new Coconut());
 
         //beach2.setExit("north", jungle2);
         beach2.setExit("east", beach3);
@@ -71,7 +72,7 @@ public class Game
 
     public void play() 
     {            
-        inventory = new Inventory(4);
+        player = new Player();
         printWelcome();
 
         boolean finished = false;
@@ -155,10 +156,9 @@ public class Game
         if(!command.hasSecondWord()) {
             System.out.println("Pickup what?");
             return;
-            
         }
-        if(!inventory.inventoryFull()){
-           // inventory.add(); - Tilføj pickup funktion her
+        if(!player.inventory.inventoryFull()){
+            player.inventory.add(currentRoom.getItem(command.getSecondWord()));
         }
         else {
             System.out.println("You are carrying too much. Use the drop command.");
