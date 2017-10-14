@@ -11,11 +11,13 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;
+    private HashMap<String, Item> items;
 
     public Room(String description) 
     {
         this.description = description;
         exits = new HashMap<String, Room>();
+        this.items = new HashMap<>();
     }
 
     public void setExit(String direction, Room neighbor) 
@@ -46,6 +48,15 @@ public class Room
     public Room getExit(String direction) 
     {
         return exits.get(direction);
+    }
+    
+    public void putItem(Item item){
+        this.items.put(item.name, item);
+    }
+    public Item getItem(String item){
+        Item temp = this.items.get(item);
+        this.items.remove(item);
+        return temp;
     }
 }
 
