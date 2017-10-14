@@ -2,28 +2,33 @@
 public class Player {
     private int health;
     private int maxhealth = 100;
-    public boolean istheplayerdead;
+    private boolean istheplayerdead;
+    public Inventory inventory;
     
     public Player(){
-        health = 100;
-        istheplayerdead = false;
+        this.health = 100;
+        this.istheplayerdead = false;
+        this.inventory = new Inventory(4);
     }
     // Method for restoring health, uses food class
     public void eat(Food food){ 
         
-        if(health+food.restorevalue<maxhealth){ // Checks if the restoration will exceed the maximum allowed health.
-            health = health+food.restorevalue;
+        if(this.health + food.restorevalue < this.maxhealth){ // Checks if the restoration will exceed the maximum allowed health.
+            this.health = this.health + food.restorevalue;
         }
         else {
-            health = maxhealth; 
+            this.health = this.maxhealth; 
         }
     }
     // Method for taking damage from enemy
     public void damagetaken(int damage){
-        health = health-damage;
-        if(health<=0){
-            istheplayerdead = true;
+        this.health = this.health - damage;
+        if(this.health <= 0){
+            this.istheplayerdead = true;
         }
-       
+    }
+    
+    public boolean isDead(){
+        return istheplayerdead;
     }
 }
