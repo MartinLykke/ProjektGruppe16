@@ -67,7 +67,7 @@ public class Game
         
         cave.setExit("south", jungle6);
         
-        currentRoom = beach1;
+        currentRoom = beach2; //
     }
 
     public void play() 
