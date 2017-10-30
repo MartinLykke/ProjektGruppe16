@@ -15,7 +15,6 @@ public class Game
         
     public Game() 
     {
-       
         createRooms();
         parser = new Parser();
     }
@@ -149,6 +148,7 @@ public class Game
         }
         if(attackedenemy.equals("Kanibal") ){
             System.out.println("You have killed the Kanibal");
+            player.printhealth();
         }
     }
     private void Drop(Command command){ 
