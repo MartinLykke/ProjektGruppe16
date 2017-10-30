@@ -153,15 +153,22 @@ public class Game
     }
     
     private void Pickup(Command command){
+        String second;
         if(!command.hasSecondWord()) {
             System.out.println("Pickup what?");
             return;
         }
-        if(!player.inventory.inventoryFull()){
-            player.inventory.add(currentRoom.getItem(command.getSecondWord()));
+        else{
+            second = command.getSecondWord();
+        }
+        if(player.inventory.inventoryFull()){
+            System.out.println("You are carrying too much. Use the drop command.");
+        }
+        else if(currentRoom.itemExist(second)){
+            player.inventory.add(currentRoom.getItem(second));
         }
         else {
-            System.out.println("You are carrying too much. Use the drop command.");
+            System.out.println("You look around but can't find any " + second);
         }
     }
     private void Use (Command command){
