@@ -184,9 +184,19 @@ public class Game
         }
     }
     private void Use (Command command){
+        String UsedItem;
+        String SecondWord;
         if(!command.hasSecondWord()) {
             System.out.println("Use what?");
             return;
+        
+        }
+        else {
+            SecondWord=command.getSecondWord();
+            if(SecondWord.equals("Coconut")){
+                player.Heal(10);
+                System.out.println(" test");
+            }
         }
     }
     private void Inventory (){

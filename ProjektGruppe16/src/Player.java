@@ -31,7 +31,11 @@ public class Player {
     public void printhealth(){
         System.out.println("You have " + health + " health left."); 
     }
+    public void Heal(int healamount){
+        this.health=this.health+10;
+    }
     public boolean isDead(){
         return istheplayerdead;
+        
     }
 }
