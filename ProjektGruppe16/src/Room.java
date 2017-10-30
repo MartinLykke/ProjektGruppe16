@@ -83,5 +83,9 @@ public class Room
         }
         return this.enemy.attack();
     }
+    
+    public int enemyHealth(){
+        return this.enemy.getHealth();
+    }
 }
 
