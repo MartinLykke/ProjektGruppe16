@@ -14,7 +14,9 @@ public class Inventory {
     
     //Checks if inventory is full
     public boolean inventoryFull(){
-        return this.inventory.size() < this.capacity;
+        System.out.println("Log: Size = " + this.inventory.size());
+        System.out.println("Log: Capacity = " + this.capacity);
+        return !(this.inventory.size() < this.capacity);
     }
     
     //Adds an item to the inventory list

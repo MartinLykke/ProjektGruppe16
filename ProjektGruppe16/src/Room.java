@@ -58,5 +58,9 @@ public class Room
         this.items.remove(item);
         return temp;
     }
+    
+    public boolean itemExist(String item){
+        return this.items.containsKey(item);
+    }
 }
 
