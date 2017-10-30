@@ -38,6 +38,7 @@ public class Game
         //beach1.setExit("north", jungle1);
         beach1.setExit("east", beach2);
         beach1.putItem(new Coconut());
+        beach1.spawnEnemy(new Enemy("Kanibal", 20));
 
         //beach2.setExit("north", jungle2);
         beach2.setExit("east", beach3);
@@ -138,17 +139,12 @@ public class Game
         return wantToQuit;
     }
     private void Attack(Command command){ // The following 6 methods are our new methods which the comamands activate
-       String attackedenemy;
-        if(!command.hasSecondWord()) {
-            System.out.println("Attack what?");
-            
-            return;
+        if(currentRoom.enemyPresent()){
+            currentRoom.attack(10);
         }
-        else {
-             attackedenemy = command.getSecondWord();
-        }
-        if(attackedenemy.equals("Kanibal") ){
-            System.out.println("You have killed the Kanibal");
+        if(!currentRoom.enemyPresent()){
+            System.out.println("you killed an enemy!");
+            player.PrintHealth();
         }
     }
     private void Drop(Command command){ 
