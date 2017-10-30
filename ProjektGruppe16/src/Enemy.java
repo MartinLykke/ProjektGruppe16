@@ -7,12 +7,16 @@ public class Enemy {
   
     
     public Enemy(String name){
-       health = 20;  
-       damage = 10;
-       name = "Kanibal";
+       this.health = 20;  
+       this.damage = 10;
+       this.name = name;
     }
     
-    public void Attack(){
+    public void attack(){
         
+    }
+    
+    public void damage(int damage){
+        this.health = this.health - damage;
     }
 }
