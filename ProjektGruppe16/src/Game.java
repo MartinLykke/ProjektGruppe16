@@ -1,20 +1,29 @@
 
+
+
+
 /**
  * @author  Michael Kolling and David J. Barnes
  * @version 2006.03.30
  */
 public class Game 
 {
+   
     private Parser parser;
     private Room currentRoom;
     private Player player;
         
     public Game() 
     {
+        spawnenemy();
         createRooms();
         parser = new Parser();
     }
-
+    private void spawnenemy(){
+        Enemy kanibal = new Enemy("Bob");
+        
+    }
+    
     private void createRooms()
     {
         Room beach1, beach2, beach3, jungle1, jungle2, jungle3, jungle4, jungle5, jungle6, cave;
@@ -22,9 +31,9 @@ public class Game
         beach1 = new Room("You are on the Western part of the beach. The remains of the plane lie here, totally obliterated. The jungle stretches all the way to the water, but you cannnot enter.");
         beach2 = new Room("You are on the central part of the beach. The beach continues both directions from here. Ahead of you is a jungle, but you don't see an entrance.");
         beach3 = new Room("You are on the Eastern part of the beach. You can't go any further to the East, but you see an opening in the trees.");
-        jungle1 = new Room("You are in the jungle. You can just spot the remains of the plane through the trees.");
+        jungle1 = new Room("You are in the jungle. You can just spot the remains of the plane through the trees.  ");
         jungle2 = new Room("You are in the jungle. The light is fading, as the trees block out the sun.");
-        jungle3 = new Room("You have ventured into the jungle. There are palmtrees all around you.");
+        jungle3 = new Room("You have ventured into the jungle. There are palmtrees all around you. As you look to your left you see an angry kanibal charging you through the jungle. He is fast. You have no choice but to fight back.");
         jungle4 = new Room("You are in the jungle.");
         jungle5 = new Room("You are in the jungle, once again surrounded by palmtrees.");
         jungle6 = new Room("You are in the jungle. You can just make out an entrance to a cave.");
@@ -74,7 +83,6 @@ public class Game
     {            
         player = new Player();
         printWelcome();
-
         boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
@@ -88,7 +96,7 @@ public class Game
         System.out.println();
         System.out.println("Welcome to Stranded!");
         System.out.println("Stranded is in development by project group 16");
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
+        System.out.println("Type '" + CommandWord.HELP + "' if you need help, and/or if you want the introduction");
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
     }
@@ -100,7 +108,7 @@ public class Game
         CommandWord commandWord = command.getCommandWord();
 
         if(commandWord == CommandWord.UNKNOWN) {
-            System.out.println("I don't know what you mean...");
+            System.out.println("Unknown command.");
             return false;
         }
 
@@ -136,6 +144,7 @@ public class Game
     private void Attack(Command command){ // The following 6 methods are our new methods which the comamands activate
         if(!command.hasSecondWord()) {
             System.out.println("Attack what?");
+            
             return;
         }
     }
