@@ -116,26 +116,27 @@ public class Game
             wantToQuit = quit(command);
         }
         else if (commandWord == CommandWord.ATTACK) { // The following 6 commands are our new commands for the game
-            Attack(command);
+            attack(command);
         }
         else if (commandWord == CommandWord.DROP){
-            Drop(command);
+            drop(command);
         }
         else if (commandWord == CommandWord.INVENTORY){
-            Inventory();
+            inventory();
         }
+        /*
         else if (commandWord == CommandWord.TALK){
-            Talk(command);
-        }
+            talk(command);
+        }*/
         else if (commandWord == CommandWord.PICKUP){
-            Pickup(command);
+            pickup(command);
         }
         else if (commandWord == CommandWord.USE){
-            Use(command);
+            use(command);
         }
         return wantToQuit;
     }
-    private void Attack(Command command){ // The following 6 methods are our new methods which the comamands activate
+    private void attack(Command command){ // The following 6 methods are our new methods which the comamands activate
         int damageTaken;
         if(currentRoom.enemyPresent()){
             damageTaken = currentRoom.attack(10);
@@ -151,20 +152,26 @@ public class Game
             player.printhealth();
         }
     }
-    private void Drop(Command command){ 
+    private void drop(Command command){
+        String second;
         if(!command.hasSecondWord()) {
             System.out.println("Drop what?");
             return;
         }
-    } 
-    private void Talk (Command command){
+        else{
+            second = command.getSecondWord();
+        }
+        if(player.inventory)
+    }
+    /*
+    private void talk (Command command){
         if(!command.hasSecondWord()) {
             System.out.println("Talk to who?");
             return;
         }
     }
-    
-    private void Pickup(Command command){
+    */
+    private void pickup(Command command){
         String second;
         if(!command.hasSecondWord()) {
             System.out.println("Pickup what?");
@@ -183,7 +190,7 @@ public class Game
             System.out.println("You look around but can't find any " + second);
         }
     }
-    private void Use (Command command){
+    private void use (Command command){
         String UsedItem;
         String SecondWord;
         if(!command.hasSecondWord()) {
@@ -199,7 +206,7 @@ public class Game
             }
         }
     }
-    private void Inventory (){
+    private void inventory (){
         System.out.println("");
     }
     private void printHelp() 

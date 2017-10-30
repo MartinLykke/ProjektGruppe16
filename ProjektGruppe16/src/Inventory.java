@@ -2,13 +2,14 @@
 Class for creating and managing the inventory
 */
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Inventory {
-    private ArrayList<Item> inventory; //List of the items in inventory
+    private HashMap<String, Item> inventory; //List of the items in inventory
     private int capacity; //Amount of items a player can carry
     
     public Inventory(int capacity){
-        this.inventory = new ArrayList<>();
+        this.inventory = new HashMap<>();
         this.capacity = capacity;
     }
     
@@ -21,17 +22,15 @@ public class Inventory {
     
     //Adds an item to the inventory list
     public void add(Item item){
-        this.inventory.add(item);
+        this.inventory.put(item.name, item);
     }
     
     //Removes an item from the inventory list
     public void remove(Item item){
-        this.inventory.remove(item);
+        this.inventory.remove(item.name);
     }
     
-    //Returns a copy of the inventory list
-    public ArrayList inventoryList(){
-        ArrayList<Item> list = new ArrayList<>(this.inventory);
-        return list;
+    public Item getItem(String item){
+        return this.inventory.get(item);
     }
 }
