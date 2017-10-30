@@ -37,7 +37,7 @@ public class Game
         //beach1.setExit("north", jungle1);
         beach1.setExit("east", beach2);
         beach1.putItem(new Coconut());
-        beach1.spawnEnemy(new Enemy("Kanibal", 20));
+        beach1.spawnEnemy("Kanibal", 20);
 
         //beach2.setExit("north", jungle2);
         beach2.setExit("east", beach3);
@@ -140,8 +140,15 @@ public class Game
         return wantToQuit;
     }
     private void Attack(Command command){ // The following 6 methods are our new methods which the comamands activate
+        System.out.println(currentRoom.enemyPresent());
+        int damageTaken;
         if(currentRoom.enemyPresent()){
-            currentRoom.attack(10);
+            damageTaken = currentRoom.attack(10);
+            player.damagetaken(damageTaken);
+        }
+        else{
+            System.out.println("No enemy to attack");
+            return;
         }
         if(!currentRoom.enemyPresent()){
             System.out.println("you killed an enemy!");
