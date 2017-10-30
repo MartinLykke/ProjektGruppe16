@@ -12,8 +12,8 @@ public class Enemy {
        this.name = name;
     }
     
-    public void attack(){
-        
+    public int attack(){
+        return this.damage;
     }
     
     public void takeDamage(int damage){
@@ -21,6 +21,10 @@ public class Enemy {
     }
     
     public boolean isAlive(){
-        return this.health<=0;
+        return this.health>0;
+    }
+    
+    public int getHealth(){
+        return this.health;
     }
 }
