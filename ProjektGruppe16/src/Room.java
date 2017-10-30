@@ -12,6 +12,7 @@ public class Room
     private String description;
     private HashMap<String, Room> exits;
     private HashMap<String, Item> items;
+    private Enemy enemy;
 
     public Room(String description) 
     {
@@ -61,6 +62,12 @@ public class Room
     
     public boolean itemExist(String item){
         return this.items.containsKey(item);
+    }
+    
+    public void spawnEnemy(){
+        if(!(this.enemy == null)){
+            this.enemy = new Enemy("Kanibal");
+        }
     }
 }
 
