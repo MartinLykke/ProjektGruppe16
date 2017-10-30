@@ -27,7 +27,9 @@ public class Player {
             this.istheplayerdead = true;
         }
     }
-    
+    public void PrintHealth(){
+        System.out.println("You have" );
+    }
     public boolean isDead(){
         return istheplayerdead;
     }
