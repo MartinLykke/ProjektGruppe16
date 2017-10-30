@@ -161,7 +161,9 @@ public class Game
         else{
             second = command.getSecondWord();
         }
-        if(player.inventory)
+        if(player.inventory.getItem(second) != null){
+            
+        }
     }
     /*
     private void talk (Command command){
