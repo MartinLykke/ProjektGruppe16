@@ -7,12 +7,20 @@ public class Enemy {
   
     
     public Enemy(String name, int health){
-       health = 20;  
-       damage = 10;
-       name = "Kanibal";
+       this.health = health;  
+       this.damage = 10;
+       this.name = name;
     }
     
-    public void Attack(){
+    public void attack(){
         
+    }
+    
+    public void takeDamage(int damage){
+        this.health = this.health - damage;
+    }
+    
+    public boolean isAlive(){
+        return this.health<=0;
     }
 }
