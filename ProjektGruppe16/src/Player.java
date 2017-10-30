@@ -27,8 +27,9 @@ public class Player {
             this.istheplayerdead = true;
         }
     }
-    public void PrintHealth(){
-        System.out.println("You have " + health + " left.");
+    // Method for printing how much health the player has left.
+    public void printhealth(){
+        System.out.println("You have " + health + " left."); 
     }
     public boolean isDead(){
         return istheplayerdead;
