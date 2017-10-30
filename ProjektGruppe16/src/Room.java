@@ -19,6 +19,7 @@ public class Room
         this.description = description;
         exits = new HashMap<String, Room>();
         this.items = new HashMap<>();
+        this.enemy = null;
     }
 
     public void setExit(String direction, Room neighbor) 
@@ -64,21 +65,23 @@ public class Room
         return this.items.containsKey(item);
     }
     
-    public void spawnEnemy(Enemy enemy){
-        if(!(this.enemy == null)){
-            this.enemy = enemy;
-        }
+    public void spawnEnemy(String name, int health){
+            System.out.println("Debug: Spawning");
+            this.enemy = new Enemy(name, health);
+            System.out.println(enemyPresent());      
     }
     
     public boolean enemyPresent(){
         return !(this.enemy == null);
     }
     
-    public void attack(int damage){
+    public int attack(int damage){
         this.enemy.takeDamage(damage);
-        if(this.enemy.isAlive()){
+        if(!this.enemy.isAlive()){
             this.enemy = null;
+            return 0;
         }
+        return this.enemy.attack();
     }
 }
 
