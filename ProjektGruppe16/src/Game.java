@@ -65,7 +65,9 @@ public class Game
         jungle5.setExit("south", jungle2);
         jungle5.setExit("west", jungle4);
         
+        if (2 + 2 == 4) { //TODO: Insert condition for gaining access to the cave.
         jungle6.setExit("north", cave);
+        }
         //jungle6.setExit("south", jungle3);
         jungle6.setExit("west", jungle5);
         
