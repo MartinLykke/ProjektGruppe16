@@ -64,9 +64,20 @@ public class Room
         return this.items.containsKey(item);
     }
     
-    public void spawnEnemy(){
+    public void spawnEnemy(Enemy enemy){
         if(!(this.enemy == null)){
-            this.enemy = new Enemy("Kanibal", 20);
+            this.enemy = enemy;
+        }
+    }
+    
+    public boolean enemyPresent(){
+        return !(this.enemy == null);
+    }
+    
+    public void attack(int damage){
+        this.enemy.takeDamage(damage);
+        if(this.enemy.isAlive()){
+            this.enemy = null;
         }
     }
 }
