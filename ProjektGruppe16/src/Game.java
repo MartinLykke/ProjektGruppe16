@@ -1,7 +1,3 @@
-
-
-
-
 /**
  * @author  Michael Kolling and David J. Barnes
  * @version 2006.03.30
@@ -140,10 +136,10 @@ public class Game
         return wantToQuit;
     }
     private void Attack(Command command){ // The following 6 methods are our new methods which the comamands activate
-        System.out.println(currentRoom.enemyPresent());
         int damageTaken;
         if(currentRoom.enemyPresent()){
             damageTaken = currentRoom.attack(10);
+            System.out.println("You hit the enemy for " + 10 + " damage!");
             player.damagetaken(damageTaken);
         }
         else{
@@ -151,7 +147,7 @@ public class Game
             return;
         }
         if(!currentRoom.enemyPresent()){
-            System.out.println("you killed an enemy!");
+            System.out.println("You killed an enemy!");
             player.printhealth();
         }
     }
@@ -222,6 +218,10 @@ public class Game
         else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
+            if(currentRoom.enemyPresent()){
+                System.out.println("A wild cannibal has appeared!");
+                System.out.println("Enemy health: " + currentRoom.enemyHealth());
+            }
             //System.out.println("This room contains:"); //List of items in the room.
         }
     }
