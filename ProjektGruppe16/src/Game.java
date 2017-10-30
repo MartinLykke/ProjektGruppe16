@@ -15,15 +15,11 @@ public class Game
         
     public Game() 
     {
-        spawnenemy();
+       
         createRooms();
         parser = new Parser();
     }
-    private void spawnenemy(){
-        Enemy kanibal = new Enemy("Bob");
-        
-    }
-    
+   
     private void createRooms()
     {
         Room beach1, beach2, beach3, jungle1, jungle2, jungle3, jungle4, jungle5, jungle6, cave;
@@ -33,7 +29,7 @@ public class Game
         beach3 = new Room("You are on the Eastern part of the beach. You can't go any further to the East, but you see an opening in the trees.");
         jungle1 = new Room("You are in the jungle. You can just spot the remains of the plane through the trees.  ");
         jungle2 = new Room("You are in the jungle. The light is fading, as the trees block out the sun.");
-        jungle3 = new Room("You have ventured into the jungle. There are palmtrees all around you. As you look to your left you see an angry kanibal charging you through the jungle. He is fast. You have no choice but to fight back.");
+        jungle3 = new Room("You have ventured into the jungle. There are palmtrees all around you. As you look to your left you see an angry kanibal charging you through the jungle. You have no choice but to fight back.");
         jungle4 = new Room("You are in the jungle.");
         jungle5 = new Room("You are in the jungle, once again surrounded by palmtrees.");
         jungle6 = new Room("You are in the jungle. You can just make out an entrance to a cave.");
@@ -142,10 +138,17 @@ public class Game
         return wantToQuit;
     }
     private void Attack(Command command){ // The following 6 methods are our new methods which the comamands activate
+       String attackedenemy;
         if(!command.hasSecondWord()) {
             System.out.println("Attack what?");
             
             return;
+        }
+        else {
+             attackedenemy = command.getSecondWord();
+        }
+        if(attackedenemy.equals("Kanibal") ){
+            System.out.println("You have killed the Kanibal");
         }
     }
     private void Drop(Command command){ 

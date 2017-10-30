@@ -6,7 +6,7 @@ public class Enemy {
     private int damage;
   
     
-    public Enemy(String name){
+    public Enemy(String name, int health){
        health = 20;  
        damage = 10;
        name = "Kanibal";
