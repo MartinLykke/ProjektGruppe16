@@ -203,7 +203,7 @@ public class Game
         else {
             SecondWord=command.getSecondWord();
             if(SecondWord.equals("Coconut")){
-                player.Heal(10);
+            //    player.eat(player.inventory.getItem(SecondWord)); Fix this
                 System.out.println(" test");
             }
         }
