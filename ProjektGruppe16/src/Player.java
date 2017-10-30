@@ -28,7 +28,7 @@ public class Player {
         }
     }
     public void PrintHealth(){
-        System.out.println("You have" );
+        System.out.println("You have " + health + " left.");
     }
     public boolean isDead(){
         return istheplayerdead;
