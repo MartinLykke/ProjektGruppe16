@@ -29,7 +29,7 @@ public class Player {
     }
     // Method for printing how much health the player has left.
     public void printhealth(){
-        System.out.println("You have " + health + " left."); 
+        System.out.println("You have " + health + " health left."); 
     }
     public boolean isDead(){
         return istheplayerdead;
