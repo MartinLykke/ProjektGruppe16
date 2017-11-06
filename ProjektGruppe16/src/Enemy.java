@@ -18,6 +18,8 @@ public class Enemy {
     
     public void takeDamage(int damage){
         this.health = this.health - damage;
+        
+        
     }
     
     public boolean isAlive(){

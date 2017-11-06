@@ -4,6 +4,7 @@ public class Player {
     private int maxhealth = 100;
     private boolean istheplayerdead;
     public Inventory inventory;
+    private int point = 0;
     
     public Player(){
         this.health = 100;
@@ -20,6 +21,14 @@ public class Player {
             this.health = this.maxhealth; 
         }
     }
+    // 
+   /* public void addpoints(){ 
+    this.point = this.point + 5;
+    }
+    public void printPoints(){
+        
+    }
+    */
     // Method for taking damage from enemy
     public void damagetaken(int damage){
         this.health = this.health - damage;

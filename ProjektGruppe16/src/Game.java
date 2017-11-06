@@ -122,7 +122,7 @@ public class Game
             drop(command);
         }
         else if (commandWord == CommandWord.INVENTORY){
-            inventory();
+           // inventory();
         }
         /*
         else if (commandWord == CommandWord.TALK){
@@ -142,6 +142,7 @@ public class Game
             damageTaken = currentRoom.attack(10);
             System.out.println("You hit the enemy for " + 10 + " damage!");
             player.damagetaken(damageTaken);
+            
         }
         else{
             System.out.println("No enemy to attack");
@@ -204,13 +205,13 @@ public class Game
             SecondWord=command.getSecondWord();
             if(SecondWord.equals("Coconut")){
             //    player.eat(player.inventory.getItem(SecondWord)); Fix this
-                System.out.println(" test");
+                System.out.println("You have picked up a coconut.");
             }
         }
     }
-    private void inventory (){
-        System.out.println("");
-    }
+    /*private void inventory (){
+    System.out.println("");
+    }*/
     private void printHelp() 
     {
         System.out.println("You wake up on a beach");
