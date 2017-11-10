@@ -21,6 +21,7 @@ public class Room
         exits = new HashMap<String, Room>();
         this.items = new HashMap<>();
         this.enemy = null;
+        this.blocked = new HashMap<>();
     }
 
     public void setExit(String direction, Room neighbor, boolean blocked) 
