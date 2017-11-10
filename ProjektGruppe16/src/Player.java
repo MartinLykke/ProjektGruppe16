@@ -5,6 +5,7 @@ public class Player {
     private boolean istheplayerdead;
     public Inventory inventory;
     private int point = 0;
+    int time = 0;
     
     public Player(){
         this.health = 100;
@@ -21,14 +22,14 @@ public class Player {
             this.health = this.maxhealth; 
         }
     }
-    // 
-   /* public void addpoints(){ 
+    
+    public void addpoints(){ 
     this.point = this.point + 5;
     }
     public void printPoints(){
         
     }
-    */
+    
     // Method for taking damage from enemy
     public void damagetaken(int damage){
         this.health = this.health - damage;
@@ -45,6 +46,21 @@ public class Player {
     }
     public boolean isDead(){
         return istheplayerdead;
-        
+    }
+        // this method is for the time system
+    public void timer(){
+      int maxTime = 100;
+      
+    }
+    public void addTime(int addedTime){
+   time = time + addedTime;    
+    }
+    public void removeTime(int removedTime){
+   time = time - removedTime;     
+    }
+    // this method is not for the final game
+    public void testFunction(){
+        System.out.println(time);
+    
     }
 }

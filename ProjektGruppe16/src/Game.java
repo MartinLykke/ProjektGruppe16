@@ -13,6 +13,7 @@ public class Game
     {
         createRooms();
         parser = new Parser();
+        
     }
    
     private void createRooms()
@@ -157,6 +158,7 @@ public class Game
         if(!currentRoom.enemyPresent()){
             System.out.println("You killed an enemy!");
             player.printhealth();
+            player.removeTime(5);
         }
     }
     private void drop(Command command){
@@ -172,14 +174,14 @@ public class Game
             
         }
     }
-    /*
+    
     private void talk (Command command){
         if(!command.hasSecondWord()) {
             System.out.println("Talk to who?");
             return;
         }
     }
-    */
+    
     private void pickup(Command command){
         String second;
         if(!command.hasSecondWord()) {
@@ -194,6 +196,8 @@ public class Game
         }
         else if(currentRoom.itemExist(second)){
             player.inventory.add(currentRoom.getItem(second));
+            player.removeTime(5);
+            player.testFunction();
         }
         else {
             System.out.println("You look around but can't find any " + second);
@@ -238,6 +242,7 @@ public class Game
         String direction = command.getSecondWord();
 
         Room nextRoom = currentRoom.getExit(direction);
+        player.addTime(5);
 
         if (nextRoom == null) {
             System.out.println("Your path is blocked in this direction");
