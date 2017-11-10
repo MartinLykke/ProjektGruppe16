@@ -248,7 +248,7 @@ public class Game
         Room nextRoom = currentRoom.getExit(direction);
         player.addTime(10);
         
-        if(false){
+        if(currentRoom.isBlocked(direction) && !player.inventory.hasItem("machete")){
             System.out.println("You need a machete to get through here");
         }
         else{
