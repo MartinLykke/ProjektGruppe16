@@ -34,13 +34,18 @@ public class Game
         beach1.setExit("east", beach2);
         beach1.putItem(new Coconut());
         beach1.spawnEnemy("Kanibal", 20);
+       
 
         //beach2.setExit("north", jungle2);
         beach2.setExit("east", beach3);
         beach2.setExit("west", beach1);
+        beach2.spawnEnemy("Kanibal", 20);
+        beach2.putItem(new Coconut());
 
         beach3.setExit("north", jungle3);
         beach3.setExit("west", beach2);
+        beach3.spawnEnemy("Kanibal", 20);
+        beach3.putItem(new Coconut());
 
         jungle1.setExit("north", jungle4);
         jungle1.putItem(new Machete()); //TODO: Define Machete
@@ -206,7 +211,8 @@ public class Game
             SecondWord=command.getSecondWord();
             if(SecondWord.equals("Coconut")){
             //    player.eat(player.inventory.getItem(SecondWord)); Fix this
-                System.out.println("You have picked up a coconut.");
+                System.out.println("You ate a coconut and restored 10 health.");
+               player.Heal(10);
             }
         }
     }
