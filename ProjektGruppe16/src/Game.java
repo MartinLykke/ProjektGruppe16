@@ -78,7 +78,7 @@ public class Game
         
         cave.setExit("south", jungle6);
         
-        currentRoom = beach2; //
+        currentRoom = beach2; // Sets the spawnpoint for the player
     }
 
     public void play() 
@@ -89,7 +89,7 @@ public class Game
         while (! finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
-        if(player.time >= 100){
+        if(player.time >= 100){ // This if statement quits the game if time runs out
             finished = true;
         }
         }

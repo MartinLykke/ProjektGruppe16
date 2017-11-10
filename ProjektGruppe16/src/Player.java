@@ -6,7 +6,9 @@ public class Player {
     public Inventory inventory;
     private int point = 0;
     int time = 0;
-    
+    int maxTime = 100;
+    int timeLeft = maxTime - time;
+   
     public Player(){
         this.health = 100;
         this.istheplayerdead = false;
@@ -23,13 +25,6 @@ public class Player {
         }
     }
     
-    public void addpoints(){ 
-    this.point = this.point + 5;
-    }
-    public void printPoints(){
-        
-    }
-    
     // Method for taking damage from enemy
     public void damagetaken(int damage){
         this.health = this.health - damage;
@@ -41,26 +36,25 @@ public class Player {
     public void printhealth(){
         System.out.println("You have " + health + " health left."); 
     }
+    // Method for gaining health after eating a coconut
     public void Heal(int healamount){
         this.health=this.health+10;
     }
     public boolean isDead(){
         return istheplayerdead;
     }
-        // this method is for the time system
-    public void timer(){
-      int maxTime = 100;
-      
-    }
+    // Method for making the time go
     public void addTime(int addedTime){
    time = time + addedTime;    
     }
+    // This method grants the player more time when a progressive action is performed
     public void removeTime(int removedTime){
    time = time - removedTime;     
     }
-    // this method is not for the final game
+    // this method is not for the final game. Used for printing out variables.
     public void testFunction(){
-        System.out.println(time);
+        
+        System.out.println("You spend " + time + " seconds. You have " + timeLeft + " seconds left" );
     
     }
 }
