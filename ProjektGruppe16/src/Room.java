@@ -13,6 +13,7 @@ public class Room
     private HashMap<String, Room> exits;
     private HashMap<String, Item> items;
     private Enemy enemy;
+    private HashMap<String, Boolean> blocked;
 
     public Room(String description) 
     {
@@ -22,8 +23,9 @@ public class Room
         this.enemy = null;
     }
 
-    public void setExit(String direction, Room neighbor) 
+    public void setExit(String direction, Room neighbor, boolean blocked) 
     {
+       // this.blocked.put(direction, blocked);
         exits.put(direction, neighbor);
     }
 
@@ -86,6 +88,10 @@ public class Room
     
     public int enemyHealth(){
         return this.enemy.getHealth();
+    }
+    
+    public boolean isBlocked(String exit){
+        return this.blocked.get(exit);
     }
 }
 
