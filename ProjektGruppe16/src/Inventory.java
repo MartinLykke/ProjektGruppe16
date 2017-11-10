@@ -33,4 +33,13 @@ public class Inventory {
     public Item getItem(String item){
         return this.inventory.get(item);
     }
+    
+    public boolean hasItem(String item){
+        if (this.inventory.containsKey(item)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
