@@ -33,50 +33,48 @@ public class Game
         cave = new Room("You are in a dimly lit cave.");
         
         //beach1.setExit("north", jungle1);
-        beach1.setExit("east", beach2);
+        beach1.setExit("east", beach2, false);
         beach1.putItem(new Coconut());
         beach1.spawnEnemy("Kanibal", 20);
        
 
         //beach2.setExit("north", jungle2);
-        beach2.setExit("east", beach3);
-        beach2.setExit("west", beach1);
+        beach2.setExit("east", beach3, false);
+        beach2.setExit("west", beach1, false);
         beach2.spawnEnemy("Kanibal", 20);
         beach2.putItem(new Coconut());
 
-        beach3.setExit("north", jungle3);
-        beach3.setExit("west", beach2);
+        beach3.setExit("north", jungle3, false);
+        beach3.setExit("west", beach2, false);
         beach3.spawnEnemy("Kanibal", 20);
         beach3.putItem(new Coconut());
 
-        jungle1.setExit("north", jungle4);
+        jungle1.setExit("north", jungle4, false);
         //jungle1.putItem(new Machete()); //TODO: Define Machete
         //jungle1.setExit("east", jungle2);
         //jungle1.setExit("south", beach1);
 
-        jungle2.setExit("north", jungle5);
-        jungle2.setExit("east", jungle3);
+        jungle2.setExit("north", jungle5, false);
+        jungle2.setExit("east", jungle3, false);
         //jungle2.setExit("south", beach2);
         //jungle2.setExit("west", jungle1);
         
         //jungle3.setExit("north", jungle6);
-        jungle3.setExit("south", beach3);
-        jungle3.setExit("west", jungle2);
+        jungle3.setExit("south", beach3, false);
+        jungle3.setExit("west", jungle2, false);
 
-        jungle4.setExit("east", jungle5);
-        jungle4.setExit("south", jungle1);
+        jungle4.setExit("east", jungle5, false);
+        jungle4.setExit("south", jungle1, false);
 
-        jungle5.setExit("east", jungle6);
-        jungle5.setExit("south", jungle2);
-        jungle5.setExit("west", jungle4);
+        jungle5.setExit("east", jungle6, false);
+        jungle5.setExit("south", jungle2, false);
+        jungle5.setExit("west", jungle4, false);
         
-        if (2 + 2 == 4) { //TODO: Insert condition for gaining access to the cave.
-        jungle6.setExit("north", cave);
-        }
+        jungle6.setExit("north", cave, true);
         //jungle6.setExit("south", jungle3);
-        jungle6.setExit("west", jungle5);
+        jungle6.setExit("west", jungle5, false);
         
-        cave.setExit("south", jungle6);
+        cave.setExit("south", jungle6, false);
         
         currentRoom = beach2; // Sets the spawnpoint for the player
     }
@@ -89,9 +87,9 @@ public class Game
         while (! finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
-        if(player.time >= 100){ // This if statement quits the game if time runs out
-            finished = true;
-        }
+            if(player.time >= 100){
+                finished = true;
+            }
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
@@ -208,7 +206,6 @@ public class Game
         }
     }
     private void use (Command command){
-        String UsedItem;
         String SecondWord;
         if(!command.hasSecondWord()) {
             System.out.println("Use what?");
@@ -216,8 +213,8 @@ public class Game
         
         }
         else {
-            SecondWord=command.getSecondWord();
-            if(SecondWord.equals("Coconut")){
+            SecondWord=command.getSecondWord().toLowerCase();
+            if(SecondWord.equals("coconut")){
             //    player.eat(player.inventory.getItem(SecondWord)); Fix this
                 System.out.println("You ate a coconut and restored 10 health.");
                player.Heal(10);
@@ -247,18 +244,24 @@ public class Game
 
         Room nextRoom = currentRoom.getExit(direction);
         player.addTime(10);
-
-        if (nextRoom == null) {
-            System.out.println("Your path is blocked in this direction");
+        
+        if(currentRoom.isBlocked(direction) && !player.inventory.hasItem("machete")){
+            System.out.println("You need a machete to get through here");
         }
-        else {
-            currentRoom = nextRoom;
-            System.out.println(currentRoom.getLongDescription());
-            if(currentRoom.enemyPresent()){
-                System.out.println("A wild cannibal has appeared!");
-                System.out.println("Enemy health: " + currentRoom.enemyHealth());
+        else{
+
+            if (nextRoom == null) {
+                System.out.println("Your path is blocked in this direction");
             }
-            //System.out.println("This room contains:"); //List of items in the room.
+            else {
+                currentRoom = nextRoom;
+                System.out.println(currentRoom.getLongDescription());
+                if(currentRoom.enemyPresent()){
+                    System.out.println("A wild cannibal has appeared!");
+                    System.out.println("Enemy health: " + currentRoom.enemyHealth());
+                }
+                //System.out.println("This room contains:"); //List of items in the room.
+            }
         }
     }
     
