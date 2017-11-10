@@ -26,7 +26,7 @@ public class Room
 
     public void setExit(String direction, Room neighbor, boolean blocked) 
     {
-        this.blocked.put(direction, blocked);
+       // this.blocked.put(direction, blocked);
         exits.put(direction, neighbor);
     }
 
