@@ -48,7 +48,7 @@ public class Game
         beach3.putItem(new Coconut());
 
         jungle1.setExit("north", jungle4);
-        jungle1.putItem(new Machete()); //TODO: Define Machete
+        //jungle1.putItem(new Machete()); //TODO: Define Machete
         //jungle1.setExit("east", jungle2);
         //jungle1.setExit("south", beach1);
 
