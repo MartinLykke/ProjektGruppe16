@@ -16,11 +16,7 @@ public class Game
         
     }
    
-    public void isTimeUp(){
-        if(player.time >= 100){
-       //     finished = true;
-        }
-    }
+    
     private void createRooms()
     {
         Room beach1, beach2, beach3, jungle1, jungle2, jungle3, jungle4, jungle5, jungle6, cave;
@@ -93,6 +89,9 @@ public class Game
         while (! finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
+        if(player.time >= 100){
+            finished = true;
+        }
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
@@ -247,7 +246,7 @@ public class Game
         String direction = command.getSecondWord();
 
         Room nextRoom = currentRoom.getExit(direction);
-        player.addTime(5);
+        player.addTime(10);
 
         if (nextRoom == null) {
             System.out.println("Your path is blocked in this direction");
