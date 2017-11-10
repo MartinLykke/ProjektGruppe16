@@ -16,6 +16,11 @@ public class Game
         
     }
    
+    public void isTimeUp(){
+        if(player.time >= 100){
+       //     finished = true;
+        }
+    }
     private void createRooms()
     {
         Room beach1, beach2, beach3, jungle1, jungle2, jungle3, jungle4, jungle5, jungle6, cave;
