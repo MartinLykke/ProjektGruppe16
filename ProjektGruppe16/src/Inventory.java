@@ -26,8 +26,8 @@ public class Inventory {
     }
     
     //Removes an item from the inventory list
-    public void remove(Item item){
-        this.inventory.remove(item.name);
+    public void remove(String name){
+        this.inventory.remove(name);
     }
     
     public Item getItem(String item){
