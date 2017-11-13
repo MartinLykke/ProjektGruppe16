@@ -14,6 +14,7 @@ public class Game
         createRooms();
         parser = new Parser();
         
+        
     }
    
     
@@ -26,7 +27,7 @@ public class Game
         beach3 = new Room("You are on the Eastern part of the beach. You can't go any further to the East, but you see an opening in the trees.");
         jungle1 = new Room("You are in the jungle. You can just spot the remains of the plane through the trees.  ");
         jungle2 = new Room("You are in the jungle. The light is fading, as the trees block out the sun.");
-        jungle3 = new Room("You have ventured into the jungle. There are palmtrees all around you. As you look to your left you see an angry kanibal charging you through the jungle. You have no choice but to fight back.");
+        jungle3 = new Room("You have ventured into the jungle. There are palmtrees all around you.");
         jungle4 = new Room("You are in the jungle.");
         jungle5 = new Room("You are in the jungle, once again surrounded by palmtrees.");
         jungle6 = new Room("You are in the jungle. You can just make out an entrance to a cave.");
@@ -93,10 +94,15 @@ public class Game
         while (! finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
-            if(player.time >= 100){ // This if statement ends the game if the user spend all of the time
+            if(player.time >= 100){ // This if statement ends the game if the user spend all of the time or has the required amount of wood
                 finished = true;
-            }
+            } 
+          /*  if(player.enoughwoodfortheraft = true){
+                finished = true;
+               
+            } */
         }
+        
         System.out.println("Thank you for playing.  Good bye.");
     }
 

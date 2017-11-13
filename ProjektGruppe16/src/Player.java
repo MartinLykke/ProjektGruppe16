@@ -4,9 +4,11 @@ public class Player {
     private int maxhealth = 100;
     private boolean istheplayerdead;
     public Inventory inventory;
-    int time = 0;
-    int maxTime = 100;
-    int timeLeft = maxTime - time;
+    public int time = 0;
+    private int maxTime = 100;
+    public int woodfortheraft = 0;
+    public boolean enoughwoodfortheraft = false;
+    int timeLeft = maxTime - time; // This line calculates how much time the user has left
    
     public Player(){
         this.health = 100;
@@ -22,6 +24,13 @@ public class Player {
         else {
             this.health = this.maxhealth; 
         }
+    }
+    public void isThereEnoughWoodForTheRaft(){
+        if(woodfortheraft >=6){
+            enoughwoodfortheraft = true;
+          
+        }
+    
     }
     
     // Method for taking damage from enemy
@@ -53,7 +62,10 @@ public class Player {
     // this method is not for the final game. Used for printing out variables.
     public void testFunction(){
         
-        System.out.println("You spend " + time + " seconds. You have " + timeLeft + " seconds left" );
+        System.out.println("You spend " + time + " seconds. You have " + timeLeft + " seconds left" );    
     
+    }
+    public void addWoodToRaft(){
+        
     }
 }
