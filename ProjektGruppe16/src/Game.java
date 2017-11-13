@@ -64,17 +64,21 @@ public class Game
         //jungle3.setExit("north", jungle6);
         jungle3.setExit("south", beach3, false);
         jungle3.setExit("west", jungle2, false);
+        jungle3.putItem(new Wood());
 
         jungle4.setExit("east", jungle5, false);
         jungle4.setExit("south", jungle1, false);
+        jungle4.putItem(new Wood());
 
         jungle5.setExit("east", jungle6, false);
         jungle5.setExit("south", jungle2, false);
         jungle5.setExit("west", jungle4, false);
+        jungle5.putItem(new Wood());
         
         jungle6.setExit("north", cave, true);
         //jungle6.setExit("south", jungle3);
         jungle6.setExit("west", jungle5, false);
+        jungle6.putItem(new Wood());
         
         cave.setExit("south", jungle6, false);
         
@@ -89,7 +93,7 @@ public class Game
         while (! finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
-            if(player.time >= 100){
+            if(player.time >= 100){ // This if statement ends the game if the user spend all of the time
                 finished = true;
             }
         }
@@ -173,9 +177,20 @@ public class Game
         }
         else{
             second = command.getSecondWord();
+            
         }
         if(player.inventory.getItem(second) != null){
-            
+            System.out.println("Player has wood");
+            player.inventory.remove(second);
+            if (player.inventory.hasItem(second)){
+                System.out.println("Player still has wood after dropping it");
+        }
+        else if (player.inventory.hasItem(second)) {
+           
+            }
+        }
+        else {
+            System.out.println("You are not carrying any wood");
         }
     }
     

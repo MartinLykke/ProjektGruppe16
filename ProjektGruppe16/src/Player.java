@@ -4,7 +4,6 @@ public class Player {
     private int maxhealth = 100;
     private boolean istheplayerdead;
     public Inventory inventory;
-    private int point = 0;
     int time = 0;
     int maxTime = 100;
     int timeLeft = maxTime - time;
