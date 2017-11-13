@@ -8,7 +8,7 @@ public class Enemy {
     
     public Enemy(String name, int health){
        this.health = health;  
-       this.damage = 100;
+       this.damage = 15;
        this.name = name;
     }
     
