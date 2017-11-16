@@ -13,8 +13,6 @@ public class Game
     {
         createRooms();
         parser = new Parser();
-        
-        
     }
    
     
@@ -45,7 +43,7 @@ public class Game
         beach2.spawnEnemy("Kanibal", 20);
         beach2.putItem(new Coconut());
         beach2.putItem(new Wood());
-        beach2.spawnFriend("John");
+        beach2.spawnFriend("Eugene");
 
         beach3.setExit("north", jungle3, false);
         beach3.setExit("west", beach2, false);
@@ -169,6 +167,7 @@ public class Game
         }
         return wantToQuit;
     }
+    
     private void attack(Command command){ // The following 6 methods are our new methods which the comamands activate
         int damageTaken;
         if(currentRoom.enemyPresent()){
@@ -187,6 +186,7 @@ public class Game
             player.removeTime(5);
         }
     }
+    
     private void drop(Command command){
         String second;
         if(!command.hasSecondWord()) {
@@ -207,17 +207,13 @@ public class Game
     }
     
     private void talk (Command command){
-        
         if(!command.hasSecondWord()) {
             System.out.println("Talk to who?");
             return;
         }
-       
         if(currentRoom.friendPresent()){
-            System.out.println("Hej, mit navn er John!");
-            
-        }
-        
+            System.out.println("Whattup? My name is Eugene!");  
+        } 
     }
     
     private void pickup(Command command){
@@ -236,15 +232,13 @@ public class Game
             
             player.inventory.add(currentRoom.getItem(second));
             player.removeTime(5);
-            player.isThereEnoughWoodForTheRaft();
-           
-            
-            
+            player.isThereEnoughWoodForTheRaft(); 
         }
         else {
             System.out.println("You look around but can't find any " + second);
         }
     }
+    
     private void use (Command command){
         String SecondWord;
         if(!command.hasSecondWord()) {
@@ -262,9 +256,11 @@ public class Game
             }
         }
     }
+    
     /*private void inventory (){
     System.out.println("");
     }*/
+    
     private void printHelp() 
     {
         System.out.println("You wake up on a beach");
