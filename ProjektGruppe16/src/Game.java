@@ -37,18 +37,20 @@ public class Game
         beach1.setExit("east", beach2, false);
         beach1.putItem(new Coconut());
         beach1.spawnEnemy("Kanibal", 20);
-       
+        beach1.putItem(new Wood());
 
         //beach2.setExit("north", jungle2);
         beach2.setExit("east", beach3, false);
         beach2.setExit("west", beach1, false);
         beach2.spawnEnemy("Kanibal", 20);
         beach2.putItem(new Coconut());
+        beach2.putItem(new Wood());
 
         beach3.setExit("north", jungle3, false);
         beach3.setExit("west", beach2, false);
         beach3.spawnEnemy("Kanibal", 20);
         beach3.putItem(new Coconut());
+        beach3.putItem(new Wood());
 
         jungle1.setExit("north", jungle4, false);
         beach2.putItem(new Machete()); //TODO: Define Machete
@@ -97,10 +99,10 @@ public class Game
             if(player.time >= 100){ // This if statement ends the game if the user spend all of the time or has the required amount of wood
                 finished = true;
             } 
-          /*  if(player.enoughwoodfortheraft = true){
+           if(player.enoughwoodfortheraft == true){
                 finished = true;
                
-            } */
+            } 
         }
         
         System.out.println("Thank you for playing.  Good bye.");
@@ -183,17 +185,15 @@ public class Game
         }
         else{
             second = command.getSecondWord();
-            
+           
         }
         if(player.inventory.getItem(second) != null){
-            System.out.println("Player has wood");
             player.inventory.remove(second);
-            if (player.inventory.hasItem(second)){
-                System.out.println("Player still has wood after dropping it");
-        }
-        else if (player.inventory.hasItem(second)) {
-           
-            }
+            player.addWoodToRaft();
+            player.removeWoodFromInventory();
+          
+            
+       
         }
         else {
             System.out.println("You are not carrying any wood");
@@ -220,9 +220,13 @@ public class Game
             System.out.println("You are carrying too much. Use the drop command.");
         }
         else if(currentRoom.itemExist(second)){
+            
             player.inventory.add(currentRoom.getItem(second));
             player.removeTime(5);
-            player.testFunction();
+            player.isThereEnoughWoodForTheRaft();
+           
+            
+            
         }
         else {
             System.out.println("You look around but can't find any " + second);

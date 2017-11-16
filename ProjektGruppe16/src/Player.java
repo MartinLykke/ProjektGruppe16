@@ -1,7 +1,7 @@
 
 public class Player {
-    private int health;
-    private int maxhealth = 100;
+    public int health;
+    public int maxhealth = 100;
     private boolean istheplayerdead;
     public Inventory inventory;
     public int time = 0;
@@ -65,7 +65,13 @@ public class Player {
         System.out.println("You spend " + time + " seconds. You have " + timeLeft + " seconds left" );    
     
     }
+    public void printTotalWood(){
+        System.out.println("You have " + woodfortheraft + " wood in your inventory. Write //drop wood// to add wood to the raft");
+    }
     public void addWoodToRaft(){
-        
+        woodfortheraft++;
+    }
+    public void removeWoodFromInventory(){
+        woodfortheraft--;
     }
 }
