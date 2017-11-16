@@ -98,13 +98,19 @@ public class Game
         while (! finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
-            if(player.time >= 100){ // This if statement ends the game if the user spend all of the time or has the required amount of wood
+            if(player.time >= 100){  // Ends the game if the player runs out of time
                 finished = true;
+                System.out.println("You ran out of time!");
             } 
-           if(player.enoughwoodfortheraft == true){
+           if(player.enoughwoodfortheraft == true){ // Ends the game if the player wins by collecting enough wood
                 finished = true;
+                System.out.println("You build a raft and escaped the island. You won!");
                
-            } 
+            }
+           if(player.isDead()){ // Ends the game if the player runs out of health
+               finished = true;
+               System.out.println("You lost all your health and died!");
+           }
         }
         
         System.out.println("Thank you for playing.  Good bye.");
@@ -282,6 +288,10 @@ public class Game
 
             if (nextRoom == null) {
                 System.out.println("Your path is blocked in this direction");
+            }
+            else if (currentRoom.enemyPresent()) {
+                System.out.println("Enemy is present, you may not leave");
+                
             }
             else {
                 currentRoom = nextRoom;
