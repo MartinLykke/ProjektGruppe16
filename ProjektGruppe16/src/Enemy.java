@@ -8,7 +8,7 @@ public class Enemy {
     
     public Enemy(String name, int health){
        this.health = health;  
-       this.damage = 15;
+       this.damage = 10;
        this.name = name;
     }
     
@@ -28,5 +28,8 @@ public class Enemy {
     
     public int getHealth(){
         return this.health;
+    }
+    public String getName(){
+        return this.name;
     }
 }

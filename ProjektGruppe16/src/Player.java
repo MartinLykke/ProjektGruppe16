@@ -26,7 +26,7 @@ public class Player {
         }
     }
     public void isThereEnoughWoodForTheRaft(){
-        if(woodfortheraft >=6){
+        if(woodfortheraft >=1){ //                           FIX THIS VALUE LATER 
             enoughwoodfortheraft = true;
           
         }
@@ -59,19 +59,8 @@ public class Player {
     public void removeTime(int removedTime){
    time = time - removedTime;     
     }
-    // this method is not for the final game. Used for printing out variables.
-    public void testFunction(){
-        
-        System.out.println("You spend " + time + " seconds. You have " + timeLeft + " seconds left" );    
-    
-    }
-    public void printTotalWood(){
-        System.out.println("You have " + woodfortheraft + " wood in your inventory. Write //drop wood// to add wood to the raft");
-    }
     public void addWoodToRaft(){
         woodfortheraft++;
     }
-    public void removeWoodFromInventory(){
-        woodfortheraft--;
-    }
+  
 }

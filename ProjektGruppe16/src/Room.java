@@ -90,6 +90,9 @@ public class Room
     public int enemyHealth(){
         return this.enemy.getHealth();
     }
+    public String enemyName(){
+        return this.enemy.getName();
+    }
     
     public boolean isBlocked(String exit){
         return this.blocked.get(exit);

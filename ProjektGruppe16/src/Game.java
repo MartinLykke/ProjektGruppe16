@@ -31,7 +31,7 @@ public class Game
         jungle4 = new Room("You are in the jungle.");
         jungle5 = new Room("You are in the jungle, once again surrounded by palmtrees.");
         jungle6 = new Room("You are in the jungle. You can just make out an entrance to a cave.");
-        cave = new Room("You are in a dimly lit cave.");
+        cave = new Room("You use your machete to enter a dimly lit cave. After a minute or two you stumble upon a crazy troll");
         
         //beach1.setExit("north", jungle1);
         beach1.setExit("east", beach2, false);
@@ -84,6 +84,8 @@ public class Game
         jungle6.putItem(new Wood());
         
         cave.setExit("south", jungle6, false);
+        cave.spawnEnemy("Troll", 40);
+        cave.putItem(new Wood());
         
         currentRoom = beach2; // Sets the spawnpoint for the player
     }
@@ -190,7 +192,7 @@ public class Game
         if(player.inventory.getItem(second) != null){
             player.inventory.remove(second);
             player.addWoodToRaft();
-            player.removeWoodFromInventory();
+          
           
             
        
@@ -285,7 +287,7 @@ public class Game
                 currentRoom = nextRoom;
                 System.out.println(currentRoom.getLongDescription());
                 if(currentRoom.enemyPresent()){
-                    System.out.println("A wild cannibal has appeared!");
+                    System.out.println("A wild " + currentRoom.enemyName() + " has appeared!");
                     System.out.println("Enemy health: " + currentRoom.enemyHealth());
                 }
                 //System.out.println("This room contains:"); //List of items in the room.
