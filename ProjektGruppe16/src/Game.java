@@ -43,7 +43,7 @@ public class Game
         beach2.spawnEnemy("Kanibal", 20);
         beach2.putItem(new Coconut());
         beach2.putItem(new Wood());
-        beach2.spawnFriend("Eugene");
+        beach2.spawnFriend("Walter");
 
         beach3.setExit("north", jungle3, false);
         beach3.setExit("west", beach2, false);
@@ -212,7 +212,7 @@ public class Game
             return;
         }
         if(currentRoom.friendPresent()){
-            System.out.println("Whattup? My name is Eugene!");  
+            System.out.println("Whattup? My name is Walter!");  
         } 
     }
     
