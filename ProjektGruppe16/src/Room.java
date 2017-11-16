@@ -13,6 +13,7 @@ public class Room
     private HashMap<String, Room> exits;
     private HashMap<String, Item> items;
     private Enemy enemy;
+    private Friend friend;
     private HashMap<String, Boolean> blocked;
 
     public Room(String description) 
@@ -76,6 +77,16 @@ public class Room
     
     public boolean enemyPresent(){
         return !(this.enemy == null);
+    }
+    
+    public void spawnFriend(String name){
+            System.out.println("Debug: Spawning");
+            this.friend = new Friend(name);
+            System.out.println(friendPresent());      
+    }
+    
+    public boolean friendPresent(){
+        return !(this.friend == null);
     }
     
     public int attack(int damage){

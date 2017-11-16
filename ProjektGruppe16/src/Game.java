@@ -45,6 +45,7 @@ public class Game
         beach2.spawnEnemy("Kanibal", 20);
         beach2.putItem(new Coconut());
         beach2.putItem(new Wood());
+        beach2.spawnFriend("John");
 
         beach3.setExit("north", jungle3, false);
         beach3.setExit("west", beach2, false);
@@ -155,10 +156,11 @@ public class Game
         else if (commandWord == CommandWord.INVENTORY){
            // inventory();
         }
-        /*
+        
         else if (commandWord == CommandWord.TALK){
             talk(command);
-        }*/
+        }
+        
         else if (commandWord == CommandWord.PICKUP){
             pickup(command);
         }
@@ -198,10 +200,6 @@ public class Game
         if(player.inventory.getItem(second) != null){
             player.inventory.remove(second);
             player.addWoodToRaft();
-          
-          
-            
-       
         }
         else {
             System.out.println("You are not carrying any wood");
@@ -209,10 +207,17 @@ public class Game
     }
     
     private void talk (Command command){
+        
         if(!command.hasSecondWord()) {
             System.out.println("Talk to who?");
             return;
         }
+       
+        if(currentRoom.friendPresent()){
+            System.out.println("Hej, mit navn er John!");
+            
+        }
+        
     }
     
     private void pickup(Command command){
