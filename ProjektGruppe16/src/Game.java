@@ -212,7 +212,7 @@ public class Game
             return;
         }
         if(currentRoom.friendPresent()){
-            System.out.println("Whattup? My name is Walter!");  
+            System.out.println("What's up? My name is Walter!");  
         } 
     }
     
