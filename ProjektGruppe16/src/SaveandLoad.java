@@ -2,7 +2,7 @@
  *
  * @author emrearikan
  */
-    import java.io.BufferedReader;
+  /*   import java.io.BufferedReader;
     import java.io.BufferedWriter;
     import java.io.File;
     import java.io.FileReader;
@@ -35,14 +35,16 @@ public class SaveandLoad {
                 inputFile = new file(filePath);
                 intput Reader = new BufferedReader(new FileReader(inputFile));
                 
+            for (int i = 0; i< saveInfo.length; i++) {
+            SaveInfo[i] = Integer.parseInt(inputReader.readLine());
+                    }
+
                     Game.Hp = saveInfo[0];
                     Game.Inventory = saveInfo[1];
                     Game.HighScore = saveInfo[2];
                     Game.Location = saveInfo[3];
                     
-        for (int i = 0; i< saveInfo.length; i++) {
-            SaveInfo[i] = Integer.parseInt(inputReader.readLine());
-                    }
+        
         inputReader.close():
         } catch (Exception e) {
                         e.printStackTrace();
@@ -70,4 +72,4 @@ public class SaveandLoad {
                 } catch (IOException e) {
                 }
         }
-}
+}*/ 
