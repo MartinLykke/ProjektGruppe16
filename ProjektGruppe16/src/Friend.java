@@ -1,5 +1,5 @@
 
-public class Friend {
+public class Friend implements java.io.Serializable{
     
     private String name;
     

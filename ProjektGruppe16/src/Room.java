@@ -7,7 +7,7 @@ import java.util.Iterator;
  * @author  Michael Kolling and David J. Barnes
  * @version 2006.03.30
  */
-public class Room 
+public class Room implements java.io.Serializable
 {
     private String description;
     private HashMap<String, Room> exits;

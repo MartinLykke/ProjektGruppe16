@@ -1,5 +1,5 @@
 
-public class Enemy {
+public class Enemy implements java.io.Serializable{
     
     private int health;
     private String name;

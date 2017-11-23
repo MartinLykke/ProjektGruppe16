@@ -4,7 +4,7 @@ Class for creating and managing the inventory
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Inventory {
+public class Inventory implements java.io.Serializable{
     private HashMap<String, Item> inventory; //List of the items in inventory
     private int capacity; //Amount of items a player can carry
     

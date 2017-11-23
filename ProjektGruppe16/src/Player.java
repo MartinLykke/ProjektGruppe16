@@ -1,5 +1,5 @@
 
-public class Player {
+public class Player implements java.io.Serializable{
     public int health;
     public int maxhealth = 100;
     private boolean istheplayerdead;
