@@ -15,16 +15,7 @@ public class Player {
         this.istheplayerdead = false;
         this.inventory = new Inventory(4);
     }
-    // Method for restoring health, uses food class
-    public void eat(Food food){ 
-        
-        if(this.health + food.restorevalue < this.maxhealth){ // Checks if the restoration will exceed the maximum allowed health.
-            this.health = this.health + food.restorevalue;
-        }
-        else {
-            this.health = this.maxhealth; 
-        }
-    }
+
     public void isThereEnoughWoodForTheRaft(){
         if(woodfortheraft >=1){ //                           FIX THIS VALUE LATER 
             enoughwoodfortheraft = true;
@@ -40,25 +31,32 @@ public class Player {
             this.istheplayerdead = true;
         }
     }
+    
     // Method for printing how much health the player has left.
     public void printhealth(){
         System.out.println("You have " + health + " health left."); 
     }
+    
     // Method for gaining health after eating a coconut
     public void Heal(int healamount){
-        this.health=this.health+10;
+        this.health += 10;
     }
+    
+    // Method for checking if the player is dead
     public boolean isDead(){
         return istheplayerdead;
     }
+    
     // Method for making the time go
     public void addTime(int addedTime){
    time = time + addedTime;    
     }
+    
     // This method grants the player more time when a progressive action is performed
     public void removeTime(int removedTime){
    time = time - removedTime;     
     }
+    
     public void addWoodToRaft(){
         woodfortheraft++;
     }
