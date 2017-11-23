@@ -1,3 +1,9 @@
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 /**
  * @author  Michael Kolling and David J. Barnes
  * @version 2006.03.30
@@ -8,6 +14,7 @@ public class Game
     private Parser parser;
     private Room currentRoom;
     private Player player;
+    private SaveFile save;
         
     public Game() 
     {
@@ -33,58 +40,58 @@ public class Game
         
         //beach1.setExit("north", jungle1);
         beach1.setExit("east", beach2, false);
-        beach1.putItem(new Coconut());
+        beach1.putItem(new Item("coconut"));
         beach1.spawnEnemy("Kanibal", 20);
-        beach1.putItem(new Wood());
+        beach1.putItem(new Item("wood"));
 
         //beach2.setExit("north", jungle2);
         beach2.setExit("east", beach3, false);
         beach2.setExit("west", beach1, false);
         beach2.spawnEnemy("Kanibal", 20);
-        beach2.putItem(new Coconut());
-        beach2.putItem(new Wood());
+        beach2.putItem(new Item("coconut"));
+        beach2.putItem(new Item("wood"));
         beach2.spawnFriend("Walter");
 
         beach3.setExit("north", jungle3, false);
         beach3.setExit("west", beach2, false);
         beach3.spawnEnemy("Kanibal", 20);
-        beach3.putItem(new Coconut());
-        beach3.putItem(new Wood());
+        beach3.putItem(new Item("coconut"));
+        beach3.putItem(new Item("wood"));
 
         jungle1.setExit("north", jungle4, false);
-        beach2.putItem(new Machete()); //TODO: Define Machete
+        beach2.putItem(new Item("machete")); //TODO: Define Machete
         //jungle1.setExit("east", jungle2);
         //jungle1.setExit("south", beach1);        
-        jungle1.putItem(new Wood());
+        jungle1.putItem(new Item("wood"));
 
         jungle2.setExit("north", jungle5, false);
         jungle2.setExit("east", jungle3, false);
         //jungle2.setExit("south", beach2);
         //jungle2.setExit("west", jungle1);
-        jungle2.putItem(new Wood());
+        jungle2.putItem(new Item("wood"));
         
         //jungle3.setExit("north", jungle6);
         jungle3.setExit("south", beach3, false);
         jungle3.setExit("west", jungle2, false);
-        jungle3.putItem(new Wood());
+        jungle3.putItem(new Item("wood"));
 
         jungle4.setExit("east", jungle5, false);
         jungle4.setExit("south", jungle1, false);
-        jungle4.putItem(new Wood());
+        jungle4.putItem(new Item("wood"));
 
         jungle5.setExit("east", jungle6, false);
         jungle5.setExit("south", jungle2, false);
         jungle5.setExit("west", jungle4, false);
-        jungle5.putItem(new Wood());
+        jungle5.putItem(new Item("wood"));
         
         jungle6.setExit("north", cave, true);
         //jungle6.setExit("south", jungle3);
         jungle6.setExit("west", jungle5, false);
-        jungle6.putItem(new Wood());
+        jungle6.putItem(new Item("wood"));
         
         cave.setExit("south", jungle6, false);
         cave.spawnEnemy("Troll", 40);
-        cave.putItem(new Wood());
+        cave.putItem(new Item("wood"));
         
         currentRoom = beach2; // Sets the spawnpoint for the player
     }
@@ -164,6 +171,12 @@ public class Game
         }
         else if (commandWord == CommandWord.USE){
             use(command);
+        }
+        else if (commandWord == CommandWord.SAVE){
+            save();
+        }
+        else if (commandWord == CommandWord.LOAD){
+            load(command.getSecondWord());
         }
         return wantToQuit;
     }
@@ -254,6 +267,9 @@ public class Game
                player.Heal(10);
                player.inventory.remove("coconut");
             }
+            else{
+                System.out.println("No coconuts");
+            }
         }
     }
     
@@ -281,28 +297,21 @@ public class Game
 
         Room nextRoom = currentRoom.getExit(direction);
         player.addTime(10);
-        
-        if(currentRoom.isBlocked(direction) && !player.inventory.hasItem("machete")){
-            System.out.println("You need a machete to get through here");
-        }
-        else{
-
-            if (nextRoom == null) {
-                System.out.println("Your path is blocked in this direction");
+        try {        
+            if(currentRoom.isBlocked(direction) && !player.inventory.hasItem("machete")){
+                System.out.println("You need a machete to get through here");
             }
-            else if (currentRoom.enemyPresent()) {
-                System.out.println("Enemy is present, you may not leave");
-                
-            }
-            else {
-                currentRoom = nextRoom;
-                System.out.println(currentRoom.getLongDescription());
-                if(currentRoom.enemyPresent()){
-                    System.out.println("A wild " + currentRoom.enemyName() + " has appeared!");
-                    System.out.println("Enemy health: " + currentRoom.enemyHealth());
-                }
-                //System.out.println("This room contains:"); //List of items in the room.
-            }
+            else{
+                    currentRoom = nextRoom;
+                    System.out.println(currentRoom.getLongDescription());
+                    if(currentRoom.enemyPresent()){
+                        System.out.println("A wild " + currentRoom.enemyName() + " has appeared!");
+                        System.out.println("Enemy health: " + currentRoom.enemyHealth());
+                    }
+                    //System.out.println("This room contains:"); //List of items in the room.            
+            }            
+        } catch (NullPointerException e) {
+            System.out.println("No exit");
         }
     }
     
@@ -315,6 +324,41 @@ public class Game
         }
         else {
             return true;
+        }
+    }
+    
+    private void save(){
+        save = new SaveFile(player, currentRoom);
+        
+        try {
+            FileOutputStream saveFile = new FileOutputStream("test.save");
+            ObjectOutputStream out = new ObjectOutputStream(saveFile);
+            out.writeObject(save);
+            out.close();
+            saveFile.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private void load(String fileLocation){
+        try {
+            FileInputStream loadFile = new FileInputStream(fileLocation);
+            ObjectInputStream in = new ObjectInputStream(loadFile);
+            save = (SaveFile)in.readObject();
+            in.close();
+            loadFile.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        player.health = save.player.health;
+        player.inventory = save.player.inventory;
+        currentRoom = save.currentRoom;
+        System.out.println(currentRoom.getLongDescription());
+        if(currentRoom.enemyPresent()){
+            System.out.println("A wild " + currentRoom.enemyName() + " has appeared!");
+            System.out.println("Enemy health: " + currentRoom.enemyHealth());
         }
     }
 }
