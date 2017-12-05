@@ -9,7 +9,8 @@ public class Player implements java.io.Serializable{
     public int woodfortheraft = 0;
     public boolean enoughwoodfortheraft = false;
     int timeLeft = maxTime - time; // This line calculates how much time the user has left
-   
+    private int points = 0;
+    private int score = 0;
     public Player(){
         this.health = 100;
         this.istheplayerdead = false;
@@ -60,5 +61,11 @@ public class Player implements java.io.Serializable{
     public void addWoodToRaft(){
         woodfortheraft++;
     }
-  
+    public void addPointsToScore(int points){
+       
+        score = score + points;
+    }
+    public int getScore(){
+        return score;
+    }
 }
