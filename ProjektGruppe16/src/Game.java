@@ -41,20 +41,20 @@ public class Game
         //beach1.setExit("north", jungle1);
         beach1.setExit("east", beach2, false);
         beach1.putItem(new Item("coconut"));
-        beach1.spawnEnemy("Kanibal", 20);
+        beach1.spawnEnemy("Cannibal", 20);
         beach1.putItem(new Item("wood"));
 
         //beach2.setExit("north", jungle2);
         beach2.setExit("east", beach3, false);
         beach2.setExit("west", beach1, false);
-        beach2.spawnEnemy("Kanibal", 20);
+        beach2.spawnEnemy("Cannibal", 20);
         beach2.putItem(new Item("coconut"));
         beach2.putItem(new Item("wood"));
         beach2.spawnFriend("Walter");
 
         beach3.setExit("north", jungle3, false);
         beach3.setExit("west", beach2, false);
-        beach3.spawnEnemy("Kanibal", 20);
+        beach3.spawnEnemy("Cannibal", 20);
         beach3.putItem(new Item("coconut"));
         beach3.putItem(new Item("wood"));
 
