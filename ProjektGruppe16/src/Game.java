@@ -197,6 +197,7 @@ public class Game
             System.out.println("You killed an enemy!");
             player.printhealth();
             player.removeTime(5);
+            player.addPointsToScore(100);
         }
     }
     
@@ -213,6 +214,7 @@ public class Game
         if(player.inventory.getItem(second) != null){
             player.inventory.remove(second);
             player.addWoodToRaft();
+            player.addPointsToScore(200);
         }
         else {
             System.out.println("You are not carrying any wood");
