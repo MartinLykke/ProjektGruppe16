@@ -17,8 +17,6 @@ import javafx.stage.Stage;
  */
 public class GUI extends Application {
     
-    private static GUI ui;
-    
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("gui.fxml"));
@@ -32,8 +30,7 @@ public class GUI extends Application {
     /**
      * @param args the command line arguments
      */
-    public void guiStart(String[] args) {
-        ui = this;
+    public static void guiStart(String[] args) {
         launch(args);
     }
     
