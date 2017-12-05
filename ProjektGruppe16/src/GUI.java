@@ -30,7 +30,7 @@ public class GUI extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void guiStart(String[] args) {
+    public void guiStart(String[] args) {
         launch(args);
     }
     
