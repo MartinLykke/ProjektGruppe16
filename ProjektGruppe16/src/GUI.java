@@ -19,7 +19,7 @@ public class GUI extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("gui.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("GameView.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -30,7 +30,7 @@ public class GUI extends Application {
     /**
      * @param args the command line arguments
      */
-    public void guiStart(String[] args) {
+    public static void guiStart(String[] args) {
         launch(args);
     }
     
