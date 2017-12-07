@@ -1,8 +1,10 @@
 
+//Doesn't work as intended yet
+
 import java.util.Scanner;
 import java.io.IOException;
 public class Highscore {
-    public static void main(String[] args) throws IOException {
+    public static void highscore() throws IOException {
 
         java.io.File file = new java.io.File("Highscore.txt");
         Scanner input = new Scanner(file);
@@ -12,7 +14,7 @@ public class Highscore {
             myList[i][1] = input.nextInt();
         }
 
-        System.out.println("Current highscore:");
+        System.out.println("Previous highscore:");
 
         for (int i = 0; i < myList.length; i++) {
             System.out.println(myList[i][0] + "\t" + myList[i][1]);
