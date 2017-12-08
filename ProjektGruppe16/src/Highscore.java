@@ -24,6 +24,10 @@ public class Highscore {
             System.out.print("Enter your score: ");
             int newScore = input2.nextInt();
 
+//    Player points = new Player();
+//    int newScore = Player.points();
+//        System.out.println("Your score is:" + newScore);
+
         for (int i = 0; i < myList.length; i++) {
             if (newScore > myList[i][1]) {
                 for (int j = myList.length - 1; j > i; j--) {
