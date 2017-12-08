@@ -29,7 +29,10 @@ public class GameViewController implements Initializable {
     @FXML
     private void useButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
-        label.setText("WTF");
+        label.setText("Ingen ting");
+        
+        
+        
     }
     
     @Override
