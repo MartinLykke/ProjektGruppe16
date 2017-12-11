@@ -6,6 +6,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 /**
  * @author  Michael Kolling and David J. Barnes
@@ -301,5 +302,9 @@ public class Game
     
     public String getLocation(){
         return currentRoom.getLocation();
+    }
+    
+    public ArrayList<String> getItems(){
+        return player.inventory.getItems();
     }
 }

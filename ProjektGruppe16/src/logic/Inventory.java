@@ -5,6 +5,8 @@ Class for creating and managing the inventory
 */
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class Inventory implements java.io.Serializable{
     private HashMap<String, Item> inventory; //List of the items in inventory
@@ -43,5 +45,14 @@ public class Inventory implements java.io.Serializable{
         else{
             return false;
         }
+    }
+    
+    public ArrayList<String> getItems(){
+        ArrayList<String> items = new ArrayList<>();
+        for (Map.Entry<String, Item> entry : inventory.entrySet()) {
+            items.add(entry.getKey());
+        }
+        
+        return items;
     }
 }
