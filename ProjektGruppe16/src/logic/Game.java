@@ -13,8 +13,7 @@ import java.io.ObjectOutputStream;
  */
 public class Game 
 {
-   
-    private Parser parser;
+
     private Room currentRoom;
     private Player player;
     private Save save;
@@ -23,7 +22,6 @@ public class Game
     public Game() 
     {
         createRooms();
-        parser = new Parser();
         save = new Save();
     }
    
@@ -142,55 +140,6 @@ public class Game
                 + currentRoom.getLongDescription();
 //        System.out.println(currentRoom.getLongDescription());
     }
-
-    private boolean processCommand(Command command) 
-    {
-        boolean wantToQuit = false;
-
-        CommandWord commandWord = command.getCommandWord();
-
-        if(commandWord == CommandWord.UNKNOWN) {
-            System.out.println("Unknown command.");
-            return false;
-        }
-
-        if (commandWord == CommandWord.HELP) {
-            printHelp();
-        }
-        else if (commandWord == CommandWord.GO) {
-            //goRoom(command);
-        }
-        else if (commandWord == CommandWord.QUIT) {
-            wantToQuit = quit(command);
-        }
-        else if (commandWord == CommandWord.ATTACK) { // The following 6 commands are our new commands for the game
-            attack();
-        }
-        else if (commandWord == CommandWord.DROP){
-            drop(command);
-        }
-        else if (commandWord == CommandWord.INVENTORY){
-           // inventory();
-        }
-        
-        else if (commandWord == CommandWord.TALK){
-            talk(command);
-        }
-        
-        else if (commandWord == CommandWord.PICKUP){
-            pickup(command);
-        }
-        else if (commandWord == CommandWord.USE){
-            use(command);
-        }
-        else if (commandWord == CommandWord.SAVE){
-            save();
-        }
-        else if (commandWord == CommandWord.LOAD){
-            load();
-        }
-        return wantToQuit;
-    }
     
     public void attack(){ // The following 6 methods are our new methods which the comamands activate
         int damageTaken;
@@ -211,14 +160,14 @@ public class Game
         }
     }
     
-    private void drop(Command command){
+    private void drop(){
         String second;
-        if(!command.hasSecondWord()) {
+        if(false) { //TODO: new check
             System.out.println("Drop what?");
             return;
         }
         else{
-            second = command.getSecondWord();
+            second = "My grades"; //TODO: Figure it out
            
         }
         if(player.inventory.getItem(second) != null){
@@ -231,8 +180,8 @@ public class Game
         }
     }
     
-    private void talk (Command command){
-        if(!command.hasSecondWord()) {
+    private void talk (){
+        if(false) { //TODO: new check
             System.out.println("Talk to who?");
             return;
         }
@@ -241,14 +190,14 @@ public class Game
         } 
     }
     
-    private void pickup(Command command){
+    private void pickup(){
         String second;
-        if(!command.hasSecondWord()) {
+        if(false) { //TODO: new check
             System.out.println("Pickup what?");
             return;
         }
         else{
-            second = command.getSecondWord();
+            second = "noget"; //TODO: Figure it out
         }
         if(player.inventory.inventoryFull()){
             System.out.println("You are carrying too much. Use the drop command.");
@@ -264,15 +213,15 @@ public class Game
         }
     }
     
-    private void use (Command command){
+    private void use (){
         String SecondWord;
-        if(!command.hasSecondWord()) {
+        if(false) { //TODO: new check
             System.out.println("Use what?");
             return;
         
         }
         else {
-            SecondWord=command.getSecondWord().toLowerCase();
+            SecondWord="coconut"; //TODO: Figure it out
             if(player.inventory.hasItem("coconut")){
             //    player.eat(player.inventory.getItem(SecondWord)); Fix this
                 System.out.println("You ate a coconut and restored 10 health.");
@@ -283,19 +232,6 @@ public class Game
                 System.out.println("No coconuts");
             }
         }
-    }
-    
-    /*private void inventory (){
-    System.out.println("");
-    }*/
-    
-    private void printHelp() 
-    {
-        System.out.println("You wake up on a beach");
-        System.out.println("You see the rests of a plane scattered around the beach");
-        System.out.println("Use commands to perform actions");
-        System.out.println("Your command words are:");
-        parser.showCommands();
     }
     
     public void goRoom(String direction)
@@ -321,9 +257,9 @@ public class Game
     }
     
 
-    private boolean quit(Command command) 
+    private boolean quit() 
     {
-        if(command.hasSecondWord()) {
+        if(false) { //TODO: new check
             System.out.println("Quit what?");
             return false;
         }

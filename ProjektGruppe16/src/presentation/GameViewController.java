@@ -42,12 +42,12 @@ public class GameViewController implements Initializable {
         label.setText("Ingen ting");   
     }
     
-     @FXML    
+    @FXML    
     private void launchGame(ActionEvent event){
         game = new Game();
         game.play();
         label.setText(game.getText());
-        //health.setText(game.getHealth());
+        health.setText(game.getHealth());
     }  
     
     @FXML
@@ -99,6 +99,7 @@ public class GameViewController implements Initializable {
         // TODO
         label.setText("");
         health.setText("");
+        healthBar.setVisible(false);
     }    
     
 }
