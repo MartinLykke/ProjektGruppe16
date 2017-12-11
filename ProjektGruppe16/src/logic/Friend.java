@@ -1,3 +1,5 @@
+package logic;
+
 
 public class Friend implements java.io.Serializable{
     

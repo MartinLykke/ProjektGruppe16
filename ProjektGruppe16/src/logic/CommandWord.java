@@ -1,3 +1,5 @@
+package logic;
+
 
 /**
  * @author Michael Kolling and David J. Barnes

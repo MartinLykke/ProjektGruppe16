@@ -1,3 +1,5 @@
+package logic;
+
 
 public class Enemy implements java.io.Serializable{
     

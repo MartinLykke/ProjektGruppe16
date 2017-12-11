@@ -1,3 +1,5 @@
+package logic;
+
 public class Item implements java.io.Serializable{
     
     public String name;

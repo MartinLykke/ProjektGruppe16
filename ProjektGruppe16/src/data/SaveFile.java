@@ -1,3 +1,9 @@
+package data;
+
+
+import logic.Player;
+import logic.Room;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -10,8 +16,8 @@
  */
 public class SaveFile implements java.io.Serializable {
     
-    Player player;
-    Room currentRoom;
+    public Player player;
+    public Room currentRoom;
     
     public SaveFile(Player player, Room currentRoom){
         this.player = player;

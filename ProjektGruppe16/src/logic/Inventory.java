@@ -1,3 +1,5 @@
+package logic;
+
 /*
 Class for creating and managing the inventory
 */
