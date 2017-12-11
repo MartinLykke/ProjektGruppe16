@@ -1,7 +1,7 @@
 package logic;
 
 
-import data.SaveFile;
+import data.Save;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -17,12 +17,13 @@ public class Game
     private Parser parser;
     private Room currentRoom;
     private Player player;
-    private SaveFile save;
+    private Save save;
         
     public Game() 
     {
         createRooms();
         parser = new Parser();
+        save = new Save();
     }
    
     
@@ -179,7 +180,7 @@ public class Game
             save();
         }
         else if (commandWord == CommandWord.LOAD){
-            load(command.getSecondWord());
+            load();
         }
         return wantToQuit;
     }
@@ -333,33 +334,14 @@ public class Game
     }
     
     private void save(){
-        save = new SaveFile(player, currentRoom);
-        
-        try {
-            FileOutputStream saveFile = new FileOutputStream("test.save");
-            ObjectOutputStream out = new ObjectOutputStream(saveFile);
-            out.writeObject(save);
-            out.close();
-            saveFile.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        save.save(player, currentRoom);
     }
     
-    private void load(String fileLocation){
-        try {
-            FileInputStream loadFile = new FileInputStream(fileLocation);
-            ObjectInputStream in = new ObjectInputStream(loadFile);
-            save = (SaveFile)in.readObject();
-            in.close();
-            loadFile.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private void load(){
+        save.load("test.save");
         
-        player.health = save.player.health;
-        player.inventory = save.player.inventory;
-        currentRoom = save.currentRoom;
+        player = save.getLoadedPlayer();
+        currentRoom = save.getloadedRoom();
         System.out.println(currentRoom.getLongDescription());
         if(currentRoom.enemyPresent()){
             System.out.println("A wild " + currentRoom.enemyName() + " has appeared!");
