@@ -22,6 +22,8 @@ import logic.Game;
  */
 public class GameViewController implements Initializable {
     
+    private Game game;
+    
     @FXML
     private ImageView west;
     @FXML
@@ -37,9 +39,15 @@ public class GameViewController implements Initializable {
     
      @FXML    
     private void launchGame(ActionEvent event){
-        Game game = new Game();
+        game = new Game();
         game.play();
+        label.setText(game.printWelcome());
     }  
+    
+    @FXML
+    private void loadGame(ActionEvent event){
+        game.load();
+    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -31,16 +31,24 @@ public class Game
     {
         Room beach1, beach2, beach3, jungle1, jungle2, jungle3, jungle4, jungle5, jungle6, cave;
       
-        beach1 = new Room("You are on the Western part of the beach. The remains of the plane lie here, totally obliterated. The jungle stretches all the way to the water, but you cannnot enter.");
-        beach2 = new Room("You are on the central part of the beach. The beach continues both directions from here. Ahead of you is a jungle, but you don't see an entrance.");
-        beach3 = new Room("You are on the Eastern part of the beach. You can't go any further to the East, but you see an opening in the trees.");
-        jungle1 = new Room("You are in the jungle. You can just spot the remains of the plane through the trees.  ");
-        jungle2 = new Room("You are in the jungle. The light is fading, as the trees block out the sun.");
-        jungle3 = new Room("You have ventured into the jungle. There are palmtrees all around you.");
+        beach1 = new Room("You are on the Western part of the beach.\n"
+                + " The remains of the plane lie here, totally obliterated.\n"
+                + " The jungle stretches all the way to the water, but you cannnot enter.");
+        beach2 = new Room("You are on the central part of the beach. The beach continues both directions from here.\n"
+                + "Ahead of you is a jungle, but you don't see an entrance.");
+        beach3 = new Room("You are on the Eastern part of the beach.\n"
+                + " You can't go any further to the East, but you see an opening in the trees.");
+        jungle1 = new Room("You are in the jungle.\n"
+                + " You can just spot the remains of the plane through the trees.  ");
+        jungle2 = new Room("You are in the jungle.\n"
+                + " The light is fading, as the trees block out the sun.");
+        jungle3 = new Room("You have ventured into the jungle.\n"
+                + " There are palmtrees all around you.");
         jungle4 = new Room("You are in the jungle.");
         jungle5 = new Room("You are in the jungle, once again surrounded by palmtrees.");
         jungle6 = new Room("You are in the jungle. You can just make out an entrance to a cave.");
-        cave = new Room("You use your machete to enter a dimly lit cave. After a minute or two you stumble upon a crazy troll");
+        cave = new Room("You use your machete to enter a dimly lit cave.\n"
+                + " After a minute or two you stumble upon a crazy troll");
         
         //beach1.setExit("north", jungle1);
         beach1.setExit("east", beach2, false);
@@ -104,7 +112,7 @@ public class Game
     {            
         player = new Player();
         printWelcome();
-        boolean finished = false;
+        /*boolean finished = false;
         while (! finished) {
             Command command = parser.getCommand();
             finished = processCommand(command);
@@ -123,17 +131,15 @@ public class Game
            }
         }
         
-        System.out.println("Thank you for playing.  Good bye.");
+        System.out.println("Thank you for playing.  Good bye.");*/
     }
 
-    private void printWelcome()
+    public String printWelcome()
     {
-        System.out.println();
-        System.out.println("Welcome to Stranded!");
-        System.out.println("Stranded is in development by project group 16");
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help, and/or if you want the introduction");
-        System.out.println();
-        System.out.println(currentRoom.getLongDescription());
+        return "Welcome to Stranded!\n"
+                + "Stranded is in development by project group 16\n"
+                + currentRoom.getLongDescription();
+//        System.out.println(currentRoom.getLongDescription());
     }
 
     private boolean processCommand(Command command) 
@@ -337,7 +343,7 @@ public class Game
         save.save(player, currentRoom);
     }
     
-    private void load(){
+    public void load(){
         save.load("test.save");
         
         player = save.getLoadedPlayer();
