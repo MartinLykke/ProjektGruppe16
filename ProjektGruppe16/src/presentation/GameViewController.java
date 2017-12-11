@@ -14,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import logic.Game;
 
 /**
  *
@@ -31,11 +32,14 @@ public class GameViewController implements Initializable {
     @FXML
     private void useButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
-        label.setText("Ingen ting");
-        
-        
-        
+        label.setText("Ingen ting");   
     }
+    
+     @FXML    
+    private void launchGame(ActionEvent event){
+        Game game = new Game();
+        game.play();
+    }  
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
