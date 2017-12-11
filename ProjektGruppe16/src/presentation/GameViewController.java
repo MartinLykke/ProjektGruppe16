@@ -94,6 +94,28 @@ public class GameViewController implements Initializable {
         //healthBar.setProgress(game.getHealth()*0.1);
     }
     
+     @FXML
+    private void Pickup(ActionEvent event){
+    
+        
+    }
+    
+    
+      @FXML
+    private void Use (ActionEvent event){
+    
+    }
+    
+      @FXML
+    private void Drop (ActionEvent event){
+    
+    }
+    
+      @FXML
+    private void Template (ActionEvent event){
+    
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
