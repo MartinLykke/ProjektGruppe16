@@ -17,14 +17,16 @@ public class Room implements java.io.Serializable
     private Enemy enemy;
     private Friend friend;
     private HashMap<String, Boolean> blocked;
+    private String pictureDest;
 
-    public Room(String description) 
+    public Room(String description, String picture) 
     {
         this.description = description;
         exits = new HashMap<String, Room>();
         this.items = new HashMap<>();
         this.enemy = null;
         this.blocked = new HashMap<>();
+        this.pictureDest = picture;
     }
 
     public void setExit(String direction, Room neighbor, boolean blocked) 
