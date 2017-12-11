@@ -32,22 +32,22 @@ public class Game
       
         beach1 = new Room("You are on the Western part of the beach.\n"
                 + " The remains of the plane lie here, totally obliterated.\n"
-                + " The jungle stretches all the way to the water, but you cannnot enter.", "../assets/Beach.jpg");
+                + " The jungle stretches all the way to the water, but you cannnot enter.", "beach");
         beach2 = new Room("You are on the central part of the beach. The beach continues both directions from here.\n"
-                + "Ahead of you is a jungle, but you don't see an entrance.", "../assets/Beach.jpg");
+                + "Ahead of you is a jungle, but you don't see an entrance.", "beach");
         beach3 = new Room("You are on the Eastern part of the beach.\n"
-                + " You can't go any further to the East, but you see an opening in the trees.", "../assets/Beach.jpg");
+                + " You can't go any further to the East, but you see an opening in the trees.", "beach");
         jungle1 = new Room("You are in the jungle.\n"
-                + " You can just spot the remains of the plane through the trees.", "../assets/Jungle.jpg");
+                + " You can just spot the remains of the plane through the trees.", "jungle");
         jungle2 = new Room("You are in the jungle.\n"
-                + " The light is fading, as the trees block out the sun.", "../assets/Jungle2.jpg");
+                + " The light is fading, as the trees block out the sun.", "jungle2");
         jungle3 = new Room("You have ventured into the jungle.\n"
-                + " There are palmtrees all around you.", "../assets/Jungle2.jpg");
-        jungle4 = new Room("You are in the jungle.", "../assets/Jungle.jpg");
-        jungle5 = new Room("You are in the jungle, once again surrounded by palmtrees.", "../assets/Jungle.jpg");
-        jungle6 = new Room("You are in the jungle. You can just make out an entrance to a cave.", "../assets/Jungle2.jpg");
+                + " There are palmtrees all around you.", "jungle2");
+        jungle4 = new Room("You are in the jungle.", "jungle");
+        jungle5 = new Room("You are in the jungle, once again surrounded by palmtrees.", "jungle");
+        jungle6 = new Room("You are in the jungle. You can just make out an entrance to a cave.", "jungle2");
         cave = new Room("You use your machete to enter a dimly lit cave.\n"
-                + " After a minute or two you stumble upon a crazy troll", "../assets/Cave.jpg");
+                + " After a minute or two you stumble upon a crazy troll", "cave");
         
         //beach1.setExit("north", jungle1);
         beach1.setExit("east", beach2, false);
@@ -297,5 +297,9 @@ public class Game
         if(player.time >= 100){  // Ends the game if the player runs out of time
             text = "You ran out of time!";
         }
+    }
+    
+    public String getLocation(){
+        return currentRoom.getLocation();
     }
 }

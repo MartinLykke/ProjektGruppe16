@@ -17,7 +17,7 @@ public class Room implements java.io.Serializable
     private Enemy enemy;
     private Friend friend;
     private HashMap<String, Boolean> blocked;
-    private String pictureDest;
+    private String picture;
 
     public Room(String description, String picture) 
     {
@@ -26,7 +26,7 @@ public class Room implements java.io.Serializable
         this.items = new HashMap<>();
         this.enemy = null;
         this.blocked = new HashMap<>();
-        this.pictureDest = picture;
+        this.picture = picture;
     }
 
     public void setExit(String direction, Room neighbor, boolean blocked) 
@@ -111,6 +111,10 @@ public class Room implements java.io.Serializable
     
     public boolean isBlocked(String exit){
         return this.blocked.get(exit);
+    }
+    
+    public String getLocation(){
+        return this.picture;
     }
 }
 
