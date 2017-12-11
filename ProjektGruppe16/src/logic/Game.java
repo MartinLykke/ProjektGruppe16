@@ -18,6 +18,7 @@ public class Game
     private Room currentRoom;
     private Player player;
     private Save save;
+    private String text;
         
     public Game() 
     {
@@ -134,9 +135,9 @@ public class Game
         System.out.println("Thank you for playing.  Good bye.");*/
     }
 
-    public String printWelcome()
+    public void printWelcome()
     {
-        return "Welcome to Stranded!\n"
+        text = "Welcome to Stranded!\n"
                 + "Stranded is in development by project group 16\n"
                 + currentRoom.getLongDescription();
 //        System.out.println(currentRoom.getLongDescription());
@@ -157,13 +158,13 @@ public class Game
             printHelp();
         }
         else if (commandWord == CommandWord.GO) {
-            goRoom(command);
+            //goRoom(command);
         }
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
         }
         else if (commandWord == CommandWord.ATTACK) { // The following 6 commands are our new commands for the game
-            attack(command);
+            attack();
         }
         else if (commandWord == CommandWord.DROP){
             drop(command);
@@ -191,21 +192,20 @@ public class Game
         return wantToQuit;
     }
     
-    private void attack(Command command){ // The following 6 methods are our new methods which the comamands activate
+    public void attack(){ // The following 6 methods are our new methods which the comamands activate
         int damageTaken;
         if(currentRoom.enemyPresent()){
             damageTaken = currentRoom.attack(10);
-            System.out.println("You hit the enemy for " + 10 + " damage!");
+            text = "You hit the enemy for " + 10 + " damage!";
             player.damagetaken(damageTaken);
             
         }
         else{
-            System.out.println("No enemy to attack");
+            text = "No enemy to attack";
             return;
         }
         if(!currentRoom.enemyPresent()){
-            System.out.println("You killed an enemy!");
-            player.printhealth();
+            text = "You killed an enemy!";
             player.removeTime(5);
             player.addPointsToScore(100);
         }
@@ -298,32 +298,25 @@ public class Game
         parser.showCommands();
     }
     
-    private void goRoom(Command command)
+    public void goRoom(String direction)
     {
-        if(!command.hasSecondWord()) {
-            System.out.println("Go where?");
-            return;
-        }
-
-        String direction = command.getSecondWord();
-
         Room nextRoom = currentRoom.getExit(direction);
         player.addTime(10);
         try {        
             if(currentRoom.isBlocked(direction) && !player.inventory.hasItem("machete")){
-                System.out.println("You need a machete to get through here");
+                text = "You need a machete to get through here";
             }
             else{
                     currentRoom = nextRoom;
-                    System.out.println(currentRoom.getLongDescription());
+                    text = currentRoom.getLongDescription();
                     if(currentRoom.enemyPresent()){
-                        System.out.println("A wild " + currentRoom.enemyName() + " has appeared!");
-                        System.out.println("Enemy health: " + currentRoom.enemyHealth());
+                        text = text + "\nA wild " + currentRoom.enemyName() + " has appeared!\n"
+                                + "Enemy health: " + currentRoom.enemyHealth();
                     }
                     //System.out.println("This room contains:"); //List of items in the room.            
             }            
         } catch (NullPointerException e) {
-            System.out.println("No exit");
+            text = "No exit";
         }
     }
     
@@ -339,7 +332,7 @@ public class Game
         }
     }
     
-    private void save(){
+    public void save(){
         save.save(player, currentRoom);
     }
     
@@ -348,10 +341,19 @@ public class Game
         
         player = save.getLoadedPlayer();
         currentRoom = save.getloadedRoom();
-        System.out.println(currentRoom.getLongDescription());
+        
+        text = currentRoom.getLongDescription();
         if(currentRoom.enemyPresent()){
-            System.out.println("A wild " + currentRoom.enemyName() + " has appeared!");
-            System.out.println("Enemy health: " + currentRoom.enemyHealth());
+            text = text + "\nA wild " + currentRoom.enemyName() + " has appeared!\n"
+                + "Enemy health: " + currentRoom.enemyHealth();
         }
+    }
+    
+    public String getText(){
+        return text;
+    }
+    
+    public String getHealth(){
+        return "Health: " + player.health;
     }
 }

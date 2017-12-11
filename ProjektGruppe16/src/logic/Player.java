@@ -35,10 +35,6 @@ public class Player implements java.io.Serializable{
         }
     }
     
-    // Method for printing how much health the player has left.
-    public void printhealth(){
-        System.out.println("You have " + health + " health left."); 
-    }
     
     // Method for gaining health after eating a coconut
     public void Heal(int healamount){
