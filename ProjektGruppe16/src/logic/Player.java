@@ -51,7 +51,7 @@ public class Player implements java.io.Serializable{
    time = time + addedTime;    
     }
     
-    // This method grants the player more time when a progressive action is performed
+    // This method grants the player more time when progressive action is performed
     public void removeTime(int removedTime){
    time = time - removedTime;     
     }
