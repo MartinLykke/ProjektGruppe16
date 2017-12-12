@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="629.0" prefWidth="867.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.GameViewController">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label fx:id="label" layoutX="30.0" layoutY="404.0" text="Label" />
+            <Button fx:id="east" layoutX="780.0" layoutY="543.0" mnemonicParsing="false" onAction="#goEast" text="East" />
+            <Button fx:id="north" layoutX="728.0" layoutY="493.0" mnemonicParsing="false" onAction="#goNorth" text="North" />
+            <Button fx:id="west" layoutX="676.0" layoutY="543.0" mnemonicParsing="false" onAction="#goWest" text="West" />
+            <Button fx:id="south" layoutX="728.0" layoutY="583.0" mnemonicParsing="false" onAction="#goSouth" text="South" />
+            <Button fx:id="attack" layoutX="56.0" layoutY="530.0" mnemonicParsing="false" onAction="#attack" text="Attack" />
+            <Button fx:id="use" layoutX="164.0" layoutY="531.0" mnemonicParsing="false" text="Use" />
+            <Button fx:id="talk" layoutX="261.0" layoutY="531.0" mnemonicParsing="false" text="Talk" />
+            <Button fx:id="pickup" layoutX="156.0" layoutY="570.0" mnemonicParsing="false" text="Pickup" />
+            <Button fx:id="save" layoutX="733.0" layoutY="24.0" mnemonicParsing="false" onAction="#saveGame" text="Save" />
+            <Button fx:id="load" layoutX="796.0" layoutY="24.0" mnemonicParsing="false" onAction="#loadGame" text="Load" />
+            <Button fx:id="drop" layoutX="59.0" layoutY="570.0" mnemonicParsing="false" text="Drop" />
+            <Button layoutX="26.0" layoutY="24.0" mnemonicParsing="false" text="Exit" />
+            <Button layoutX="389.0" layoutY="529.0" mnemonicParsing="false" onAction="#launchGame" prefHeight="54.0" prefWidth="89.0" text="Start" />
+            <Label fx:id="health" layoutX="658.0" layoutY="65.0" text="Label" />
+            <ProgressBar fx:id="healthBar" layoutX="656.0" layoutY="82.0" prefWidth="200.0" progress="1.0" style="-fx-accent: red;" />
+            <ImageView fx:id="jungle" fitHeight="339.0" fitWidth="616.0" layoutX="32.0" layoutY="65.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../assets/Jungle.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="cave" fitHeight="339.0" fitWidth="616.0" layoutX="32.0" layoutY="64.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../assets/Cave.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="jungle2" fitHeight="339.0" fitWidth="616.0" layoutX="32.0" layoutY="64.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../assets/Jungle2.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="beach" fitHeight="339.0" fitWidth="616.0" layoutX="32.0" layoutY="64.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../assets/Beach.jpg" />
+               </image>
+            </ImageView>
+            <ListView layoutX="656.0" layoutY="134.0" prefHeight="200.0" prefWidth="200.0" />
+            <Label layoutX="658.0" layoutY="118.0" text="Inventory" />
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>
