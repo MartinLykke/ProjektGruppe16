@@ -71,7 +71,7 @@ public class Game
         beach3.putItem(new Item("wood"));
 
         jungle1.setExit("north", jungle4, false);
-        beach2.putItem(new Item("machete")); //TODO: Define Machete
+        jungle1.putItem(new Item("machete"));
         //jungle1.setExit("east", jungle2);
         //jungle1.setExit("south", beach1);        
         jungle1.putItem(new Item("wood"));
