@@ -77,6 +77,7 @@ public class GameViewController implements Initializable {
         label.setText(game.getText());
         health.setText(game.getHealth());
         
+        // Sets the GUI back to visible when the game is launched.
         north.setVisible(true);
         east.setVisible(true);
         south.setVisible(true);
@@ -175,7 +176,8 @@ public class GameViewController implements Initializable {
         label.setText("");
         health.setText("");
         healthBar.setVisible(false);
-        
+       
+        // Most of the GUI is set to be invisible. This is to force the user to press the start button, so that the game launches.
         north.setVisible(false);
         east.setVisible(false);
         south.setVisible(false);
@@ -194,7 +196,7 @@ public class GameViewController implements Initializable {
         
         //image.setImage( new Image(getClass().getResource("../assets/Beach.jpg").toExternalForm()) );
     }    
-    
+    // Checks which room the player is in. This method is used to change the image in the GUI.
     private void checkRoom(){
         switch(game.getLocation()){
             case "beach": 

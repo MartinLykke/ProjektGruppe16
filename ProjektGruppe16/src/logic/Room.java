@@ -29,22 +29,19 @@ public class Room implements java.io.Serializable
         this.picture = picture;
     }
 
+    // Used for deciding which exits exist in the game
     public void setExit(String direction, Room neighbor, boolean blocked) 
     {
         this.blocked.put(direction, blocked);
         exits.put(direction, neighbor);
     }
 
-    public String getShortDescription()
-    {
-        return description;
-    }
-
+    // Originally used to print out a description of the game
     public String getLongDescription()
     {
         return description + "\n" + getExitString();
     }
-
+     // TODO: Write comment
 	private String getExitString()
     {
         String returnString = "Exits:";
@@ -60,6 +57,7 @@ public class Room implements java.io.Serializable
         return exits.get(direction);
     }
     
+    // "Spawns" an item in the specific room
     public void putItem(Item item){
         this.items.put(item.name, item);
     }
@@ -79,9 +77,11 @@ public class Room implements java.io.Serializable
             System.out.println(enemyPresent());      
     }
     
+    //Checks if an enemy is present when attacking
     public boolean enemyPresent(){
         return !(this.enemy == null);
     }
+    
     
     public void spawnFriend(String name){
             System.out.println("Debug: Spawning");
@@ -89,6 +89,7 @@ public class Room implements java.io.Serializable
             System.out.println(friendPresent());      
     }
     
+    //Checks if a friendly person is present when talk command is used
     public boolean friendPresent(){
         return !(this.friend == null);
     }

@@ -131,7 +131,6 @@ public class Game
         text = "Welcome to Stranded!\n"
                 + "Stranded is in development by project group 16\n"
                 + currentRoom.getLongDescription();
-//        System.out.println(currentRoom.getLongDescription());
     }
     
     public void attack(){ // The following 6 methods are our new methods which the comamands activate
@@ -218,7 +217,7 @@ public class Game
             if(player.inventory.hasItem("coconut")){
             //    player.eat(player.inventory.getItem(SecondWord)); Fix this
                 System.out.println("You ate a coconut and restored 10 health.");
-               player.Heal(10);
+               player.Heal();
                player.inventory.remove("coconut");
             }
             else{

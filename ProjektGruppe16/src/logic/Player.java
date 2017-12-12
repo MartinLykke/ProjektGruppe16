@@ -18,7 +18,8 @@ public class Player implements java.io.Serializable{
         this.istheplayerdead = false;
         this.inventory = new Inventory(4);
     }
-
+    
+// If this is true, the player should win the game
     public void isThereEnoughWoodForTheRaft(){
         if(woodfortheraft >=1){ //                           FIX THIS VALUE LATER 
             enoughwoodfortheraft = true;
@@ -37,7 +38,7 @@ public class Player implements java.io.Serializable{
     
     
     // Method for gaining health after eating a coconut
-    public void Heal(int healamount){
+    public void Heal(){
         this.health += 10;
     }
     

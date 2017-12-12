@@ -12,10 +12,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 
-/**
- *
- * @author marti
- */
+
+
+//        This class is to be deleted later on -  This class is to be deleted later on
+
+
 public class FXMLDocumentController implements Initializable {
     
     @FXML

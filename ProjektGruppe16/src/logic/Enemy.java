@@ -23,7 +23,7 @@ public class Enemy implements java.io.Serializable{
         
         
     }
-    
+    // Checks if enemy is alive. Called before attacking an enemy.
     public boolean isAlive(){
         return this.health>0;
     }
