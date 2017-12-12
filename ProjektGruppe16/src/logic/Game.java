@@ -50,13 +50,11 @@ public class Game
         cave = new Room("You use your machete to enter a dimly lit cave.\n"
                 + " After a minute or two you stumble upon a crazy troll", "cave");
         
-        //beach1.setExit("north", jungle1);
         beach1.setExit("east", beach2, false);
         beach1.putItem(new Item("coconut"));
         beach1.spawnEnemy("Cannibal", 20);
         beach1.putItem(new Item("wood"));
 
-        //beach2.setExit("north", jungle2);
         beach2.setExit("east", beach3, false);
         beach2.setExit("west", beach1, false);
         beach2.spawnEnemy("Cannibal", 20);
@@ -72,17 +70,12 @@ public class Game
 
         jungle1.setExit("north", jungle4, false);
         jungle1.putItem(new Item("machete"));
-        //jungle1.setExit("east", jungle2);
-        //jungle1.setExit("south", beach1);        
         jungle1.putItem(new Item("wood"));
 
         jungle2.setExit("north", jungle5, false);
         jungle2.setExit("east", jungle3, false);
-        //jungle2.setExit("south", beach2);
-        //jungle2.setExit("west", jungle1);
         jungle2.putItem(new Item("wood"));
         
-        //jungle3.setExit("north", jungle6);
         jungle3.setExit("south", beach3, false);
         jungle3.setExit("west", jungle2, false);
         jungle3.putItem(new Item("wood"));
@@ -97,7 +90,6 @@ public class Game
         jungle5.putItem(new Item("wood"));
         
         jungle6.setExit("north", cave, true);
-        //jungle6.setExit("south", jungle3);
         jungle6.setExit("west", jungle5, false);
         jungle6.putItem(new Item("wood"));
         
