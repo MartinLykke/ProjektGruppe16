@@ -25,7 +25,8 @@ import logic.Game;
 public class GameViewController implements Initializable {
     
     private Game game;
-    
+    @FXML
+    private ImageView friend;
     @FXML
     private ImageView enemy;
     @FXML
@@ -64,6 +65,7 @@ public class GameViewController implements Initializable {
     private Button drop;
     @FXML
     private Button pickup;
+   
     
     
     @FXML
@@ -86,12 +88,12 @@ public class GameViewController implements Initializable {
         west.setVisible(true);
         save.setVisible(true);
         load.setVisible(true);
-        attack.setVisible(true);
+        attack.setVisible(false);
         use.setVisible(true);
         drop.setVisible(true);
         pickup.setVisible(true);
-        talk.setVisible(true);
-        
+        talk.setVisible(false);
+        checkEnemy();
         checkRoom();
     }  
     
@@ -117,6 +119,7 @@ public class GameViewController implements Initializable {
         checkEnemy();
         game.getTime();
         label.setText(game.getText());
+        checkIfButtonsAreNeeded();
     }
     
     @FXML
@@ -126,6 +129,7 @@ public class GameViewController implements Initializable {
         checkEnemy();
         game.getTime();
         label.setText(game.getText());
+        checkIfButtonsAreNeeded();
     }
     
     @FXML
@@ -135,6 +139,7 @@ public class GameViewController implements Initializable {
         checkEnemy();
         game.getTime();
         label.setText(game.getText());
+        checkIfButtonsAreNeeded();
     }
     
     @FXML
@@ -144,6 +149,7 @@ public class GameViewController implements Initializable {
         checkEnemy();
         game.getTime();
         label.setText(game.getText());
+        checkIfButtonsAreNeeded();
     }
     
     @FXML
@@ -158,26 +164,37 @@ public class GameViewController implements Initializable {
     
      @FXML
     private void Pickup(ActionEvent event){
-    
-        
+    game.pickup();
+    game.getTime();
+    label.setText(game.getText());
     }
     
     
       @FXML
     private void Use (ActionEvent event){
-    
+    game.use();
+    game.getTime();
+    label.setText(game.getText());
     }
     
       @FXML
     private void Drop (ActionEvent event){
-    
+    game.drop();
+    game.getTime();
+    label.setText(game.getText());
     }
     
       @FXML
+    private void Talk (ActionEvent event){
+    game.talk();
+    game.getTime();
+    label.setText(game.getText());
+    }
+    
+       @FXML
     private void Template (ActionEvent event){
     
     }
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -202,6 +219,7 @@ public class GameViewController implements Initializable {
         jungle2.setVisible(false);
         cave.setVisible(false);
         enemy.setVisible(false);
+        friend.setVisible(false);
         
         //image.setImage( new Image(getClass().getResource("../assets/Beach.jpg").toExternalForm()) );
     }    
@@ -241,7 +259,7 @@ public class GameViewController implements Initializable {
         }
     }
    
-    public void checkEnemy(){
+    public void checkEnemy(){       // FLET METODE MED CHECKIFBUTTONSARENEEDED
         if(game.getEnemyStatus()){
             enemy.setVisible(true);
         } else {
@@ -249,4 +267,26 @@ public class GameViewController implements Initializable {
         }
     }
     
+     public void checkFriend(){     // Not used
+        if(game.getEnemyStatus()){
+            enemy.setVisible(true);
+        } else {
+            enemy.setVisible(false);
+        }
+    }
+     // Disables buttons if they have no use, to make GUI less messy
+     public void checkIfButtonsAreNeeded(){
+         if(game.getFriendStatus()){
+            talk.setVisible(true);
+            friend.setVisible(true);
+        } else {
+            talk.setVisible(false);
+            friend.setVisible(false);
+        }
+        if(game.getEnemyStatus()){
+            attack.setVisible(true);
+        } else {
+            attack.setVisible(false);
+        }
+     }
 }

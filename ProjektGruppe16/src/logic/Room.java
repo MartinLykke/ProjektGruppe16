@@ -117,5 +117,6 @@ public class Room implements java.io.Serializable
     public String getLocation(){
         return this.picture;
     }
+    
 }
 

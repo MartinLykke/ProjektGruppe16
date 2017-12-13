@@ -10,7 +10,7 @@ public class Enemy implements java.io.Serializable{
     
     public Enemy(String name, int health){
        this.health = health;  
-       this.damage = 10;
+       this.damage = 20;
        this.name = name;
     }
     
