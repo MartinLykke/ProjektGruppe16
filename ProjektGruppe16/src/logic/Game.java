@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author  Michael Kolling and David J. Barnes
  * @version 2006.03.30
  */
-public class Game 
+public class Game implements GameInterface
 {
 
     private Room currentRoom;
@@ -25,7 +25,7 @@ public class Game
     {
         createRooms();
         save = new Save();
-    }
+    }    private Game game2;
    
     
     private void createRooms()
@@ -133,7 +133,7 @@ public class Game
         System.out.println("Thank you for playing.  Good bye.");*/
     }
 
-    public void printWelcome()
+    private void printWelcome()
     {
         text = "Welcome to Stranded! "
                 + "Stranded is an adventure / survival game by group 16.\n"
@@ -278,7 +278,7 @@ public class Game
     }
     
 
-    private boolean quit() 
+    public boolean quit() 
     {
         if(false) { //TODO: new check
             System.out.println("Quit what?");

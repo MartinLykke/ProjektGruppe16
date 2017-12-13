@@ -17,6 +17,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import logic.Game;
+import logic.GameInterface;
 
 /**
  *
@@ -29,6 +30,8 @@ public class GameViewController implements Initializable {
     private ImageView friend;
     @FXML
     private ImageView enemy;
+    private GameInterface game;
+    
     @FXML
     private ImageView beach;
     @FXML
