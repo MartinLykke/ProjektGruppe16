@@ -298,4 +298,14 @@ public class Game
     public ArrayList<String> getItems(){
         return player.inventory.getItems();
     }
+    
+    // Checks if enemy is in the current room
+    public boolean getEnemyStatus(){
+        if(currentRoom.enemyPresent()){
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
 }

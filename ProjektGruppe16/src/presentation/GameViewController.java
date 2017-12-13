@@ -27,6 +27,8 @@ public class GameViewController implements Initializable {
     private Game game;
     
     @FXML
+    private ImageView enemy;
+    @FXML
     private ImageView beach;
     @FXML
     private ImageView jungle;
@@ -104,6 +106,7 @@ public class GameViewController implements Initializable {
         label.setText(game.getText());
         health.setText(game.getHealth());
         checkRoom();
+        checkEnemy();
         //health.setText(game.getHealth());
     }
     
@@ -111,6 +114,7 @@ public class GameViewController implements Initializable {
     private void goWest(ActionEvent event){
         game.goRoom("west");
         checkRoom();
+        checkEnemy();
         game.getTime();
         label.setText(game.getText());
     }
@@ -119,6 +123,7 @@ public class GameViewController implements Initializable {
     private void goNorth(ActionEvent event){
         game.goRoom("north");
         checkRoom();
+        checkEnemy();
         game.getTime();
         label.setText(game.getText());
     }
@@ -127,6 +132,7 @@ public class GameViewController implements Initializable {
     private void goEast(ActionEvent event){
         game.goRoom("east");
         checkRoom();
+        checkEnemy();
         game.getTime();
         label.setText(game.getText());
     }
@@ -135,6 +141,7 @@ public class GameViewController implements Initializable {
     private void goSouth(ActionEvent event){
         game.goRoom("south");
         checkRoom();
+        checkEnemy();
         game.getTime();
         label.setText(game.getText());
     }
@@ -142,6 +149,7 @@ public class GameViewController implements Initializable {
     @FXML
     private void attack(ActionEvent event){
         game.attack();
+        checkEnemy();
         game.getTime();
         label.setText(game.getText());
         health.setText(game.getHealth());
@@ -193,6 +201,7 @@ public class GameViewController implements Initializable {
         jungle.setVisible(false);
         jungle2.setVisible(false);
         cave.setVisible(false);
+        enemy.setVisible(false);
         
         //image.setImage( new Image(getClass().getResource("../assets/Beach.jpg").toExternalForm()) );
     }    
@@ -229,6 +238,14 @@ public class GameViewController implements Initializable {
                 jungle2.setVisible(false);
                 cave.setVisible(false);
                 break;
+        }
+    }
+   
+    public void checkEnemy(){
+        if(game.getEnemyStatus()){
+            enemy.setVisible(true);
+        } else {
+            enemy.setVisible(false);
         }
     }
     
