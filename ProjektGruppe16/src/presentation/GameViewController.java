@@ -24,18 +24,13 @@ import logic.GameInterface;
  * @author marti
  */
 public class GameViewController implements Initializable {
-    
-    private Game game;
+
     @FXML
     private ImageView friend;
     @FXML
     private ImageView enemy;
     private GameInterface game;
     
-    @FXML
-    private ImageView friend;
-    @FXML
-    private ImageView enemy;
     @FXML
     private ImageView beach;
     @FXML
