@@ -31,7 +31,7 @@ public class Game implements GameInterface
     }
     
     private void createRooms()
-    {
+    { //TODO: fix item placement
         Room beach1, beach2, beach3, jungle1, jungle2, jungle3, jungle4, jungle5, jungle6, cave;
       
         beach1 = new Room("You are on the Western part of the beach.\n"
@@ -107,7 +107,7 @@ public class Game implements GameInterface
     }
 
     public void play() 
-    {            
+    {            //TODO: fix win conditions
         player = new Player();
         printWelcome();
         /*boolean finished = false;
@@ -161,7 +161,7 @@ public class Game implements GameInterface
     }
     
     public void drop(){
-        if(player.inventory.getItem("wood") == null) { //TODO: new check
+        if(player.inventory.getItem("wood") == null) { //TODO: figure out how to chose item to drop
             System.out.println("Drop what?");
             return;
         }
@@ -202,7 +202,7 @@ public class Game implements GameInterface
     }
     
     public void pickup(){
-        if(!currentRoom.itemExist()) { //TODO: new check
+        if(!currentRoom.itemExist()) { //TODO: fix wood, fix max inventory
             actionText = "Pickup what?";
             return;
         }
@@ -259,8 +259,7 @@ public class Game implements GameInterface
                     }
                     else{
                         actionText = "";
-                    }
-                    //System.out.println("This room contains:"); //List of items in the room.            
+                    }         
             }            
         } catch (NullPointerException e) {
             actionText = "No exit";
@@ -304,7 +303,7 @@ public class Game implements GameInterface
         return "Health: " + player.health;
     }
     
-    public boolean getTime(){
+    public boolean getTime(){ //TODO: fix death, possibly rename to lose condition
         if(player.time >= 100){  // Ends the game if the player runs out of time
             text = "You ran out of time!";
             actionText = "";
