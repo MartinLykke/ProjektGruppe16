@@ -22,7 +22,7 @@ public interface GameInterface {
     public String getHealth();
     public String getLocation();
     public void getTime();
-    public ArrayList<String> getItems();
+    //public ArrayList<String> getItems();
     public boolean getEnemyStatus();
     public boolean getFriendStatus();
 }

@@ -25,12 +25,12 @@ import logic.GameInterface;
  */
 public class GameViewController implements Initializable {
 
+    private GameInterface game;
+        
     @FXML
     private ImageView friend;
     @FXML
     private ImageView enemy;
-    private GameInterface game;
-    
     @FXML
     private ImageView beach;
     @FXML
@@ -164,37 +164,37 @@ public class GameViewController implements Initializable {
         //healthBar.setProgress(game.getHealth()*0.1);
     }
     
-     @FXML
-    private void Pickup(ActionEvent event){
+    @FXML
+    private void pickup(ActionEvent event){
     game.pickup();
     game.getTime();
     label.setText(game.getText());
     }
     
     
-      @FXML
-    private void Use (ActionEvent event){
+    @FXML
+    private void use (ActionEvent event){
     game.use();
     game.getTime();
     label.setText(game.getText());
     }
     
-      @FXML
-    private void Drop (ActionEvent event){
+    @FXML
+    private void drop (ActionEvent event){
     game.drop();
     game.getTime();
     label.setText(game.getText());
     }
     
-      @FXML
-    private void Talk (ActionEvent event){
+    @FXML
+    private void talk (ActionEvent event){
     game.talk();
     game.getTime();
     label.setText(game.getText());
     }
     
-       @FXML
-    private void Template (ActionEvent event){
+    @FXML
+    private void template (ActionEvent event){
     
     }
     @Override
@@ -270,7 +270,7 @@ public class GameViewController implements Initializable {
     }
     
      public void checkFriend(){     // Not used
-        if(game.getEnemyStatus()){
+        if(game.getFriendStatus()){
             enemy.setVisible(true);
         } else {
             enemy.setVisible(false);

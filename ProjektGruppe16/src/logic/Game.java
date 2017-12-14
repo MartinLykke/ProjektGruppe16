@@ -19,14 +19,14 @@ public class Game implements GameInterface
     private Player player;
     private Save save;
     private String text;
-    private int numberOfPresses = 1;
+    private int numberOfPresses;
         
     public Game() 
     {
         createRooms();
         save = new Save();
-    }    private Game game2;
-   
+        numberOfPresses = 1;
+    }
     
     private void createRooms()
     {
@@ -211,26 +211,22 @@ public class Game implements GameInterface
     }
     
     public void pickup(){
-        boolean checkIfItemExist;
-        if(false) { //TODO: new check
-            System.out.println("Pickup what?");
+        if(!currentRoom.itemExist()) { //TODO: new check
+            text = "Pickup what?";
             return;
         }
-        else{
-            text = "You have picked up" + currentRoom.getItem(text); //TODO: Figure it out
-        } 
+        
         if(player.inventory.inventoryFull()){
-            System.out.println("You are carrying too much. Use the drop command.");
+            text = "You are carrying too much. Use the drop command.";
         }
-        else if(currentRoom.itemExist(text)){
-            
-            player.inventory.add(currentRoom.getItem(text));
+        else{
+            player.inventory.add(currentRoom.getItem());
             player.removeTime(5);
             player.isThereEnoughWoodForTheRaft(); 
-            text = "You have picked up an item" + currentRoom.getItem(text);
-        }
-        else {
-            text =("You look around but can't find anything to pickup " );
+            //text = "You have picked up an item" + currentRoom.getItem().name;
+            /*for (String s : player.inventory.getItems()) {
+                System.out.println(s);
+            }*/
         }
     }
     
@@ -324,9 +320,9 @@ public class Game implements GameInterface
         return currentRoom.getLocation();
     }
     
-    public ArrayList<String> getItems(){
+    /*public ArrayList<String> getItems(){
         return player.inventory.getItems();
-    }
+    }*/
     
     // Checks if enemy is in the current room
     public boolean getEnemyStatus(){

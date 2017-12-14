@@ -19,12 +19,12 @@
             <Button fx:id="west" layoutX="676.0" layoutY="543.0" mnemonicParsing="false" onAction="#goWest" text="West" />
             <Button fx:id="south" layoutX="728.0" layoutY="583.0" mnemonicParsing="false" onAction="#goSouth" text="South" />
             <Button fx:id="attack" layoutX="56.0" layoutY="530.0" mnemonicParsing="false" onAction="#attack" text="Attack" />
-            <Button fx:id="use" layoutX="164.0" layoutY="531.0" mnemonicParsing="false" onAction="#Use" text="Use" />
-            <Button fx:id="talk" layoutX="261.0" layoutY="531.0" mnemonicParsing="false" onAction="#Talk" text="Talk" />
-            <Button fx:id="pickup" layoutX="156.0" layoutY="570.0" mnemonicParsing="false" onAction="#Pickup" text="Pickup" />
+            <Button fx:id="use" layoutX="164.0" layoutY="531.0" mnemonicParsing="false" onAction="#use" text="Use" />
+            <Button fx:id="talk" layoutX="261.0" layoutY="531.0" mnemonicParsing="false" onAction="#talk" text="Talk" />
+            <Button fx:id="pickup" layoutX="156.0" layoutY="570.0" mnemonicParsing="false" onAction="#pickup" text="Pickup" />
             <Button fx:id="save" layoutX="733.0" layoutY="24.0" mnemonicParsing="false" onAction="#saveGame" text="Save" />
             <Button fx:id="load" layoutX="796.0" layoutY="24.0" mnemonicParsing="false" onAction="#loadGame" text="Load" />
-            <Button fx:id="drop" layoutX="59.0" layoutY="570.0" mnemonicParsing="false" onAction="#Drop" text="Drop" />
+            <Button fx:id="drop" layoutX="59.0" layoutY="570.0" mnemonicParsing="false" onAction="#drop" text="Drop" />
             <Button layoutX="26.0" layoutY="24.0" mnemonicParsing="false" text="Exit" />
             <Button layoutX="389.0" layoutY="529.0" mnemonicParsing="false" onAction="#launchGame" prefHeight="54.0" prefWidth="89.0" text="Start" />
             <Label fx:id="health" layoutX="658.0" layoutY="65.0" text="Label" />

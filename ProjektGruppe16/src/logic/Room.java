@@ -13,7 +13,7 @@ public class Room implements java.io.Serializable
 {
     private String description;
     private HashMap<String, Room> exits;
-    private HashMap<String, Item> items;
+    private Item item;
     private Enemy enemy;
     private Friend friend;
     private HashMap<String, Boolean> blocked;
@@ -23,7 +23,7 @@ public class Room implements java.io.Serializable
     {
         this.description = description;
         exits = new HashMap<String, Room>();
-        this.items = new HashMap<>();
+        this.item = null;
         this.enemy = null;
         this.blocked = new HashMap<>();
         this.picture = picture;
@@ -59,16 +59,16 @@ public class Room implements java.io.Serializable
     
     // "Spawns" an item in the specific room
     public void putItem(Item item){
-        this.items.put(item.name, item);
+        this.item = item;
     }
-    public Item getItem(String item){
-        Item temp = this.items.get(item);
-        this.items.remove(item);
+    public Item getItem(){
+        Item temp = this.item;
+        this.item = null;
         return temp;
     }
     
-    public boolean itemExist(String item){
-        return this.items.containsKey(item);
+    public boolean itemExist(){
+        return !(this.item == null);
     }
     
     public void spawnEnemy(String name, int health){
