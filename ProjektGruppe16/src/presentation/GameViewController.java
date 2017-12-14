@@ -33,6 +33,10 @@ public class GameViewController implements Initializable {
     private GameInterface game;
     
     @FXML
+    private ImageView friend;
+    @FXML
+    private ImageView enemy;
+    @FXML
     private ImageView beach;
     @FXML
     private ImageView jungle;

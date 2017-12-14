@@ -127,7 +127,7 @@ public class Game implements GameInterface
            if(player.isDead()){ // Ends the game if the player runs out of health
                finished = true;
                System.out.println("You lost all your health and died!");
-           }
+           }public boolean getFriendStatus()
         }
         
         System.out.println("Thank you for playing.  Good bye.");*/
