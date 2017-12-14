@@ -8,11 +8,15 @@ package presentation;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,6 +30,7 @@ import logic.GameInterface;
 public class GameViewController implements Initializable {
 
     private GameInterface game;
+    protected ListProperty<String> inventoryList = new SimpleListProperty<>();
         
     @FXML
     private ImageView friend;
@@ -67,6 +72,10 @@ public class GameViewController implements Initializable {
     private Button drop;
     @FXML
     private Button pickup;
+    @FXML
+    private Label inventoryLabel;
+    @FXML
+    private ListView inventoryListView;
    
     
     
@@ -95,6 +104,9 @@ public class GameViewController implements Initializable {
         drop.setVisible(true);
         pickup.setVisible(true);
         talk.setVisible(false);
+        inventoryLabel.setVisible(true);
+        inventoryListView.setVisible(true);
+        updateInventoryList();
         checkEnemy();
         checkRoom();
     }  
@@ -111,54 +123,75 @@ public class GameViewController implements Initializable {
         health.setText(game.getHealth());
         checkRoom();
         checkEnemy();
+        updateInventoryList();
         //health.setText(game.getHealth());
     }
     
     @FXML
     private void goWest(ActionEvent event){
+        if(game.getTime()){
+            label.setText(game.getText());
+            return;
+        }
         game.goRoom("west");
         checkRoom();
         checkEnemy();
-        game.getTime();
+        updateInventoryList();
         label.setText(game.getText());
         checkIfButtonsAreNeeded();
     }
     
     @FXML
     private void goNorth(ActionEvent event){
+        if(game.getTime()){
+            label.setText(game.getText());
+            return;
+        }
         game.goRoom("north");
         checkRoom();
         checkEnemy();
-        game.getTime();
+        updateInventoryList();
         label.setText(game.getText());
         checkIfButtonsAreNeeded();
     }
     
     @FXML
     private void goEast(ActionEvent event){
+        if(game.getTime()){
+            label.setText(game.getText());
+            return;
+        }
         game.goRoom("east");
         checkRoom();
         checkEnemy();
-        game.getTime();
+        updateInventoryList();
         label.setText(game.getText());
         checkIfButtonsAreNeeded();
     }
     
     @FXML
     private void goSouth(ActionEvent event){
+        if(game.getTime()){
+            label.setText(game.getText());
+            return;
+        }
         game.goRoom("south");
         checkRoom();
         checkEnemy();
-        game.getTime();
+        updateInventoryList();
         label.setText(game.getText());
         checkIfButtonsAreNeeded();
     }
     
     @FXML
     private void attack(ActionEvent event){
+        if(game.getTime()){
+            label.setText(game.getText());
+            return;
+        }
         game.attack();
         checkEnemy();
-        game.getTime();
+        updateInventoryList();
         label.setText(game.getText());
         health.setText(game.getHealth());
         //healthBar.setProgress(game.getHealth()*0.1);
@@ -166,31 +199,48 @@ public class GameViewController implements Initializable {
     
     @FXML
     private void pickup(ActionEvent event){
-    game.pickup();
-    game.getTime();
-    label.setText(game.getText());
+        if(game.getTime()){
+            label.setText(game.getText());
+            return;
+        }
+        game.pickup();
+        updateInventoryList();
+        label.setText(game.getText());
     }
     
     
     @FXML
     private void use (ActionEvent event){
-    game.use();
-    game.getTime();
-    label.setText(game.getText());
+        if(game.getTime()){
+            label.setText(game.getText());
+            return;
+        }
+        game.getItems();
+        //game.use();
+        updateInventoryList();
+        label.setText(game.getText());
     }
     
     @FXML
     private void drop (ActionEvent event){
-    game.drop();
-    game.getTime();
-    label.setText(game.getText());
+        if(game.getTime()){
+            label.setText(game.getText());
+            return;
+        }
+        game.drop();
+        updateInventoryList();
+        label.setText(game.getText());
     }
     
     @FXML
     private void talk (ActionEvent event){
-    game.talk();
-    game.getTime();
-    label.setText(game.getText());
+        if(game.getTime()){
+            label.setText(game.getText());
+            return;
+        }
+        game.talk();
+        updateInventoryList();
+        label.setText(game.getText());
     }
     
     @FXML
@@ -222,6 +272,10 @@ public class GameViewController implements Initializable {
         cave.setVisible(false);
         enemy.setVisible(false);
         friend.setVisible(false);
+        inventoryLabel.setVisible(false);
+        inventoryListView.setVisible(false);
+        
+        inventoryListView.itemsProperty().bind(inventoryList);
         
         //image.setImage( new Image(getClass().getResource("../assets/Beach.jpg").toExternalForm()) );
     }    
@@ -261,7 +315,7 @@ public class GameViewController implements Initializable {
         }
     }
    
-    public void checkEnemy(){       // FLET METODE MED CHECKIFBUTTONSARENEEDED
+    private void checkEnemy(){       // FLET METODE MED CHECKIFBUTTONSARENEEDED
         if(game.getEnemyStatus()){
             enemy.setVisible(true);
         } else {
@@ -269,7 +323,7 @@ public class GameViewController implements Initializable {
         }
     }
     
-     public void checkFriend(){     // Not used
+     private void checkFriend(){     // Not used
         if(game.getFriendStatus()){
             enemy.setVisible(true);
         } else {
@@ -277,7 +331,7 @@ public class GameViewController implements Initializable {
         }
     }
      // Disables buttons if they have no use, to make GUI less messy
-     public void checkIfButtonsAreNeeded(){
+     private void checkIfButtonsAreNeeded(){
          if(game.getFriendStatus()){
             talk.setVisible(true);
             friend.setVisible(true);
@@ -290,5 +344,9 @@ public class GameViewController implements Initializable {
         } else {
             attack.setVisible(false);
         }
+     }
+     
+     private void updateInventoryList(){
+         inventoryList.set(FXCollections.observableArrayList(game.getItems()));
      }
 }

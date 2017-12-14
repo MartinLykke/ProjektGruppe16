@@ -49,7 +49,11 @@ public class Inventory implements java.io.Serializable{
     }
     
     public Item getItem(String item){
-        return this.inventory.get(item).get(0);
+        try {
+            return this.inventory.get(item).get(0);
+        } catch (NullPointerException e) {
+            return null;
+        }
     }
     
     public boolean hasItem(String item){
@@ -61,10 +65,16 @@ public class Inventory implements java.io.Serializable{
         }
     }
     
-    /*
+    
     public ArrayList<String> getItems(){
-        ArrayList<String> items;
+        ArrayList<String> items = new ArrayList<>();
+        
+        for (Map.Entry<String, ArrayList<Item>> entry : inventory.entrySet()) {
+            String key = entry.getKey();
+            ArrayList<Item> value = entry.getValue();
+            items.add(key + ": " + value.size());
+        }
         
         return items;
-    }*/
+    }
 }

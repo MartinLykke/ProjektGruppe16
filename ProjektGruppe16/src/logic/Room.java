@@ -39,7 +39,11 @@ public class Room implements java.io.Serializable
     // Originally used to print out a description of the game
     public String getLongDescription()
     {
-        return description + "\n" + getExitString();
+        String itemList = "";
+        if(this.item != null){
+            itemList = "Items: " + this.item.name;
+        }
+        return description + "\n" + getExitString() + "\n" + itemList;
     }
      // TODO: Write comment
 	private String getExitString()

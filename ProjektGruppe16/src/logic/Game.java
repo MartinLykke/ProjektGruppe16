@@ -18,6 +18,7 @@ public class Game implements GameInterface
     private Room currentRoom;
     private Player player;
     private Save save;
+    private String actionText;
     private String text;
     private int numberOfPresses;
         
@@ -26,6 +27,7 @@ public class Game implements GameInterface
         createRooms();
         save = new Save();
         numberOfPresses = 1;
+        actionText = "";
     }
     
     private void createRooms()
@@ -61,17 +63,14 @@ public class Game implements GameInterface
         beach2.setExit("east", beach3, false);
         beach2.setExit("west", beach1, false);
         beach2.putItem(new Item("coconut"));
-        beach2.putItem(new Item("wood"));
         
 
         beach3.setExit("north", jungle3, false);
         beach3.setExit("west", beach2, false);
         beach3.putItem(new Item("coconut"));
-        beach3.putItem(new Item("wood"));
 
         jungle1.setExit("north", jungle4, false);
         jungle1.putItem(new Item("machete"));
-        jungle1.putItem(new Item("wood"));
         jungle1.spawnEnemy("Cannibal", 20);
 
         jungle2.setExit("north", jungle5, false);
@@ -146,40 +145,32 @@ public class Game implements GameInterface
         int damageTaken;
         if(currentRoom.enemyPresent()){
             damageTaken = currentRoom.attack(10);
-            text = "You hit the enemy for " + 10 + " damage!";
+            actionText = "You hit the enemy for " + 10 + " damage!";
             player.damagetaken(damageTaken);
             
         }
         else{
-            text = "No enemy to attack";
+            actionText = "No enemy to attack";
             return;
         }
         if(!currentRoom.enemyPresent()){
-            text = "You killed an enemy!";
+            actionText = "You killed an enemy!";
             player.removeTime(5);
             player.addPointsToScore(100);
         }
     }
     
     public void drop(){
-        String second;
-        if(false) { //TODO: new check
+        if(player.inventory.getItem("wood") == null) { //TODO: new check
             System.out.println("Drop what?");
             return;
         }
         else{
-            second = "My grades"; //TODO: Figure it out
-           
-        }
-        if(player.inventory.getItem(second) != null){
-            player.inventory.remove(second);
+            player.inventory.remove("wood");
+            player.inventory.inventoryFull();
             player.addWoodToRaft();
             player.addPointsToScore(200);
         }
-        else {
-            System.out.println("You are not carrying any wood");
-        }
-        
     }
     
     public void talk (){
@@ -212,12 +203,12 @@ public class Game implements GameInterface
     
     public void pickup(){
         if(!currentRoom.itemExist()) { //TODO: new check
-            text = "Pickup what?";
+            actionText = "Pickup what?";
             return;
         }
         
         if(player.inventory.inventoryFull()){
-            text = "You are carrying too much. Use the drop command.";
+            actionText = "You are carrying too much. Use the drop command.";
         }
         else{
             player.inventory.add(currentRoom.getItem());
@@ -257,19 +248,22 @@ public class Game implements GameInterface
         player.addTime(10);
         try {        
             if(currentRoom.isBlocked(direction) && !player.inventory.hasItem("machete")){
-                text = "You need a machete to get through here";
+                actionText = "You need a machete to get through here";
             }
             else{
                     currentRoom = nextRoom;
                     text = currentRoom.getLongDescription();
                     if(currentRoom.enemyPresent()){
-                        text = text + "\nA wild " + currentRoom.enemyName() + " has appeared!\n"
+                        actionText = "A wild " + currentRoom.enemyName() + " has appeared!\n"
                                 + "Enemy health: " + currentRoom.enemyHealth();
+                    }
+                    else{
+                        actionText = "";
                     }
                     //System.out.println("This room contains:"); //List of items in the room.            
             }            
         } catch (NullPointerException e) {
-            text = "No exit";
+            actionText = "No exit";
         }
     }
     
@@ -297,32 +291,39 @@ public class Game implements GameInterface
         
         text = currentRoom.getLongDescription();
         if(currentRoom.enemyPresent()){
-            text = text + "\nA wild " + currentRoom.enemyName() + " has appeared!\n"
+            actionText = "A wild " + currentRoom.enemyName() + " has appeared!\n"
                 + "Enemy health: " + currentRoom.enemyHealth();
         }
     }
     
     public String getText(){
-        return text;
+        return text + "\n" + actionText;
     }
     
     public String getHealth(){
         return "Health: " + player.health;
     }
     
-    public void getTime(){
+    public boolean getTime(){
         if(player.time >= 100){  // Ends the game if the player runs out of time
             text = "You ran out of time!";
+            actionText = "";
+            return true;
         }
+        return false;
     }
     
     public String getLocation(){
         return currentRoom.getLocation();
     }
     
-    /*public ArrayList<String> getItems(){
-        return player.inventory.getItems();
-    }*/
+    public ArrayList<String> getItems(){
+        ArrayList<String> temp = player.inventory.getItems();
+        for (String string : temp) {
+            System.out.println(string);
+        }
+        return temp;
+    }
     
     // Checks if enemy is in the current room
     public boolean getEnemyStatus(){
