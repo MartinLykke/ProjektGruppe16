@@ -131,6 +131,7 @@ public class GameViewController implements Initializable {
     private void goWest(ActionEvent event){
         if(game.getLoseCondition()){
             label.setText(game.getText());
+            prepareHighscore();
             return;
         }
         game.goRoom("west");
@@ -145,6 +146,7 @@ public class GameViewController implements Initializable {
     private void goNorth(ActionEvent event){
         if(game.getLoseCondition()){
             label.setText(game.getText());
+            prepareHighscore();
             return;
         }
         game.goRoom("north");
@@ -159,6 +161,7 @@ public class GameViewController implements Initializable {
     private void goEast(ActionEvent event){
         if(game.getLoseCondition()){
             label.setText(game.getText());
+            prepareHighscore();
             return;
         }
         game.goRoom("east");
@@ -173,6 +176,7 @@ public class GameViewController implements Initializable {
     private void goSouth(ActionEvent event){
         if(game.getLoseCondition()){
             label.setText(game.getText());
+            prepareHighscore();
             return;
         }
         game.goRoom("south");
@@ -223,10 +227,12 @@ public class GameViewController implements Initializable {
     private void talk (ActionEvent event){
         if(game.getLoseCondition()){
             label.setText(game.getText());
+            prepareHighscore();
             return;
         } else if(game.getWinCondition()){
             // do highscore stuff
             label.setText(game.getText());
+            prepareHighscore();
             return;
         }
         game.talk();
@@ -352,8 +358,9 @@ public class GameViewController implements Initializable {
      private void updateInventoryList(){
          inventoryList.set(FXCollections.observableArrayList(game.getItems()));
      }
-     private void printWinScreen(){
-         if(game.getWinCondition()){
+     private void prepareHighscore(){
+          health.setText("");
+        healthBar.setVisible(false);
              north.setVisible(false);
         east.setVisible(false);
         south.setVisible(false);
@@ -373,6 +380,6 @@ public class GameViewController implements Initializable {
         friend.setVisible(false);
         inventoryLabel.setVisible(false);
         inventoryListView.setVisible(false);
-         }
+         
      }
 }
