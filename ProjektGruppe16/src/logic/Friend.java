@@ -12,10 +12,4 @@ public class Friend implements java.io.Serializable{
        this.health = 20;
     }
     
-    public void greetPlayer(){
-        System.out.println("Aah, I'm hurt. Can you get us off this island? I will rest here while you think of a plan.");
-    }
-    public boolean isAlive(){
-        return this.health>0;
-    }
 }

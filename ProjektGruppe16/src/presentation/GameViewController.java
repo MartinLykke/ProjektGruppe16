@@ -89,7 +89,10 @@ public class GameViewController implements Initializable {
         System.out.println("You clicked me!");
         label.setText("Ingen ting");   
     }
-    
+    /**
+     * method for "launching the game", by creating a gameinterface object and calling the play method
+     * @param event This parameter will only be described here. The method has actionevent paramter, which means it waits for the user to click a button.
+     */
     @FXML    
     private void launchGame(ActionEvent event){
         game = new Game();
@@ -118,12 +121,14 @@ public class GameViewController implements Initializable {
         checkEnemy();
         checkRoom();
     }  
-    
+    /**
+     * Saves the game
+     */
     @FXML
     private void saveGame(ActionEvent event){
         game.save();
     }
-    
+    // Loads the game
     @FXML
     private void loadGame(ActionEvent event){
         game.load();
@@ -134,7 +139,7 @@ public class GameViewController implements Initializable {
         updateInventoryList();
         //health.setText(game.getHealth());
     }
-    
+    // Goes west when the user clicks the west button in the GUI
     @FXML
     private void goWest(ActionEvent event){
         if(game.getLoseCondition()){
@@ -149,7 +154,7 @@ public class GameViewController implements Initializable {
         label.setText(game.getText());
         checkIfButtonsAreNeeded();
     }
-    
+    // Goes north when the user clicks the north button in the GUI
     @FXML
     private void goNorth(ActionEvent event){
         if(game.getLoseCondition()){
@@ -164,7 +169,7 @@ public class GameViewController implements Initializable {
         label.setText(game.getText());
         checkIfButtonsAreNeeded();
     }
-    
+    // Goes east when the user clicks the east button in the GUI
     @FXML
     private void goEast(ActionEvent event){
         if(game.getLoseCondition()){
@@ -179,7 +184,7 @@ public class GameViewController implements Initializable {
         label.setText(game.getText());
         checkIfButtonsAreNeeded();
     }
-    
+    // Goes south when the user clicks the south button in the GUI
     @FXML
     private void goSouth(ActionEvent event){
         if(game.getLoseCondition()){
@@ -337,7 +342,7 @@ public class GameViewController implements Initializable {
         }
     }
    
-    private void checkEnemy(){       // FLET METODE MED CHECKIFBUTTONSARENEEDED
+    private void checkEnemy(){       
         if(game.getEnemyStatus()){
             enemy.setVisible(true);
         } else {
@@ -345,7 +350,7 @@ public class GameViewController implements Initializable {
         }
     }
     
-     private void checkFriend(){     // Not used
+     private void checkFriend(){     
         if(game.getFriendStatus()){
             enemy.setVisible(true);
         } else {
@@ -371,6 +376,7 @@ public class GameViewController implements Initializable {
      private void updateInventoryList(){
          inventoryList.set(FXCollections.observableArrayList(game.getItems()));
      }
+     // Removes most of the GUI so that the highscore can appear properly
      private void prepareHighscore(){
         label.setVisible(false);
         health.setVisible(false);

@@ -60,8 +60,6 @@ public class Player implements java.io.Serializable{
     public void removeTime(int removedTime){
         time = time - removedTime;     
     }
-    
-    public void addWoodToRaft(){
-        woodfortheraft++;
-    }
+    // 
+   
 }

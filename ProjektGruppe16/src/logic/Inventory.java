@@ -55,7 +55,7 @@ public class Inventory implements java.io.Serializable{
             return null;
         }
     }
-    
+    // Checks if user has an item
     public boolean hasItem(String item){
         if (this.inventory.containsKey(item)){
             return true;
@@ -64,7 +64,6 @@ public class Inventory implements java.io.Serializable{
             return false;
         }
     }
-    
     
     public ArrayList<String> getItems(){
         ArrayList<String> items = new ArrayList<>();
