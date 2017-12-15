@@ -173,7 +173,7 @@ public class Game implements GameInterface
             player.inventory.remove("wood");
             player.inventory.inventoryFull();
             player.addWoodToRaft();
-            player.addPointsToScore(200);
+            
         }
     }
     
@@ -181,10 +181,10 @@ public class Game implements GameInterface
         if(currentRoom.friendPresent()) { 
             if (numberOfPresses == 1){
                 text = "Survivor: Oh thank god, i thought i was the only survivor.. My name is Dave\n"
-                        + "Did you just wake up? You look terrible..\n"
-                        + "Anyway, i guess we are stranded on some island..\n"
+                        + "Looks like we are stranded..\n"
                         + "I think my foot is broken, so i wont be much help to you.\n"
-                        + "";
+                        + "You should probably collect some wood so we can build a raft\n"
+                        + "Come back to me when you have enough wood for the raft! 4 Logs will do.";
               
                 numberOfPresses++;
             } else if (numberOfPresses == 2){
@@ -318,7 +318,16 @@ public class Game implements GameInterface
         }
         return false;
     }
-    
+    public boolean getWinCondition(){
+            
+        if(player.enoughwoodfortheraft == true && getFriendStatus()){ // Ends the game if the player wins by collecting enough wood
+                 
+                System.out.println("You build a raft and escaped the island. You won!");
+                return true;
+            }
+             return false;
+       
+    }
     public String getLocation(){
         return currentRoom.getLocation();
     }

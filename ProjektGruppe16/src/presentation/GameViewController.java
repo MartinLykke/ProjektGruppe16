@@ -241,6 +241,7 @@ public class GameViewController implements Initializable {
         game.talk();
         updateInventoryList();
         label.setText(game.getText());
+        game.getWinCondition();
     }
     
     @FXML

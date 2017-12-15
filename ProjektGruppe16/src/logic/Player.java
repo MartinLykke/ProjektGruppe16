@@ -21,7 +21,10 @@ public class Player implements java.io.Serializable{
     
 // If this is true, the player should win the game
     public boolean isThereEnoughWoodForTheRaft(){
-        return true;
+        if(woodfortheraft >=4){
+            return true;
+        }
+        return false;
     }
     
     // Method for taking damage from enemy
