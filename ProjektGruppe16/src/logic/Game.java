@@ -226,7 +226,7 @@ public class Game implements GameInterface
     public void goRoom(String direction)
     {
         Room nextRoom = currentRoom.getExit(direction);
-        player.addTime(10);
+        player.addTime(5);
         try {        
             if(currentRoom.isBlocked(direction) && !player.inventory.hasItem("machete")){
                 actionText = "You need a machete to get through here";
