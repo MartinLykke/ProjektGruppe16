@@ -304,9 +304,9 @@ public class Game implements GameInterface
     }
     public boolean getWinCondition(){
         if(player.isThereEnoughWoodForTheRaft() == true && getFriendStatus()){ // Ends the game if the player wins by collecting enough wood
-                text = "You build a raft and escaped the island. You won!";
-                //Highscore.highscore();
-                return true;
+            text = "You build a raft and escaped the island. You won!";
+            //Highscore.highscore();
+            return true;
         }
         return false;
        

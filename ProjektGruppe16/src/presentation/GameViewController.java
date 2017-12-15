@@ -226,6 +226,8 @@ public class GameViewController implements Initializable {
             return;
         } else if(game.getWinCondition()){
             // do highscore stuff
+            label.setText(game.getText());
+            return;
         }
         game.talk();
         updateInventoryList();
