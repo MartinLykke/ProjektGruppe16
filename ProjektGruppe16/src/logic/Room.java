@@ -34,9 +34,9 @@ public class Room implements java.io.Serializable
     }
     /**
      * 
-     * @param direction
-     * @param neighbor
-     * @param blocked 
+     * @param direction decides which exists exist
+     * @param neighbor used to decide which room the player comes into when going in a direction
+     * @param blocked used to decide which exists are blocked
      */
     public void setExit(String direction, Room neighbor, boolean blocked) 
     {
@@ -44,9 +44,10 @@ public class Room implements java.io.Serializable
         exits.put(direction, neighbor);
     }
 
+   
     /**
      * 
-     * @return 
+     * @return returns a string of items,exits and description of the room
      */
     public String getLongDescription()
     {
@@ -56,7 +57,10 @@ public class Room implements java.io.Serializable
         }
         return description + "\n" + getExitString() + "\n" + itemList;
     }
-     // TODO: Write comment
+     /**
+      * 
+      * @return returns string of aviable exits
+      */
 	private String getExitString()
     {
         String returnString = "Exits:";
@@ -68,8 +72,8 @@ public class Room implements java.io.Serializable
     }
 /**
  * 
- * @param direction
- * @return 
+ * @param direction 
+ * @return returns the room object
  */
     public Room getExit(String direction) 
     {
@@ -78,8 +82,8 @@ public class Room implements java.io.Serializable
     
     // "Spawns" an item in the specific room
     /**
-     * 
-     * @param item 
+     * used to put items inside rooms
+     * @param item the name of the item
      */
     public void putItem(Item item){
         this.item = item;
@@ -94,16 +98,16 @@ public class Room implements java.io.Serializable
         return temp;
     }
     /**
-     * 
-     * @return 
+     * checks if there is an item
+     * @return returns false if items is null, which means that the item does not exist
      */
     public boolean itemExist(){
         return !(this.item == null);
     }
     /**
-     * 
-     * @param name
-     * @param health 
+     * Creates a new enemy from the enemy class
+     * @param name this is the name of the enemy
+     * @param health this is the health of the enemy
      */
     public void spawnEnemy(String name, int health){
             System.out.println("Debug: Spawning");
@@ -111,18 +115,18 @@ public class Room implements java.io.Serializable
             System.out.println(enemyPresent());      
     }
     
-    //Checks if an enemy is present when attacking
+    
     /**
-     * 
-     * @return 
+     * Checks if an enemy is present when attacking
+     * @return returns false if there is no enemy
      */
     public boolean enemyPresent(){
         return !(this.enemy == null);
     }
     
     /**
-     * 
-     * @param name 
+     * Creates a new friend object from the friend class
+     * @param name this is the name of the friendly character
      */
     public void spawnFriend(String name){
             System.out.println("Debug: Spawning");
@@ -130,18 +134,17 @@ public class Room implements java.io.Serializable
             System.out.println(friendPresent());      
     }
     
-    //Checks if a friendly person is present when talk command is used
     /**
-     * 
-     * @return 
+     * Checks if a friendly person is present when talk command is used
+     * @return returns false if friend is null
      */
     public boolean friendPresent(){
         return !(this.friend == null);
     }
     /**
      * 
-     * @param damage
-     * @return 
+     * @param damage this is the damage which the player does to the enemy
+     * @return returns nothing if the enemy health is 0 or below, returns attack method if enemy health is above 0
      */
     public int attack(int damage){
         this.enemy.takeDamage(damage);
