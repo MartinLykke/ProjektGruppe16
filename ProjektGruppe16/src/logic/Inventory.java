@@ -48,9 +48,9 @@ public class Inventory implements java.io.Serializable{
 
     }
     
-    public Item getItem(String item){
+    public ArrayList<Item> getItem(String item){
         try {
-            return this.inventory.get(item).get(0);
+            return this.inventory.get(item);
         } catch (NullPointerException e) {
             return null;
         }

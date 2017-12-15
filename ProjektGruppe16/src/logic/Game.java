@@ -206,11 +206,6 @@ public class Game implements GameInterface
         else{
             player.inventory.add(currentRoom.getItem());
             player.removeTime(5);
-            player.isThereEnoughWoodForTheRaft(); 
-            //text = "You have picked up an item" + currentRoom.getItem().name;
-            /*for (String s : player.inventory.getItems()) {
-                System.out.println(s);
-            }*/
         }
     }
     
@@ -308,8 +303,7 @@ public class Game implements GameInterface
         return false;
     }
     public boolean getWinCondition(){
-            
-        if(player.enoughwoodfortheraft == true && getFriendStatus()){ // Ends the game if the player wins by collecting enough wood
+        if(player.isThereEnoughWoodForTheRaft() == true && getFriendStatus()){ // Ends the game if the player wins by collecting enough wood
                  
                 System.out.println("You build a raft and escaped the island. You won!");
                 return true;

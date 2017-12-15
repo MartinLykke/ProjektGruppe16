@@ -19,8 +19,11 @@ public class Player implements java.io.Serializable{
     
 // If this is true, the player should win the game
     public boolean isThereEnoughWoodForTheRaft(){
-        if(woodfortheraft >=4){
-            return true;
+        try {
+            if(inventory.getItem("wood").size() >=4){
+                return true;
+            }
+        } catch (NullPointerException e) {
         }
         return false;
     }
