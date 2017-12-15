@@ -329,7 +329,7 @@ public class Game implements GameInterface
         }
         
     }
-    
+        // Checks if Friend is in the current room
     public boolean getFriendStatus(){
         if(currentRoom.friendPresent()){
             return true;
