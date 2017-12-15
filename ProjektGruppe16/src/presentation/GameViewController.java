@@ -366,6 +366,7 @@ public class GameViewController implements Initializable {
      }
      private void prepareHighscore(){
         highscoreList.set(FXCollections.observableArrayList(game.getList()));
+        label.setVisible(false);
         health.setVisible(false);
         healthBar.setVisible(false);
         north.setVisible(false);
