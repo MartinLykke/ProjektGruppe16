@@ -8,6 +8,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import data.Highscore;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author  Michael Kolling and David J. Barnes
@@ -305,7 +308,11 @@ public class Game implements GameInterface
     public boolean getWinCondition(){
         if(player.isThereEnoughWoodForTheRaft() == true && getFriendStatus()){ // Ends the game if the player wins by collecting enough wood
             text = "You build a raft and escaped the island. You won!";
-            //Highscore.highscore();
+            try {
+                highscore.highscore();
+            } catch (IOException ex) {
+                System.err.println("No file");
+            }
             return true;
         }
         return false;
