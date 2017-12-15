@@ -1,12 +1,8 @@
 package data;
 
-
-//Doesn't work as intended yet
-import logic.Player;
 import java.util.Scanner;
 import java.io.IOException;
 public class Highscore {
-    private int points = 0;
     private int totalScore = 0;
     public void addPointsToScore(){
         totalScore = totalScore + 100;
@@ -30,14 +26,8 @@ public class Highscore {
             System.out.println(myList[i][0] + "\t" + myList[i][1]);
         }
 
-        Scanner input2 = new Scanner(System.in);
-            System.out.print("Enter your score: ");
-            int newScore = getScore();
-            
-
-//    Player points = new Player();
-//    int newScore = Player.points();
-//        System.out.println("Your score is:" + newScore);
+        int newScore = getScore();
+        System.out.println("Your score is:" + newScore);
 
         for (int i = 0; i < myList.length; i++) {
             if (newScore > myList[i][1]) {
