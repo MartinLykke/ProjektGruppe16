@@ -1,6 +1,5 @@
 package starter;
 
-import logic.Game;
 import presentation.GUI;
 
 

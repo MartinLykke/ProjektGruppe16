@@ -49,14 +49,14 @@
                   <Image url="@../assets/Beach.jpg" />
                </image>
             </ImageView>
-            <ImageView fx:id="enemy" fitHeight="397.0" fitWidth="387.0" layoutX="212.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="enemy" fitHeight="479.0" fitWidth="426.0" layoutX="324.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/enemy.png" />
                </image>
             </ImageView>
             <ListView fx:id="inventoryListView" layoutX="656.0" layoutY="134.0" prefHeight="200.0" prefWidth="200.0" />
             <Label fx:id="inventoryLabel" layoutX="658.0" layoutY="118.0" text="Inventory" />
-            <ImageView fx:id="friend" fitHeight="311.0" fitWidth="292.0" layoutX="64.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="friend" fitHeight="387.0" fitWidth="383.0" layoutX="64.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/friend.png" />
                </image>
