@@ -110,6 +110,7 @@ public class GameViewController implements Initializable {
         inventoryLabel.setVisible(true);
         inventoryListView.setVisible(true);
         highscore.setVisible(false);
+        label.setVisible(true);
         updateInventoryList();
         checkEnemy();
         checkRoom();
