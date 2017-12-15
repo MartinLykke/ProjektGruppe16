@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import data.Highscore;
 
 /**
  * @author  Michael Kolling and David J. Barnes
@@ -21,6 +22,7 @@ public class Game implements GameInterface
     private String actionText;
     private String text;
     private int numberOfPresses;
+    private Highscore highscore;
         
     public Game() 
     {
@@ -28,6 +30,7 @@ public class Game implements GameInterface
         save = new Save();
         numberOfPresses = 1;
         actionText = "";
+        highscore = new Highscore();
     }
     
     private void createRooms()
@@ -154,9 +157,10 @@ public class Game implements GameInterface
             return;
         }
         if(!currentRoom.enemyPresent()){
-            actionText = "You killed an enemy!";
+            
             player.removeTime(5);
-            player.addPointsToScore(100);
+            highscore.addPointsToScore();
+          actionText = "You killed an enemy! You have " + highscore.getScore() + " points.";
         }
     }
     

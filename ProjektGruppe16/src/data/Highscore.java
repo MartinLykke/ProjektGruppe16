@@ -2,11 +2,19 @@ package data;
 
 
 //Doesn't work as intended yet
-
+import logic.Player;
 import java.util.Scanner;
 import java.io.IOException;
 public class Highscore {
-    public static void highscore() throws IOException {
+    private int points = 0;
+    private int totalScore = 0;
+    public void addPointsToScore(){
+        totalScore = totalScore + 100;
+    }
+    public int getScore(){
+        return totalScore;
+    }
+    public void highscore() throws IOException {
 
         java.io.File file = new java.io.File("Highscore.txt");
         Scanner input = new Scanner(file);
@@ -15,7 +23,7 @@ public class Highscore {
             myList[i][0] = input.nextInt();
             myList[i][1] = input.nextInt();
         }
-
+        
         System.out.println("Previous highscore:");
 
         for (int i = 0; i < myList.length; i++) {
@@ -24,7 +32,8 @@ public class Highscore {
 
         Scanner input2 = new Scanner(System.in);
             System.out.print("Enter your score: ");
-            int newScore = input2.nextInt();
+            int newScore = getScore();
+            
 
 //    Player points = new Player();
 //    int newScore = Player.points();

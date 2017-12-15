@@ -25,4 +25,5 @@ public interface GameInterface {
     public ArrayList<String> getItems();
     public boolean getEnemyStatus();
     public boolean getFriendStatus();
+   
 }
