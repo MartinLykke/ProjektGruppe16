@@ -120,6 +120,7 @@ public class Game implements GameInterface
         printWelcome();
     }
 
+     //Print out the opening message for the player. 
     private void printWelcome()
     {
         text = "Welcome to Stranded! "
