@@ -17,16 +17,11 @@ public class Inventory implements java.io.Serializable{
         this.capacity = capacity;
     }
     
-    //Checks if inventory is full
+    /**
+     * Method for checking if an inventory is at it's maximum capacity
+     * @return 
+     */
     public boolean inventoryFull(){
-        System.out.println("Log: Size = " + this.inventory.size());
-        System.out.println("Log: Capacity = " + this.capacity);
-        for (Map.Entry<String, ArrayList<Item>> entry : inventory.entrySet()) {
-            String key = entry.getKey();
-            ArrayList<Item> value = entry.getValue();
-            
-            System.out.println(key + ": " + value.size());
-        }
         return !(this.inventory.size() < this.capacity);
     }
     

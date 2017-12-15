@@ -79,6 +79,8 @@ public class GameViewController implements Initializable {
     private ListView inventoryListView;
     @FXML
     private ListView highscore;
+    @FXML
+    private Label lost;
    
     
     
@@ -111,6 +113,7 @@ public class GameViewController implements Initializable {
         inventoryListView.setVisible(true);
         highscore.setVisible(false);
         label.setVisible(true);
+        lost.setVisible(false);
         updateInventoryList();
         checkEnemy();
         checkRoom();
@@ -237,7 +240,9 @@ public class GameViewController implements Initializable {
         } else if(game.getWinCondition()){
             // do highscore stuff
             label.setText(game.getText());
+            highscoreList.set(FXCollections.observableArrayList(game.getList()));
             prepareHighscore();
+            highscore.setVisible(true);
             return;
         }
         game.talk();
@@ -289,6 +294,7 @@ public class GameViewController implements Initializable {
         inventoryLabel.setVisible(false);
         inventoryListView.setVisible(false);
         highscore.setVisible(false);
+        lost.setVisible(false);
         
         inventoryListView.itemsProperty().bind(inventoryList);
         highscore.itemsProperty().bind(highscoreList);
@@ -366,7 +372,6 @@ public class GameViewController implements Initializable {
          inventoryList.set(FXCollections.observableArrayList(game.getItems()));
      }
      private void prepareHighscore(){
-        highscoreList.set(FXCollections.observableArrayList(game.getList()));
         label.setVisible(false);
         health.setVisible(false);
         healthBar.setVisible(false);
@@ -389,7 +394,6 @@ public class GameViewController implements Initializable {
         friend.setVisible(false);
         inventoryLabel.setVisible(false);
         inventoryListView.setVisible(false);
-        highscore.setVisible(true);
-         
+        lost.setVisible(true);
      }
 }
