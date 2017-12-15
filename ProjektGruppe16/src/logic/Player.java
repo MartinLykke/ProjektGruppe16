@@ -14,7 +14,7 @@ public class Player implements java.io.Serializable{
     public Player(){
         this.health = 100;
         this.istheplayerdead = false;
-        this.inventory = new Inventory(4);
+        this.inventory = new Inventory(6);
     }
     
 // If this is true, the player should win the game

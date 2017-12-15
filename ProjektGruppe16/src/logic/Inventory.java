@@ -19,10 +19,15 @@ public class Inventory implements java.io.Serializable{
     
     /**
      * Method for checking if an inventory is at it's maximum capacity
-     * @return 
+     * @return true if the inventory is at it's maximum capacity and false if it isn't
      */
     public boolean inventoryFull(){
-        return !(this.inventory.size() < this.capacity);
+        int items = 0;
+        for (Map.Entry<String, ArrayList<Item>> entry : inventory.entrySet()) {
+            ArrayList<Item> value = entry.getValue();
+            items = items + value.size();
+        }
+        return !(items <= this.capacity);
     }
     
     //Adds an item to the inventory list
