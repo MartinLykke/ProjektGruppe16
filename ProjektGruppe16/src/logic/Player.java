@@ -53,12 +53,12 @@ public class Player implements java.io.Serializable{
     
     // Method for making the time go
     public void addTime(int addedTime){
-   time = time + addedTime;    
+        time = time + addedTime;    
     }
     
     // This method grants the player more time when progressive action is performed
     public void removeTime(int removedTime){
-   time = time - removedTime;     
+        time = time - removedTime;     
     }
     
     public void addWoodToRaft(){

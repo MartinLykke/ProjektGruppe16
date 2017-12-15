@@ -44,7 +44,6 @@ public class Room implements java.io.Serializable
         exits.put(direction, neighbor);
     }
 
-    // Originally used to print out a description of the game
     /**
      * 
      * @return 
