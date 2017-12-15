@@ -20,8 +20,8 @@ public class Room implements java.io.Serializable
     private String name;
 /**
  * Creates a room object
- * @param description parameter is a descrpition of the room 
- * @param name paramter is a name for the room
+ * @param description parameter is a description of the room 
+ * @param name parameter is a name for the room
  */
     public Room(String description, String name) 
     {
