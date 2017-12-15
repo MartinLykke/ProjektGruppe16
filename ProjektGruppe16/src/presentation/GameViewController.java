@@ -224,11 +224,13 @@ public class GameViewController implements Initializable {
         if(game.getLoseCondition()){
             label.setText(game.getText());
             return;
+        } else if(game.getWinCondition()){
+            // do highscore stuff
         }
         game.talk();
         updateInventoryList();
         label.setText(game.getText());
-        game.getWinCondition();
+
     }
     
     @FXML
