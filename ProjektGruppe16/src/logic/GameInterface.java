@@ -21,7 +21,7 @@ public interface GameInterface {
     public String getText();
     public String getHealth();
     public String getLocation();
-    public boolean getTime();
+    public boolean getWinOrLose();
     public ArrayList<String> getItems();
     public boolean getEnemyStatus();
     public boolean getFriendStatus();

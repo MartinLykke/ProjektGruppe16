@@ -63,5 +63,7 @@ public class Player implements java.io.Serializable{
     public int getScore(){
         return score;
     }
-  
+    public void checkIfWin(){
+    
+}
 }
