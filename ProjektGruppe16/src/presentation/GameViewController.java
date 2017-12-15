@@ -131,6 +131,7 @@ public class GameViewController implements Initializable {
     private void goWest(ActionEvent event){
         if(game.getLoseCondition()){
             label.setText(game.getText());
+            prepareHighscore();
             return;
         }
         game.goRoom("west");
@@ -145,6 +146,7 @@ public class GameViewController implements Initializable {
     private void goNorth(ActionEvent event){
         if(game.getLoseCondition()){
             label.setText(game.getText());
+            prepareHighscore();
             return;
         }
         game.goRoom("north");
@@ -159,6 +161,7 @@ public class GameViewController implements Initializable {
     private void goEast(ActionEvent event){
         if(game.getLoseCondition()){
             label.setText(game.getText());
+            prepareHighscore();
             return;
         }
         game.goRoom("east");
@@ -173,6 +176,7 @@ public class GameViewController implements Initializable {
     private void goSouth(ActionEvent event){
         if(game.getLoseCondition()){
             label.setText(game.getText());
+            prepareHighscore();
             return;
         }
         game.goRoom("south");
@@ -223,10 +227,12 @@ public class GameViewController implements Initializable {
     private void talk (ActionEvent event){
         if(game.getLoseCondition()){
             label.setText(game.getText());
+            prepareHighscore();
             return;
         } else if(game.getWinCondition()){
             // do highscore stuff
             label.setText(game.getText());
+            prepareHighscore();
             return;
         }
         game.talk();
@@ -351,5 +357,29 @@ public class GameViewController implements Initializable {
      
      private void updateInventoryList(){
          inventoryList.set(FXCollections.observableArrayList(game.getItems()));
+     }
+     private void prepareHighscore(){
+          health.setText("");
+        healthBar.setVisible(false);
+             north.setVisible(false);
+        east.setVisible(false);
+        south.setVisible(false);
+        west.setVisible(false);
+        save.setVisible(false);
+        load.setVisible(false);
+        attack.setVisible(false);
+        eat.setVisible(false);
+        drop.setVisible(false);
+        pickup.setVisible(false);
+        talk.setVisible(false);
+        beach.setVisible(false);
+        jungle.setVisible(false);
+        jungle2.setVisible(false);
+        cave.setVisible(false);
+        enemy.setVisible(false);
+        friend.setVisible(false);
+        inventoryLabel.setVisible(false);
+        inventoryListView.setVisible(false);
+         
      }
 }
