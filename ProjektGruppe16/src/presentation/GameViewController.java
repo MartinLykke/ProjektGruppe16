@@ -65,7 +65,7 @@ public class GameViewController implements Initializable {
     @FXML
     private Button attack;
     @FXML
-    private Button use;
+    private Button eat;
     @FXML
     private Button talk;
     @FXML
@@ -100,7 +100,7 @@ public class GameViewController implements Initializable {
         save.setVisible(true);
         load.setVisible(true);
         attack.setVisible(false);
-        use.setVisible(true);
+        eat.setVisible(true);
         drop.setVisible(true);
         pickup.setVisible(true);
         talk.setVisible(false);
@@ -208,19 +208,6 @@ public class GameViewController implements Initializable {
         label.setText(game.getText());
     }
     
-    
-    @FXML
-    private void use (ActionEvent event){
-        if(game.getLoseCondition()){
-            label.setText(game.getText());
-            return;
-        }
-        game.getItems();
-        //game.use();
-        updateInventoryList();
-        label.setText(game.getText());
-    }
-    
     @FXML
     private void drop (ActionEvent event){
         if(game.getLoseCondition()){
@@ -274,7 +261,7 @@ public class GameViewController implements Initializable {
         save.setVisible(false);
         load.setVisible(false);
         attack.setVisible(false);
-        use.setVisible(false);
+        eat.setVisible(false);
         drop.setVisible(false);
         pickup.setVisible(false);
         talk.setVisible(false);

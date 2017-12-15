@@ -8,11 +8,9 @@ public class Player implements java.io.Serializable{
     public Inventory inventory;
     public int time = 0;
     private int maxTime = 100;
-    public int woodfortheraft = 0;
+    private int woodfortheraft = 0;
     public boolean enoughwoodfortheraft = false;
-    int timeLeft = maxTime - time; // This line calculates how much time the user has left
-    private int points = 0;
-    private int score = 0;
+    
     public Player(){
         this.health = 100;
         this.istheplayerdead = false;
@@ -38,7 +36,11 @@ public class Player implements java.io.Serializable{
     
     // Method for gaining health after eating a coconut
     public void Heal(){
-        this.health += 10;
+        if(health <= 90){
+            this.health += 10;
+        } else{
+            this.health = 100;
+        }
     }
     
     // Method for checking if the player is dead
@@ -59,14 +61,4 @@ public class Player implements java.io.Serializable{
     public void addWoodToRaft(){
         woodfortheraft++;
     }
-    public void addPointsToScore(int points){
-       
-        score = score + points;
-    }
-    public int getScore(){
-        return score;
-    }
-    public void checkIfWin(){
-    
-}
 }

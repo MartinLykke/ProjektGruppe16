@@ -59,7 +59,6 @@ public class Game implements GameInterface
                 + " After a minute or two you stumble upon a crazy troll", "cave");
         
         beach1.setExit("east", beach2, false);
-        beach1.putItem(new Item("coconut"));
         beach1.putItem(new Item("wood"));
         beach1.spawnFriend("Walter");
 
@@ -83,7 +82,7 @@ public class Game implements GameInterface
         
         jungle3.setExit("south", beach3, false);
         jungle3.setExit("west", jungle2, false);
-        jungle3.putItem(new Item("wood"));
+        jungle3.putItem(new Item("coconut"));
         jungle3.spawnEnemy("Cannibal", 20);
 
         jungle4.setExit("east", jungle5, false);
@@ -94,12 +93,12 @@ public class Game implements GameInterface
         jungle5.setExit("east", jungle6, false);
         jungle5.setExit("south", jungle2, false);
         jungle5.setExit("west", jungle4, false);
-        jungle5.putItem(new Item("wood"));
+        jungle5.putItem(new Item("coconut"));
         jungle5.spawnEnemy("Cannibal", 20);
         
         jungle6.setExit("north", cave, true);
         jungle6.setExit("west", jungle5, false);
-        jungle6.putItem(new Item("wood"));
+        jungle6.putItem(new Item("coconut"));
         jungle6.spawnEnemy("Cannibal", 20);
         
         cave.setExit("south", jungle6, false);
@@ -115,16 +114,9 @@ public class Game implements GameInterface
         printWelcome();
         /*boolean finished = false;
         while (! finished) {
-            Command command = parser.getCommand();
-            finished = processCommand(command);
-            if(player.time >= 100){  // Ends the game if the player runs out of time
-                finished = true;
-                System.out.println("You ran out of time!");
-            } 
            if(player.enoughwoodfortheraft == true){ // Ends the game if the player wins by collecting enough wood
                 finished = true;
                 System.out.println("You build a raft and escaped the island. You won!");
-               
             }
            if(player.isDead()){ // Ends the game if the player runs out of health
                finished = true;
@@ -165,15 +157,12 @@ public class Game implements GameInterface
     }
     
     public void drop(){
-        if(player.inventory.getItem("wood") == null) { //TODO: figure out how to chose item to drop
+        if(player.inventory.getItem("coconut") == null) {
             System.out.println("Drop what?");
             return;
         }
         else{
-            player.inventory.remove("wood");
-            player.inventory.inventoryFull();
-            player.addWoodToRaft();
-            
+            player.inventory.remove("coconut");
         }
     }
     
@@ -312,7 +301,7 @@ public class Game implements GameInterface
             text = "You ran out of time!";
             actionText = "";
             return true;
-        } else if(player.health<=0) {
+        } else if(player.isDead()) {
             text = "You lost all your health and died";
             return true;
         }
@@ -359,7 +348,17 @@ public class Game implements GameInterface
         
     }
     
+    /**
+     * Adds health to a player object and removes a "coconut" from it's inventory
+     */
     public void eat(){
-        player.Heal();
+        if(player.inventory.hasItem("coconut") && player.health < player.maxhealth){
+            player.Heal();
+            player.inventory.remove("coconut");
+            actionText = "You eat the delicious coconut and it heals you a bit";
+        } else{
+            actionText = "You're starving and out of food.. Go find some!";
+        }
+        
     }
 }
