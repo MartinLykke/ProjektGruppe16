@@ -14,7 +14,7 @@ import logic.Room;
 
 /**
  *
- * @author rasmus
+ * @author hej1
  */
 public class Save {
     private SaveFile save;
