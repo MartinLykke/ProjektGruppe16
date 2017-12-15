@@ -17,19 +17,27 @@ public class Room implements java.io.Serializable
     private Enemy enemy;
     private Friend friend;
     private HashMap<String, Boolean> blocked;
-    private String picture;
-
-    public Room(String description, String picture) 
+    private String name;
+/**
+ * Creates a room object
+ * @param description parameter is a descrpition of the room 
+ * @param name paramter is a name for the room
+ */
+    public Room(String description, String name) 
     {
         this.description = description;
         exits = new HashMap<String, Room>();
         this.item = null;
         this.enemy = null;
         this.blocked = new HashMap<>();
-        this.picture = picture;
+        this.name = name;
     }
-
-    // Used for deciding which exits exist in the game
+    /**
+     * 
+     * @param direction
+     * @param neighbor
+     * @param blocked 
+     */
     public void setExit(String direction, Room neighbor, boolean blocked) 
     {
         this.blocked.put(direction, blocked);
@@ -37,6 +45,10 @@ public class Room implements java.io.Serializable
     }
 
     // Originally used to print out a description of the game
+    /**
+     * 
+     * @return 
+     */
     public String getLongDescription()
     {
         String itemList = "";
@@ -55,26 +67,45 @@ public class Room implements java.io.Serializable
         }
         return returnString;
     }
-
+/**
+ * 
+ * @param direction
+ * @return 
+ */
     public Room getExit(String direction) 
     {
         return exits.get(direction);
     }
     
     // "Spawns" an item in the specific room
+    /**
+     * 
+     * @param item 
+     */
     public void putItem(Item item){
         this.item = item;
     }
+    /**
+     * 
+     * @return 
+     */
     public Item getItem(){
         Item temp = this.item;
         this.item = null;
         return temp;
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public boolean itemExist(){
         return !(this.item == null);
     }
-    
+    /**
+     * 
+     * @param name
+     * @param health 
+     */
     public void spawnEnemy(String name, int health){
             System.out.println("Debug: Spawning");
             this.enemy = new Enemy(name, health);
@@ -82,11 +113,18 @@ public class Room implements java.io.Serializable
     }
     
     //Checks if an enemy is present when attacking
+    /**
+     * 
+     * @return 
+     */
     public boolean enemyPresent(){
         return !(this.enemy == null);
     }
     
-    
+    /**
+     * 
+     * @param name 
+     */
     public void spawnFriend(String name){
             System.out.println("Debug: Spawning");
             this.friend = new Friend(name);
@@ -94,10 +132,18 @@ public class Room implements java.io.Serializable
     }
     
     //Checks if a friendly person is present when talk command is used
+    /**
+     * 
+     * @return 
+     */
     public boolean friendPresent(){
         return !(this.friend == null);
     }
-    
+    /**
+     * 
+     * @param damage
+     * @return 
+     */
     public int attack(int damage){
         this.enemy.takeDamage(damage);
         if(!this.enemy.isAlive()){
@@ -106,20 +152,34 @@ public class Room implements java.io.Serializable
         }
         return this.enemy.attack();
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public int enemyHealth(){
         return this.enemy.getHealth();
     }
+    /**
+     * 
+     * @return 
+     */
     public String enemyName(){
         return this.enemy.getName();
     }
-    
+    /**
+     * 
+     * @param exit
+     * @return 
+     */
     public boolean isBlocked(String exit){
         return this.blocked.get(exit);
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public String getLocation(){
-        return this.picture;
+        return this.name;
     }
     
 }
