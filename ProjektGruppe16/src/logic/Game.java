@@ -307,10 +307,13 @@ public class Game implements GameInterface
         return "Health: " + player.health;
     }
     
-    public boolean getTime(){ //TODO: fix death, possibly rename to lose condition
+    public boolean getLoseCondition(){ //TODO: fix death, possibly rename to lose condition
         if(player.time >= 100){  // Ends the game if the player runs out of time
             text = "You ran out of time!";
             actionText = "";
+            return true;
+        } else if(player.health<=0) {
+            text = "You lost all your health and died";
             return true;
         }
         return false;
@@ -337,12 +340,17 @@ public class Game implements GameInterface
         }
         
     }
-      public boolean getFriendStatus(){
+    
+    public boolean getFriendStatus(){
         if(currentRoom.friendPresent()){
             return true;
         } else {
             return false;
         }
         
+    }
+    
+    public void eat(){
+        player.Heal();
     }
 }

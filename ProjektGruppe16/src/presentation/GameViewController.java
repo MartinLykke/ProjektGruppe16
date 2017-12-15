@@ -129,7 +129,7 @@ public class GameViewController implements Initializable {
     
     @FXML
     private void goWest(ActionEvent event){
-        if(game.getTime()){
+        if(game.getLoseCondition()){
             label.setText(game.getText());
             return;
         }
@@ -143,7 +143,7 @@ public class GameViewController implements Initializable {
     
     @FXML
     private void goNorth(ActionEvent event){
-        if(game.getTime()){
+        if(game.getLoseCondition()){
             label.setText(game.getText());
             return;
         }
@@ -157,7 +157,7 @@ public class GameViewController implements Initializable {
     
     @FXML
     private void goEast(ActionEvent event){
-        if(game.getTime()){
+        if(game.getLoseCondition()){
             label.setText(game.getText());
             return;
         }
@@ -171,7 +171,7 @@ public class GameViewController implements Initializable {
     
     @FXML
     private void goSouth(ActionEvent event){
-        if(game.getTime()){
+        if(game.getLoseCondition()){
             label.setText(game.getText());
             return;
         }
@@ -185,7 +185,7 @@ public class GameViewController implements Initializable {
     
     @FXML
     private void attack(ActionEvent event){
-        if(game.getTime()){
+        if(game.getLoseCondition()){
             label.setText(game.getText());
             return;
         }
@@ -199,7 +199,7 @@ public class GameViewController implements Initializable {
     
     @FXML
     private void pickup(ActionEvent event){
-        if(game.getTime()){
+        if(game.getLoseCondition()){
             label.setText(game.getText());
             return;
         }
@@ -211,7 +211,7 @@ public class GameViewController implements Initializable {
     
     @FXML
     private void use (ActionEvent event){
-        if(game.getTime()){
+        if(game.getLoseCondition()){
             label.setText(game.getText());
             return;
         }
@@ -223,7 +223,7 @@ public class GameViewController implements Initializable {
     
     @FXML
     private void drop (ActionEvent event){
-        if(game.getTime()){
+        if(game.getLoseCondition()){
             label.setText(game.getText());
             return;
         }
@@ -234,7 +234,7 @@ public class GameViewController implements Initializable {
     
     @FXML
     private void talk (ActionEvent event){
-        if(game.getTime()){
+        if(game.getLoseCondition()){
             label.setText(game.getText());
             return;
         }
@@ -243,6 +243,17 @@ public class GameViewController implements Initializable {
         label.setText(game.getText());
     }
     
+    @FXML
+    private void eat(ActionEvent event){
+        if(game.getLoseCondition()){
+            label.setText(game.getText());
+            return;
+        }
+        game.eat();
+        updateInventoryList();
+        label.setText(game.getText());
+        health.setText(game.getHealth());
+    }
     @FXML
     private void template (ActionEvent event){
     
