@@ -8,6 +8,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import data.Highscore;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * @author  Michael Kolling and David J. Barnes
@@ -108,23 +111,13 @@ public class Game implements GameInterface
         currentRoom = beach2; // Sets the spawnpoint for the player
     }
 
+    /**
+     *Instantiates a player object and calls the 
+     */
     public void play() 
-    {            //TODO: fix win conditions
+    {
         player = new Player();
         printWelcome();
-        /*boolean finished = false;
-        while (! finished) {
-           if(player.enoughwoodfortheraft == true){ // Ends the game if the player wins by collecting enough wood
-                finished = true;
-                System.out.println("You build a raft and escaped the island. You won!");
-            }
-           if(player.isDead()){ // Ends the game if the player runs out of health
-               finished = true;
-               System.out.println("You lost all your health and died!");
-           }public boolean getFriendStatus()
-        }
-        
-        System.out.println("Thank you for playing.  Good bye.");*/
     }
 
     private void printWelcome()
@@ -305,7 +298,11 @@ public class Game implements GameInterface
     public boolean getWinCondition(){
         if(player.isThereEnoughWoodForTheRaft() == true && getFriendStatus()){ // Ends the game if the player wins by collecting enough wood
             text = "You build a raft and escaped the island. You won!";
-            //Highscore.highscore();
+            try {
+                highscore.highscore();
+            } catch (IOException ex) {
+                System.err.println("No file");
+            }
             return true;
         }
         return false;
@@ -354,5 +351,9 @@ public class Game implements GameInterface
             actionText = "You're starving and out of food.. Go find some!";
         }
         
+    }
+    
+    public ArrayList<String> getList(){
+        return highscore.getList();
     }
 }

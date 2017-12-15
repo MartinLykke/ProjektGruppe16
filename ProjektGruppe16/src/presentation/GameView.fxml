@@ -49,7 +49,7 @@
                   <Image url="@../assets/Beach.jpg" />
                </image>
             </ImageView>
-            <ImageView fx:id="enemy" fitHeight="397.0" fitWidth="387.0" layoutX="209.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="enemy" fitHeight="397.0" fitWidth="387.0" layoutX="212.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/enemy.png" />
                </image>
@@ -61,6 +61,7 @@
                   <Image url="@../assets/friend.png" />
                </image>
             </ImageView>
+            <ListView fx:id="highscore" layoutX="231.0" layoutY="84.0" prefHeight="417.0" prefWidth="400.0" />
          </children>
     </AnchorPane>
   </children>

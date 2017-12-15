@@ -2,8 +2,11 @@ package data;
 
 import java.util.Scanner;
 import java.io.IOException;
+import java.util.ArrayList;
 public class Highscore {
+
     private int totalScore = 0;
+    private ArrayList<String> text;
     public void addPointsToScore(){
         totalScore = totalScore + 100;
     }
@@ -11,7 +14,7 @@ public class Highscore {
         return totalScore;
     }
     public void highscore() throws IOException {
-
+        text = new ArrayList<>();
         java.io.File file = new java.io.File("Highscore.txt");
         Scanner input = new Scanner(file);
         int[][] myList = new int[10][2];
@@ -20,14 +23,8 @@ public class Highscore {
             myList[i][1] = input.nextInt();
         }
         
-        System.out.println("Previous highscore:");
-
-        for (int i = 0; i < myList.length; i++) {
-            System.out.println(myList[i][0] + "\t" + myList[i][1]);
-        }
-
         int newScore = getScore();
-        System.out.println("Your score is:" + newScore);
+//        System.out.println("Your score is:" + newScore);
 
         for (int i = 0; i < myList.length; i++) {
             if (newScore > myList[i][1]) {
@@ -39,9 +36,9 @@ public class Highscore {
             }
         }
 
-        System.out.println("New highscore:");
+        text.add("New highscore:");
         for (int i = 0; i < myList.length; i++) {
-            System.out.println(myList[i][0] + "\t" + myList[i][1]);
+            text.add(myList[i][0] + "\t" + myList[i][1]);
         }
 
         java.io.PrintWriter output = new java.io.PrintWriter(file);
@@ -50,5 +47,47 @@ public class Highscore {
             output.println(myList[i][0] + "\t" + myList[i][1]);
         }
         output.close();
+
+//        int[][] myList = new int[10][2];
+//        for (int i = 0; i < myList.length; i++) {
+//            myList[i][0] = i + 1;
+//        }
+//                
+//        for (int i = 0; i < myList.length; i++) {
+//            System.out.println(myList[i][0] + "\t" + myList[i][1]);
+//        }
+//        
+//        Scanner input = new Scanner(System.in);
+//            System.out.print("Enter your score: ");
+//            int newScore = input.nextInt();
+//        
+//        for (int i = 0; i < myList.length; i++) {
+//            if (newScore > myList[i][1]) {
+//                for (int j = myList.length - 1; j > i; j--) {
+//                    myList[j][1] = myList[j - 1][1];
+//                }
+//                myList[i][1] = newScore;
+//                break;
+//            }
+//        }
+//        
+//        System.out.println("New highscore:");
+//        for (int i = 0; i < myList.length; i++) {
+//            System.out.println(myList[i][0] + "\t" + myList[i][1]);
+//        }
+//        
+//        java.io.File file = new java.io.File("Highscore.txt");
+//        
+//        java.io.PrintWriter output = new java.io.PrintWriter(file);
+//
+//        for (int i = 0; i < myList.length; i++) {
+//            output.println(myList[i][0] + "\t" + myList[i][1]);
+//        }
+//        output.close();
+
+    }
+    
+    public ArrayList<String> getList(){
+        return text;
     }
 }
