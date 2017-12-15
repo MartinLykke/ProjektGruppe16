@@ -1,10 +1,8 @@
 package data;
 
-import logic.Player;
 import java.util.Scanner;
 import java.io.IOException;
 public class Highscore {
-    private int points = 0;
     private int totalScore = 0;
     public void addPointsToScore(){
         totalScore = totalScore + 100;
