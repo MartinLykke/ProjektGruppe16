@@ -86,4 +86,8 @@ public class Highscore {
 //        output.close();
 
     }
+    
+    public ArrayList<String> getList(){
+        return text;
+    }
 }

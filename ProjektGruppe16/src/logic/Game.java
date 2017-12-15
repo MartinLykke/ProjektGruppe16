@@ -111,23 +111,13 @@ public class Game implements GameInterface
         currentRoom = beach2; // Sets the spawnpoint for the player
     }
 
+    /**
+     *Instantiates a player object and calls the 
+     */
     public void play() 
-    {            //TODO: fix win conditions
+    {
         player = new Player();
         printWelcome();
-        /*boolean finished = false;
-        while (! finished) {
-           if(player.enoughwoodfortheraft == true){ // Ends the game if the player wins by collecting enough wood
-                finished = true;
-                System.out.println("You build a raft and escaped the island. You won!");
-            }
-           if(player.isDead()){ // Ends the game if the player runs out of health
-               finished = true;
-               System.out.println("You lost all your health and died!");
-           }public boolean getFriendStatus()
-        }
-        
-        System.out.println("Thank you for playing.  Good bye.");*/
     }
 
     private void printWelcome()
@@ -361,5 +351,9 @@ public class Game implements GameInterface
             actionText = "You're starving and out of food.. Go find some!";
         }
         
+    }
+    
+    public ArrayList<String> getList(){
+        return highscore.getList();
     }
 }

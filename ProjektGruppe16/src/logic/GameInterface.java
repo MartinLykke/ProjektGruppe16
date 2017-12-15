@@ -27,5 +27,6 @@ public interface GameInterface {
     public boolean getEnemyStatus();
     public boolean getFriendStatus();
     public void eat();
+    public ArrayList<String> getList();
    
 }

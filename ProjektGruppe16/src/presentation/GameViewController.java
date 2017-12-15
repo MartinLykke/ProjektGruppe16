@@ -31,6 +31,7 @@ public class GameViewController implements Initializable {
 
     private GameInterface game;
     protected ListProperty<String> inventoryList = new SimpleListProperty<>();
+    protected ListProperty<String> highscoreList = new SimpleListProperty<>();
         
     @FXML
     private ImageView friend;
@@ -76,6 +77,8 @@ public class GameViewController implements Initializable {
     private Label inventoryLabel;
     @FXML
     private ListView inventoryListView;
+    @FXML
+    private ListView highscore;
    
     
     
@@ -106,6 +109,7 @@ public class GameViewController implements Initializable {
         talk.setVisible(false);
         inventoryLabel.setVisible(true);
         inventoryListView.setVisible(true);
+        highscore.setVisible(false);
         updateInventoryList();
         checkEnemy();
         checkRoom();
@@ -283,8 +287,10 @@ public class GameViewController implements Initializable {
         friend.setVisible(false);
         inventoryLabel.setVisible(false);
         inventoryListView.setVisible(false);
+        highscore.setVisible(false);
         
         inventoryListView.itemsProperty().bind(inventoryList);
+        highscore.itemsProperty().bind(highscoreList);
         
         //image.setImage( new Image(getClass().getResource("../assets/Beach.jpg").toExternalForm()) );
     }    
@@ -359,9 +365,10 @@ public class GameViewController implements Initializable {
          inventoryList.set(FXCollections.observableArrayList(game.getItems()));
      }
      private void prepareHighscore(){
-          health.setText("");
+        highscoreList.set(FXCollections.observableArrayList(game.getList()));
+        health.setVisible(false);
         healthBar.setVisible(false);
-             north.setVisible(false);
+        north.setVisible(false);
         east.setVisible(false);
         south.setVisible(false);
         west.setVisible(false);
@@ -380,6 +387,7 @@ public class GameViewController implements Initializable {
         friend.setVisible(false);
         inventoryLabel.setVisible(false);
         inventoryListView.setVisible(false);
+        highscore.setVisible(true);
          
      }
 }
