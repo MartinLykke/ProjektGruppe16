@@ -112,7 +112,7 @@ public class Game implements GameInterface
     }
 
     /**
-     *Instantiates a player object and calls the 
+     *Instantiates a player object and calls the print method
      */
     public void play() 
     {
