@@ -16,9 +16,21 @@ import logic.Room;
  */
 public class SaveFile implements java.io.Serializable {
     
+    /**
+     *Player object to be saved.
+     */
     public Player player;
+
+    /**
+     *Room object to be saved.
+     */
     public Room currentRoom;
     
+    /**
+     *Constructs a SaveFile object containing a Player and Room object to be saved
+     * @param player the Player object to be saved.
+     * @param currentRoom the Room object to be saved.
+     */
     public SaveFile(Player player, Room currentRoom){
         this.player = player;
         this.currentRoom = currentRoom;

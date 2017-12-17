@@ -27,6 +27,9 @@ public class Game implements GameInterface
     private int numberOfPresses;
     private Highscore highscore;
         
+    /**
+     *Starts a new game by constructing a Game object with fresh rooms.
+     */
     public Game() 
     {
         createRooms();
@@ -200,27 +203,6 @@ public class Game implements GameInterface
         else{
             player.inventory.add(currentRoom.getItem());
             player.removeTime(5);
-        }
-    }
-    
-    public void use (){
-        String SecondWord;
-        if(false) { //TODO: new check
-            System.out.println("Use what?");
-            return;
-        
-        }
-        else {
-            SecondWord="coconut"; //TODO: Figure it out
-            if(player.inventory.hasItem("coconut")){
-            //    player.eat(player.inventory.getItem(SecondWord)); Fix this
-                System.out.println("You ate a coconut and restored 10 health.");
-               player.Heal();
-               player.inventory.remove("coconut");
-            }
-            else{
-                System.out.println("No coconuts");
-            }
         }
     }
     

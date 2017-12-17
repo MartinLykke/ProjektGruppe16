@@ -3,16 +3,35 @@ package data;
 import java.util.Scanner;
 import java.io.IOException;
 import java.util.ArrayList;
+
+/**
+ * Class for keeping a highscore
+ * @author Kasper
+ */
 public class Highscore {
 
     private int totalScore = 0;
     private ArrayList<String> text;
+    
+    /**
+     * Adds 100 points to the total score
+     */
     public void addPointsToScore(){
         totalScore = totalScore + 100;
     }
+    
+    /**
+     * Returns the current total score
+     * @return totalScore which is an int representing the total score of the current game
+     */
     public int getScore(){
         return totalScore;
     }
+    
+    /**
+     * Opens a file containing the highscore and then updates the file with the new score and saves the highscore in an ArrayList of strings for use in the GUI
+     * @throws IOException 
+     */
     public void highscore() throws IOException {
         text = new ArrayList<>();
         java.io.File file = new java.io.File("Highscore.txt");
@@ -48,6 +67,10 @@ public class Highscore {
         output.close();
     }
     
+    /**
+     * Method for returning the ArrayList of strings containing the highscore
+     * @return ArrayList of Strings
+     */
     public ArrayList<String> getList(){
         return text;
     }

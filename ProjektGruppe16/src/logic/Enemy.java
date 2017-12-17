@@ -1,6 +1,9 @@
 package logic;
 
-
+/**
+ *Class for the enemies in the game
+ * @author Martin
+ */
 public class Enemy implements java.io.Serializable{
     
     private int health;

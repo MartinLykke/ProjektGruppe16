@@ -25,12 +25,20 @@ import logic.GameInterface;
 
 /**
  *
- * @author marti
+ * @author Marting and Rasmus
  */
 public class GameViewController implements Initializable {
 
     private GameInterface game;
+
+    /**
+     *List for keeping the updated inventory as a list of Strings.
+     */
     protected ListProperty<String> inventoryList = new SimpleListProperty<>();
+
+    /**
+     *List for keeping the updated highscore as a list of Strings.
+     */
     protected ListProperty<String> highscoreList = new SimpleListProperty<>();
         
     @FXML
@@ -81,14 +89,8 @@ public class GameViewController implements Initializable {
     private ListView highscore;
     @FXML
     private Label lost;
-   
     
     
-    @FXML
-    private void useButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Ingen ting");   
-    }
     /**
      * method for "launching the game", by creating a gameinterface object and calling the play method
      * @param event This parameter will only be described here. The method has actionevent paramter, which means it waits for the user to click a button.
@@ -271,6 +273,12 @@ public class GameViewController implements Initializable {
     private void template (ActionEvent event){
     
     }
+
+    /**
+     *Initializes the GUI
+     * @param url
+     * @param rb
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -349,14 +357,7 @@ public class GameViewController implements Initializable {
             enemy.setVisible(false);
         }
     }
-    
-     private void checkFriend(){     
-        if(game.getFriendStatus()){
-            enemy.setVisible(true);
-        } else {
-            enemy.setVisible(false);
-        }
-    }
+
      // Disables buttons if they have no use, to make GUI less messy
      private void checkIfButtonsAreNeeded(){
          if(game.getFriendStatus()){
