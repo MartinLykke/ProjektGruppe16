@@ -66,7 +66,7 @@ public class Game implements GameInterface
         
         beach1.setExit("east", beach2, false);
         beach1.putItem(new Item("wood"));
-        beach1.spawnFriend("Walter");
+        beach1.spawnFriend("Dave");
 
         beach2.setExit("east", beach3, false);
         beach2.setExit("west", beach1, false);
@@ -115,7 +115,7 @@ public class Game implements GameInterface
     }
 
     /**
-     *Instantiates a player object and calls the 
+     *Instantiates a player object and calls the print method
      */
     public void play() 
     {
